@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Portal.Models.Accreditation>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/ControlPanel/Views/Shared/_Admin.cshtml";
+}
+<!-- Page Content -->
+<div id="page-content">
+    <!-- Breadcrumb -->
+    <ul class="breadcrumb breadcrumb-top">
+        <li>
+            <a href="/"><i class="glyphicon-display"></i></a> <span class="divider"><i class="icon-angle-right"></i></span>
+        </li>
+        <li>
+            <a href="/controlpanel">Панель управления</a> <span class="divider"><i class="icon-angle-right"></i></span>
+        </li>
+        <li><a href="">Аккредитации</a></li>
+    </ul>
+    <!-- END Breadcrumb -->
+    <div class="block-section">
+        @*@Html.ActionLink("Добавить", "Create", null, new { @class="btn"})*@
+        <table class="table">
+            <thead>
+                <tr>                                        
+                    <th class="span2 text-center">Соревнование</th>
+                    <th class="span4">ФИО</th>
+                    <th class="span4">Автомобиль</th>
+                    <th class="span2">Издание</th>                                        
+                    <th class="span2">Проверен</th>                                        
+                    <th class="span1 text-center"><i class="icon-bolt"></i></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model) {                    
+                        <tr>
+                            <td class="span2 text-center">
+                                @Html.DisplayFor(modelItem => item.Tag.Name)
+                            </td>
+                            <td class="span4">
+                                @Html.DisplayFor(modelItem => item.User.LastName) @Html.DisplayFor(modelItem => item.User.FirstName)
+                            </td>
+                            <td class="span4">
+                                @Html.DisplayFor(modelItem => item.Car)                              
+                            </td>
+                            <td class="span2">
+                                @string.Join(",", item.Media.Select(m=>m.Media))                                  
+                            </td>        
+                            <td class="span2">
+                                @Html.CheckBoxFor(modelItem => item.Valid)
+                            </td>
+                            <td class="span1 text-center">  
+                                <div class="btn-group">
+                                    <a href="@Url.Action("Edit", new { id = item.Id })" data-toggle="tooltip" title="Изменить" class="btn btn-mini btn-success"><i class="icon-pencil"></i></a>
+                                    <a href="@Url.Action("Validate", new { id = item.Id })" data-toggle="tooltip" title="Проверить" class="btn btn-mini btn-success"><i class="icon-ok"></i></a>
+                                    <a href="@Url.Action("GeneratePrintForms", new { id = item.Id })" target="_blank" data-toggle="tooltip" title="Сформировать печатную форму" class="btn btn-mini"><i class="icon-print"></i></a>
+                                    @if (item.TimingSystemId.HasValue)
+                                    {
+                                        <a href="@Url.Action("DownloadPrintForm", new { id = item.Id })" target="_blank"  data-toggle="tooltip" title="Открыть печатную форму" class="btn btn-mini"><i class="icon-cloud-download"></i></a>
+                                    }
+                                    <a href="@Url.Action("Delete", new { id = item.Id })" data-toggle="tooltip" title="Удалить" class="btn btn-mini btn-danger"><i class="icon-remove"></i></a>
+                                </div>                                
+                            </td>
+                        </tr>                    
+                }
+            </tbody>
+        </table>        
+        @*@Html.ActionLink("Добавить", "Create", null, new { @class="btn"})*@
+    </div>
+</div>

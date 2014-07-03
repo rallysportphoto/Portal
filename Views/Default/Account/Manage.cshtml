@@ -1,0 +1,58 @@
+﻿@using Microsoft.AspNet.Identity;
+@{
+    ViewBag.Title = "Manage Account";    
+}
+<div class="row">
+				<div class="large-12 columns">
+
+            		<div class="content">
+
+                    	<div class="singletop">
+                            <div class="search">
+                                <form method="get" action="#">
+									<input id="s" type="text" value="Search" name="s">
+                                </form>	
+                            </div>
+                            <nav class="breadcrumbs">
+                              <a href="/">Главная</a>                              
+                              <a class="current" href="#">Профиль пользователя</a>
+                            </nav>
+                        </div>
+                        
+                        <div class="homeposttitle">
+                            <h3 class="widget-title">
+                                <span>
+                            			Профиль пользователя
+                                </span>
+                                @if(ViewBag.StatusMessage!=null) {
+                                    <br />
+                                    <small>
+                                        @ViewBag.StatusMessage
+                                    </small>
+                                }
+                            </h3>  
+                        </div>
+                        
+               	    <div class="large-7 columns"> 
+                        @Html.Action("EditProfile")
+                    </div>
+                    <div class="large-5 columns">
+                            @if (ViewBag.HasLocalPassword)
+                            {
+                                @Html.Partial("_ChangePasswordPartial")
+                            }
+                            else
+                            {
+                                @Html.Partial("_SetPasswordPartial")
+                            }
+
+                            <section id="externalLogins">
+                                @Html.Action("RemoveAccountList")
+                                @Html.Partial("_ExternalLoginsListPartial", new { Action = "LinkLogin", ReturnUrl = ViewBag.ReturnUrl })
+                            </section>
+                        </div>
+                    </div>
+             </div>
+    </div>
+
+

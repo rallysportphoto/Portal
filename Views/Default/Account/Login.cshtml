@@ -1,0 +1,111 @@
+﻿@model Portal.ViewModels.LoginViewModel
+
+@{
+    ViewBag.Title = "Log in";    
+}
+
+<div class="row">
+				<div class="large-12 columns">
+
+            		<div class="content">
+
+                    	<div class="singletop">
+                            <div class="search">
+                                <form method="get" action="#">
+									<input id="s" type="text" value="Search" name="s">
+                                </form>	
+                            </div>
+                            <nav class="breadcrumbs">
+                              <a href="/">Главная</a>                              
+                              <a class="current" href="#">Вход в систему</a>
+                            </nav>
+                        </div>
+                        
+                        <div class="homeposttitle">
+                            <h3 class="widget-title">
+                                <span>
+                            			Вход в систему
+                                </span>
+                            </h3>  
+                        </div>
+                        
+               	  <div class="large-5 columns">                    
+                        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <label for="name">Имя пользователя</label>
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.UserName)
+
+                            <label for="email">Пароль</label>
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Password)
+                            
+                            <label>@Html.CheckBoxFor(m => m.RememberMe) Запомнить меня</label>
+                            
+                            <input type="submit" name="submit" id="submit" class="button small" value="Вход" />
+                        }                        
+						</div>
+                  
+						<div class="large-7 columns">
+							<p>Пожалуйста, войдите в систему используя логин/пароль под которыми вы регистрировались на сайте или с помощью социальных сетей:</p>         
+
+                            @Html.Partial("_ExternalLoginsListPartial", (object)ViewBag.ReturnUrl)
+
+                            <p>Если у вас еще нет учетной записи, вы можете @Html.ActionLink("зарегистрироваться", "Register", new { returnUrl = ViewBag.ReturnUrl }).</p>                             
+
+						</div>
+                        <hr>
+
+                    </div>
+               
+				</div><!-- large 12 -->
+			</div><!-- end row -->
+
+
+
+@*<h2>@ViewBag.Title.</h2>
+<div class="row">
+    <div class="col-md-8">
+        <section id="loginForm">
+            
+                <h4>Use a local account to log in.</h4>
+                <hr />
+                @Html.ValidationSummary(true)
+                <div class="form-group">
+                    @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Log in" class="btn btn-default" />
+                    </div>
+                </div>
+                <p>
+                    @Html.ActionLink("Register", "Register") if you don't have a local account.
+                </p>
+            }
+        </section>
+    </div>
+    <div class="col-md-4">
+        <section id="socialLoginForm">
+            
+        </section>
+    </div>
+</div>*@

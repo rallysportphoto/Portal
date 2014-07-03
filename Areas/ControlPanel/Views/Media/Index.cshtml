@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Portal.Models.Gallery>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/ControlPanel/Views/Shared/_Admin.cshtml";
+}
+
+<!-- Page Content -->
+<div id="page-content">
+    <!-- Breadcrumb -->
+    <ul class="breadcrumb breadcrumb-top">
+        <li>
+            <a href="/"><i class="glyphicon-display"></i></a> <span class="divider"><i class="icon-angle-right"></i></span>
+        </li>
+        <li>
+            <a href="/controlpanel">Панель управления</a> <span class="divider"><i class="icon-angle-right"></i></span>
+        </li>
+        <li><a href="">Галлереи</a></li>
+    </ul>
+    <!-- END Breadcrumb -->
+    <div class="block-section">
+        @Html.ActionLink("Добавить", "Create", null, new { @class="btn"})
+        <table class="table">
+            <thead>
+                <tr>                                        
+                    <th class="span2 text-center">Дата</th>
+                    <th class="span4">Заголовок</th>
+                    <th class="span4">Описание</th>
+                    <th class="span1">Фото</th>                                        
+                    <th class="span1 text-center"><i class="icon-bolt"></i></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.OrderByDescending(g=>g.PublicationTime)) {                    
+                        <tr>
+                            <td class="span2 text-center">
+                                @Html.DisplayFor(modelItem => item.PublicationTime)
+                            </td>
+                            <td class="span4">
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td class="span1">
+                                @Html.CheckBox("none", item.Code == null, new { disabled = true })                                
+                            </td>        
+                            <td class="span1 text-center">
+                                <div class="btn-group">
+                                    <a href="@Url.Action("Edit", new { id = item.Id })" data-toggle="tooltip" title="Изменить" class="btn btn-mini btn-success"><i class="icon-pencil"></i></a>                                    
+                                </div>                                
+                            </td>
+                        </tr>                    
+                }
+            </tbody>
+        </table>        
+        @Html.ActionLink("Добавить", "Create", null, new { @class="btn"})
+    </div>
+</div>
+

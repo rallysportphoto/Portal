@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Portal.Models.File>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/ControlPanel/Views/Shared/_Admin.cshtml";
+}
+<!-- Page Content -->
+<div id="page-content">
+    <!-- Breadcrumb -->
+    <ul class="breadcrumb breadcrumb-top">
+        <li>
+            <a href="/"><i class="glyphicon-display"></i></a> <span class="divider"><i class="icon-angle-right"></i></span>
+        </li>
+        <li>
+            <a href="/controlpanel">Панель управления</a> <span class="divider"><i class="icon-angle-right"></i></span>
+        </li>
+        <li><a href="">Документы</a></li>
+    </ul>
+    <!-- END Breadcrumb -->
+    <div class="block-section">
+        @Html.ActionLink("Добавить", "Create", null, new { @class="btn"})
+        <table class="table">
+            <thead>
+                <tr>                                        
+                    <th class="span2 text-center">Дата</th>
+                    <th class="span4">Заголовок</th>
+                    <th class="span4">Имя файла</th>
+                    <th class="span2">Тип</th>                                        
+                    <th class="span1 text-center"><i class="icon-bolt"></i></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model) {                    
+                        <tr>
+                            <td class="span2 text-center">
+                                @Html.DisplayFor(modelItem => item.Date)
+                            </td>
+                            <td class="span4">
+                                @Html.DisplayFor(modelItem => item.Title)
+                            </td>
+                            <td class="span4">
+                                <a href="/file/@item.FileName">/file/@item.FileName</a>                                
+                            </td>
+                            <td class="span2">
+                                @Html.DisplayFor(modelItem => item.Type)
+                            </td>        
+                            <td class="span1 text-center">  
+                                <div class="btn-group">
+                                    <a href="@Url.Action("Edit", new { id = item.Id })" data-toggle="tooltip" title="Изменить" class="btn btn-mini btn-success"><i class="icon-pencil"></i></a>
+                                    <a href="@Url.Action("Delete", new { id = item.Id })" data-toggle="tooltip" title="Удалить" class="btn btn-mini btn-danger"><i class="icon-remove"></i></a>
+                                </div>                                
+                            </td>
+                        </tr>                    
+                }
+            </tbody>
+        </table>        
+        @Html.ActionLink("Добавить", "Create", null, new { @class="btn"})
+    </div>
+</div>
+

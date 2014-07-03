@@ -1,0 +1,96 @@
+﻿@model IEnumerable<Portal.ViewModels.Translation.SummaryViewModel>
+@using Portal.Helpers;
+@{        
+    ViewBag.HideSidebar = false;
+
+    Portal.Models.OfficialEvent ev = (Portal.Models.OfficialEvent)ViewBag.Event;    
+}
+<div class="large-12 columns">
+
+			<div class="row">
+				<div class="large-12 columns">
+
+            		<div class="content">
+
+                    	<div class="singletop">
+                            <div class="search">
+                                <form method="get" action="#">
+									<input id="s" type="text" value="Search" name="s">
+                                </form>	
+                            </div>
+                            <nav class="breadcrumbs">
+                              <a href="/">Главная</a>
+                              @if (@ev.Season == 2014)
+                              {
+                                  <a href="/timeline">Календарь</a>
+                                  <a href="/timeline/@ev.Slug" class="current">@ev.Title</a>
+                              }
+                              else
+                              {
+                                <a href="/timeline">Календарь</a>
+                                <a href="/timeline/@ev.Season">@ev.Season</a>
+                                <a href="/timeline/@ev.Season/@ev.Slug" >@ev.Title</a>
+                              }
+                              <a class="current">Трансляция результатов</a>                              
+                            </nav>
+                        </div>
+                        
+                        <div class="homeposttitle">
+                            <h3 class="widget-title">
+                                <span>
+                            			Трансляция результатов соревнования "@ev.Title"
+                                </span>
+                            </h3>  
+                        </div>
+                            
+                        
+                        @foreach (var sEv in Model)
+                        {
+                            if (ev.Season == 2014)
+                            {
+                                <h4>@sEv.Series</h4>
+                                <p>
+                                    <a href="~/timeline/@ev.Slug/Orders/@sEv.Slug" >Заявленные экипажи</a><br />                                                                      
+                                    @foreach (var st in sEv.Headers)
+                                    {
+                                        if (sEv.HasResults[st.Name])
+                                        {
+                                            <a href="~/timeline/@ev.Slug/@(st.IsTarget ? "Target" : "Stage")/@sEv.Slug/@st.Name" >@st.Name</a><br />                                  
+                                        }
+                                        else
+                                        {
+                                            @st.Name<br />    
+                                        }
+                                    }
+                                    <a href="~/timeline/@ev.Slug/Penalities/@sEv.Slug" >Пенализации</a><br />                                  
+                                    <a href="~/timeline/@ev.Slug/Retires/@sEv.Slug" >Сходы</a><br />                                           
+                                    <a href="~/timeline/@ev.Slug/Comments/@sEv.Slug" >Сообщения</a><br />                                           
+                                </p>    
+                            }
+                            else
+                            {
+                                <h4>@sEv.Series</h4>
+                                <p>
+                                    <a href="~/timeline/@ev.Season/@ev.Slug/Orders/@sEv.Slug" class="button">Заявленные экипажи</a><br />                                                                      
+                                    @foreach (var st in sEv.Headers)
+                                    {
+                                        if (sEv.HasResults[st.Name])
+                                        {
+                                            <a href="~/timeline/@ev.Season/@ev.Slug/@(st.IsTarget ? "Target" : "Stage")/@sEv.Slug/@st.Name" >@st.Name</a><br />                                  
+                                        }
+                                        else
+                                        {
+                                            @st.Name<br />    
+                                        }
+                                    }
+                                    <a href="~/timeline/@ev.Season/@ev.Slug/Penalities/@sEv.Slug">Пенализации</a><br />                                  
+                                    <a href="~/timeline/@ev.Season/@ev.Slug/Retires/@sEv.Slug">Сходы</a><br />                                           
+                                    <a href="~/timeline/@ev.Season/@ev.Slug/Comments/@sEv.Slug">Сообщения</a><br />                                           
+                                </p>    
+                            }
+                        }
+                    </div>
+				</div><!-- large 12 -->
+			</div><!-- end row -->
+            
+		</div><!-- end large 8 -->

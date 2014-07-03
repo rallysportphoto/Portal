@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Portal.ViewModels.DocumentsTagViewModel>
+
+@{
+    ViewBag.Title = "";    
+}
+
+<div class="row">
+	<div class="large-12 columns">
+
+        <div class="content">
+
+            <div class="singletop">
+                <div class="search">
+                    <form method="get" action="#">
+						<input id="s" type="text" value="Search" name="s">
+                    </form>	
+                </div>
+                <nav class="breadcrumbs">
+                    <a href="/">Главная</a>
+                    <a class="current" href="/documents">Документы</a>
+                </nav>
+            </div>
+
+            <h2>Документы</h2>
+            
+            <div class="section-container accordion" data-section="accordion">                
+                @foreach(var group in Model) {
+                    <section>
+                        <p class="title" data-section-title><a href="#">@group.Name</a></p>                        
+                        <div class="content" data-section-content>      
+                            <ol class="commentlist clearing-container">
+                                @foreach(var file in group.Files.OrderByDescending(f=>f.PublicationDate)) {
+                                    <li class="clearing-container">
+                                        <div class="comment_container">
+                                            <img class="authorimg clearing-featured-img" width="60" height="60" src="@Html.Raw(file.Logo)" alt="">
+                                            <div class="comment-text">
+                                                @*<div class="star-rating" title="Rated 4 out of 5">
+                                                    <span style="width:80%">
+                                                    <strong itemprop="ratingValue">4</strong>
+                                                    out of 5
+                                                    </span>
+                                                </div>*@
+                                                <span class="meta">
+                                                    <a href="/file/@file.FileName">
+                                                        <strong itemprop="author">@file.Title</strong>
+                                                        <time>@file.PublicationDate.ToString("dd MMM yyyy")</time>
+                                                    </a>
+                                                </span>                                                
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
+                            </ol>
+                        </div>                        
+                    </section>
+                }                
+            </div>
+
+
+
+
+        </div><!-- content -->               
+	</div><!-- large 12 -->
+</div><!-- end row -->

@@ -1,0 +1,129 @@
+﻿@model Portal.Models.Partner
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/ControlPanel/Views/Shared/_Admin.cshtml";
+}
+
+
+<!-- Pre Page Content -->
+            <div id="pre-page-content">
+                <h1><i class="glyphicon-show_thumbnails_with_lines themed-color"></i> Партнеры<br><small>Добавление партнера</small></h1>
+            </div>
+            <!-- END Pre Page Content -->
+
+            <!-- Page Content -->
+            <div id="page-content">
+                <!-- Breadcrumb -->
+                <ul class="breadcrumb breadcrumb-top">
+                    <li>
+                        <a href="/"><i class="glyphicon-display"></i></a> <span class="divider"><i class="icon-angle-right"></i></span>
+                    </li>
+                    <li>
+                        <a href="/controlpanel">Панель управления</a> <span class="divider"><i class="icon-angle-right"></i></span>
+                    </li>
+                    <li>
+                        <a href="/controlpanel/partners">Партнеры</a> <span class="divider"><i class="icon-angle-right"></i></span>
+                    </li>
+                    <li><a href="">Добавление партнера</a></li>
+                </ul>
+                <!-- END Breadcrumb -->
+
+                <!-- Horizontal Form Block -->
+                <div class="block block-themed">
+                    <!-- Horizontal Form Title -->
+                    <div class="block-title">
+                        <h4></h4>
+                    </div>
+                    <!-- END Horizontal Form Title -->
+
+                    <!-- Horizontal Form Content -->
+                    <div class="block-content">
+                        @using (Html.BeginForm("Create", "Partners", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        
+        @Html.ValidationSummary(true)        
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            <div class="controls">
+                @Html.TextBoxFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.Desctiption, new { @class = "control-label col-md-2" })
+            <div class="controls">
+                @Html.TextAreaFor(model => model.Desctiption)
+                @Html.ValidationMessageFor(model => model.Desctiption)
+            </div>
+        </div>
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.IsEnabled, new { @class = "control-label col-md-2" })
+            <div class="controls">
+                @Html.CheckBoxFor(model => model.IsEnabled)
+                @Html.ValidationMessageFor(model => model.IsEnabled)
+            </div>
+        </div>
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.Position, new { @class = "control-label col-md-2" })
+            <div class="controls">
+                @Html.TextBoxFor(model => model.Position)
+                @Html.ValidationMessageFor(model => model.Position)
+            </div>
+        </div>
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.Url, new { @class = "control-label col-md-2" })
+            <div class="controls">
+                @Html.TextBoxFor(model => model.Url)
+                @Html.ValidationMessageFor(model => model.Url)
+            </div>
+        </div>
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.Global, new { @class = "control-label col-md-2" })
+            <div class="controls">
+                @Html.CheckBoxFor(model => model.Global)
+                @Html.ValidationMessageFor(model => model.Global)
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="series">Категории</label>
+            <div class="controls">
+                <select id="general-chosen-multiple" name="tags" class="select-chosen" multiple>
+                    @foreach (var tag in (List<Portal.Models.Tag>)ViewBag.Tags)
+                    {
+                        @*<option value="@tag.Id" @Html.Raw(Model.Tags.Any(t=>t.Id==tag.Id)? "selected":"")>@tag.Name</option>*@    
+                        <option value="@tag.Id">@tag.Name</option>
+                    }                     
+                </select>                
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="logo">Логотип</label>
+            <div class="controls">
+                <input type="file" name="logo">
+            </div>
+        </div>
+
+         <div class="form-actions">
+             <button type="submit" class="btn btn-success"><i class="icon-ok"></i> Submit</button>
+             <button type="reset" class="btn btn-danger"><i class="icon-repeat"></i> Reset</button>
+        </div>
+
+    </div>
+}
+                    </div>
+                    <!-- END Horizontal Form Content -->
+                </div>
+                <!-- END Horizontal Form Block -->
+</div>
+

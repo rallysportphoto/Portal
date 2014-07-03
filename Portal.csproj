@@ -1,0 +1,1311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0611D91F-B097-418A-BBD7-ABC80029A9E4}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Portal</RootNamespace>
+    <AssemblyName>Portal</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Duke.Owin.VkontakteMiddleware">
+      <HintPath>..\packages\Duke.Owin.VkontakteMiddleware.1.0.0.1\lib\net45\Duke.Owin.VkontakteMiddleware.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah">
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Gma.QrCodeNet.Encoding">
+      <HintPath>..\packages\QrCode.Net.0.4.0.0\lib\net45\Gma.QrCodeNet.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.1.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.1.0.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.1.0.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.2.0.2\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.0.2\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.0.2\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.0.2\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.0.2\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.0.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.0.0\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.0.0\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebActivator">
+      <HintPath>..\packages\WebActivator.1.4.4\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\Elmah.Errors\ElmahErrors.txt" />
+    <Content Include="App_Readme\Elmah.txt" />
+    <Content Include="Areas\ControlPanel\css\bootstrap.css" />
+    <Content Include="Areas\ControlPanel\css\fonts\fontawesome\fontawesome-webfont.svg" />
+    <Content Include="Areas\ControlPanel\css\fonts\Glyphicons PRO %28License%29.txt" />
+    <Content Include="Areas\ControlPanel\css\fonts\glyphicons.filetypes.pro\glyphicons-filetypes-regular.svg" />
+    <Content Include="Areas\ControlPanel\css\fonts\glyphicons.halflings.pro\glyphicons-halflings-regular.svg" />
+    <Content Include="Areas\ControlPanel\css\fonts\glyphicons.pro\glyphicons-regular.svg" />
+    <Content Include="Areas\ControlPanel\css\fonts\glyphicons.social.pro\glyphicons-social-regular.svg" />
+    <Content Include="Areas\ControlPanel\css\main.css" />
+    <Content Include="Areas\ControlPanel\css\plugins.css" />
+    <Content Include="Areas\ControlPanel\css\themes.css" />
+    <Content Include="Areas\ControlPanel\css\themes\amethyst.css" />
+    <Content Include="Areas\ControlPanel\css\themes\army.css" />
+    <Content Include="Areas\ControlPanel\css\themes\asphalt.css" />
+    <Content Include="Areas\ControlPanel\css\themes\autumn.css" />
+    <Content Include="Areas\ControlPanel\css\themes\cherry.css" />
+    <Content Include="Areas\ControlPanel\css\themes\city.css" />
+    <Content Include="Areas\ControlPanel\css\themes\dawn.css" />
+    <Content Include="Areas\ControlPanel\css\themes\deepsea.css" />
+    <Content Include="Areas\ControlPanel\css\themes\diamond.css" />
+    <Content Include="Areas\ControlPanel\css\themes\fire.css" />
+    <Content Include="Areas\ControlPanel\css\themes\grass.css" />
+    <Content Include="Areas\ControlPanel\css\themes\leaf.css" />
+    <Content Include="Areas\ControlPanel\css\themes\night.css" />
+    <Content Include="Areas\ControlPanel\css\themes\ocean.css" />
+    <Content Include="Areas\ControlPanel\css\themes\oil.css" />
+    <Content Include="Areas\ControlPanel\css\themes\stone.css" />
+    <Content Include="Areas\ControlPanel\css\themes\sun.css" />
+    <Content Include="Areas\ControlPanel\css\themes\tulip.css" />
+    <Content Include="Areas\ControlPanel\css\themes\wood.css" />
+    <Content Include="Areas\ControlPanel\img\apple-touch-icon-114x114-precomposed.png" />
+    <Content Include="Areas\ControlPanel\img\apple-touch-icon-57x57-precomposed.png" />
+    <Content Include="Areas\ControlPanel\img\apple-touch-icon-72x72-precomposed.png" />
+    <Content Include="Areas\ControlPanel\img\apple-touch-icon-precomposed.png" />
+    <Content Include="Areas\ControlPanel\img\apple-touch-icon.png" />
+    <Content Include="Areas\ControlPanel\img\favicon.ico" />
+    <Content Include="Areas\ControlPanel\img\gemicon\gemicon_dark_16x16.png" />
+    <Content Include="Areas\ControlPanel\img\gemicon\gemicon_dark_32x32.png" />
+    <Content Include="Areas\ControlPanel\img\gemicon\gemicon_dark_64x64.png" />
+    <Content Include="Areas\ControlPanel\img\gemicon\gemicon_white_16x16.png" />
+    <Content Include="Areas\ControlPanel\img\gemicon\gemicon_white_32x32.png" />
+    <Content Include="Areas\ControlPanel\img\gemicon\gemicon_white_64x64.png" />
+    <Content Include="Areas\ControlPanel\img\jquery.chosen\chosen-sprite%402x.png" />
+    <Content Include="Areas\ControlPanel\img\jquery.chosen\chosen-sprite.png" />
+    <Content Include="Areas\ControlPanel\img\jquery.colorpicker\alpha.png" />
+    <Content Include="Areas\ControlPanel\img\jquery.colorpicker\hue.png" />
+    <Content Include="Areas\ControlPanel\img\jquery.colorpicker\saturation.png" />
+    <Content Include="Areas\ControlPanel\img\jquery.datatables\sort_asc%402x.png" />
+    <Content Include="Areas\ControlPanel\img\jquery.datatables\sort_asc.png" />
+    <Content Include="Areas\ControlPanel\img\jquery.datatables\sort_asc_disabled%402x.png" />
+    <Content Include="Areas\ControlPanel\img\jquery.datatables\sort_asc_disabled.png" />
+    <Content Include="Areas\ControlPanel\img\jquery.datatables\sort_both%402x.png" />
+    <Content Include="Areas\ControlPanel\img\jquery.datatables\sort_both.png" />
+    <Content Include="Areas\ControlPanel\img\jquery.datatables\sort_desc%402x.png" />
+    <Content Include="Areas\ControlPanel\img\jquery.datatables\sort_desc.png" />
+    <Content Include="Areas\ControlPanel\img\jquery.datatables\sort_desc_disabled%402x.png" />
+    <Content Include="Areas\ControlPanel\img\jquery.datatables\sort_desc_disabled.png" />
+    <Content Include="Areas\ControlPanel\img\jquery.icheck\grey%402x.png" />
+    <Content Include="Areas\ControlPanel\img\jquery.icheck\grey.png" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading01%402x.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading01.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading02%402x.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading02.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading03%402x.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading03.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading04%402x.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading04.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading05%402x.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading05.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading06%402x.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading06.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading07%402x.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading07.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading08%402x.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading08.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading09%402x.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading09.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading10%402x.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading10.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading11%402x.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading11.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading12%402x.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading12.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading13%402x.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading13.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading14%402x.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading14.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading15%402x.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading15.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading16%402x.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading16.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading17%402x.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading17.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading18%402x.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading18.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading19%402x.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading19.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading20%402x.gif" />
+    <Content Include="Areas\ControlPanel\img\loading.gifs\loading20.gif" />
+    <Content Include="Areas\ControlPanel\img\placeholders\image_120x120_dark.png" />
+    <Content Include="Areas\ControlPanel\img\placeholders\image_120x120_light.png" />
+    <Content Include="Areas\ControlPanel\img\placeholders\image_160x120_dark.png" />
+    <Content Include="Areas\ControlPanel\img\placeholders\image_160x120_light.png" />
+    <Content Include="Areas\ControlPanel\img\placeholders\image_1680x1050_dark.png" />
+    <Content Include="Areas\ControlPanel\img\placeholders\image_1680x1050_light.png" />
+    <Content Include="Areas\ControlPanel\img\placeholders\image_64x64_dark.png" />
+    <Content Include="Areas\ControlPanel\img\placeholders\image_64x64_light.png" />
+    <Content Include="Areas\ControlPanel\img\placeholders\image_720x450_dark.png" />
+    <Content Include="Areas\ControlPanel\img\placeholders\image_720x450_light.png" />
+    <Content Include="Areas\ControlPanel\img\template\avatar%402x.jpg" />
+    <Content Include="Areas\ControlPanel\img\template\avatar.jpg" />
+    <Content Include="Areas\ControlPanel\img\template\avatar2%402x.jpg" />
+    <Content Include="Areas\ControlPanel\img\template\avatar2.jpg" />
+    <Content Include="Areas\ControlPanel\img\template\bg%402x.png" />
+    <Content Include="Areas\ControlPanel\img\template\bg.png" />
+    <Content Include="Areas\ControlPanel\img\template\flatapp_landing_promo.png" />
+    <Content Include="Areas\ControlPanel\img\template\landing_bg.jpg" />
+    <Content Include="Areas\ControlPanel\img\template\logo%402x.png" />
+    <Content Include="Areas\ControlPanel\img\template\logo.png" />
+    <Content Include="Areas\ControlPanel\img\template\pixelcave%402x.png" />
+    <Content Include="Areas\ControlPanel\img\template\pixelcave.png" />
+    <Content Include="Areas\ControlPanel\js\helpers\excanvas.min.js" />
+    <Content Include="Areas\ControlPanel\js\helpers\gmaps.min.js" />
+    <Content Include="Areas\ControlPanel\js\helpers\jqvmap.maps.js" />
+    <Content Include="Areas\ControlPanel\js\main.js" />
+    <Content Include="Areas\ControlPanel\js\plugins.js" />
+    <Content Include="Areas\ControlPanel\js\vendor\bootstrap.min.js" />
+    <Content Include="Areas\ControlPanel\js\vendor\jquery-1.9.1.min.js" />
+    <Content Include="Areas\ControlPanel\js\vendor\modernizr-2.6.2-respond-1.1.0.min.js" />
+    <Content Include="blue.css" />
+    <Content Include="Content\WhiteNights\images\logo.png" />
+    <Content Include="COPYRIGHT-RU.txt" />
+    <Content Include="COPYRIGHT.txt" />
+    <Content Include="images\logown.png" />
+    <Content Include="wn.css" />
+    <Content Include="css\bbpress.css" />
+    <Content Include="css\chosen.css" />
+    <Content Include="css\flexslider.css" />
+    <Content Include="css\font-awesome.css" />
+    <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\foundation.css" />
+    <Content Include="css\foundation.min.css" />
+    <Content Include="css\normalize.css" />
+    <Content Include="css\prettyPhoto.css" />
+    <Content Include="css\timeTo.css" />
+    <Content Include="css\woocommerce.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="green.css" />
+    <Content Include="images\apple-touch-icon-114x114.png" />
+    <Content Include="images\apple-touch-icon-72x72.png" />
+    <Content Include="images\apple-touch-icon.png" />
+    <Content Include="images\arrow.png" />
+    <Content Include="images\client.png" />
+    <Content Include="images\logorsp.png" />
+    <Content Include="images\default.png" />
+    <Content Include="images\favicon.ico" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\magnifier.png" />
+    <Content Include="images\menuop.png" />
+    <Content Include="images\menuop1.png" />
+    <Content Include="images\prettyPhoto\dark_rounded\btnNext.png" />
+    <Content Include="images\prettyPhoto\dark_rounded\btnPrevious.png" />
+    <Content Include="images\prettyPhoto\dark_rounded\contentPattern.png" />
+    <Content Include="images\prettyPhoto\dark_rounded\default_thumbnail.gif" />
+    <Content Include="images\prettyPhoto\dark_rounded\loader.gif" />
+    <Content Include="images\prettyPhoto\dark_rounded\sprite.png" />
+    <Content Include="images\prettyPhoto\dark_square\btnNext.png" />
+    <Content Include="images\prettyPhoto\dark_square\btnPrevious.png" />
+    <Content Include="images\prettyPhoto\dark_square\contentPattern.png" />
+    <Content Include="images\prettyPhoto\dark_square\default_thumbnail.gif" />
+    <Content Include="images\prettyPhoto\dark_square\loader.gif" />
+    <Content Include="images\prettyPhoto\dark_square\sprite.png" />
+    <Content Include="images\prettyPhoto\default\default_thumb.png" />
+    <Content Include="images\prettyPhoto\default\loader.gif" />
+    <Content Include="images\prettyPhoto\default\sprite.png" />
+    <Content Include="images\prettyPhoto\default\sprite_next.png" />
+    <Content Include="images\prettyPhoto\default\sprite_prev.png" />
+    <Content Include="images\prettyPhoto\default\sprite_x.png" />
+    <Content Include="images\prettyPhoto\default\sprite_y.png" />
+    <Content Include="images\prettyPhoto\facebook\btnNext.png" />
+    <Content Include="images\prettyPhoto\facebook\btnPrevious.png" />
+    <Content Include="images\prettyPhoto\facebook\contentPatternBottom.png" />
+    <Content Include="images\prettyPhoto\facebook\contentPatternLeft.png" />
+    <Content Include="images\prettyPhoto\facebook\contentPatternRight.png" />
+    <Content Include="images\prettyPhoto\facebook\contentPatternTop.png" />
+    <Content Include="images\prettyPhoto\facebook\default_thumbnail.gif" />
+    <Content Include="images\prettyPhoto\facebook\loader.gif" />
+    <Content Include="images\prettyPhoto\facebook\sprite.png" />
+    <Content Include="images\prettyPhoto\light_rounded\btnNext.png" />
+    <Content Include="images\prettyPhoto\light_rounded\btnPrevious.png" />
+    <Content Include="images\prettyPhoto\light_rounded\default_thumbnail.gif" />
+    <Content Include="images\prettyPhoto\light_rounded\loader.gif" />
+    <Content Include="images\prettyPhoto\light_rounded\sprite.png" />
+    <Content Include="images\prettyPhoto\light_square\btnNext.png" />
+    <Content Include="images\prettyPhoto\light_square\btnPrevious.png" />
+    <Content Include="images\prettyPhoto\light_square\default_thumbnail.gif" />
+    <Content Include="images\prettyPhoto\light_square\loader.gif" />
+    <Content Include="images\prettyPhoto\light_square\sprite.png" />
+    <Content Include="images\temp\nf.jpg" />
+    <Content Include="images\temp\yak.jpg" />
+    <Content Include="img\01_about.png" />
+    <Content Include="img\01_author.png" />
+    <Content Include="img\01_portfolio.jpg" />
+    <Content Include="img\01_product.png" />
+    <Content Include="img\01_slider.png" />
+    <Content Include="img\02_portfolio.jpg" />
+    <Content Include="img\02_product.png" />
+    <Content Include="img\02_slider.png" />
+    <Content Include="img\03_portfolio.jpg" />
+    <Content Include="img\03_product.png" />
+    <Content Include="img\03_slider.png" />
+    <Content Include="img\04_portfolio.jpg" />
+    <Content Include="img\04_product.png" />
+    <Content Include="img\05_portfolio.jpg" />
+    <Content Include="img\05_product.png" />
+    <Content Include="img\06_portfolio.jpg" />
+    <Content Include="img\06_product.png" />
+    <Content Include="img\07_portfolio.jpg" />
+    <Content Include="img\07_product.png" />
+    <Content Include="img\08_portfolio.jpg" />
+    <Content Include="img\08_product.png" />
+    <Content Include="img\09_portfolio.jpg" />
+    <Content Include="img\09_product.png" />
+    <Content Include="img\10_portfolio.jpg" />
+    <Content Include="img\10_product.png" />
+    <Content Include="img\11_portfolio.jpg" />
+    <Content Include="img\11_product.png" />
+    <Content Include="img\12_portfolio.jpg" />
+    <Content Include="img\12_product.png" />
+    <Content Include="img\jquery.chosen\chosen-sprite%402x.png" />
+    <Content Include="img\jquery.chosen\chosen-sprite.png" />
+    <Content Include="js\foundation.min.js" />
+    <Content Include="js\foundation\foundation.abide.js" />
+    <Content Include="js\foundation\foundation.alerts.js" />
+    <Content Include="js\foundation\foundation.clearing.js" />
+    <Content Include="js\foundation\foundation.cookie.js" />
+    <Content Include="js\foundation\foundation.dropdown.js" />
+    <Content Include="js\foundation\foundation.forms.js" />
+    <Content Include="js\foundation\foundation.interchange.js" />
+    <Content Include="js\foundation\foundation.joyride.js" />
+    <Content Include="js\foundation\foundation.js" />
+    <Content Include="js\foundation\foundation.magellan.js" />
+    <Content Include="js\foundation\foundation.orbit.js" />
+    <Content Include="js\foundation\foundation.placeholder.js" />
+    <Content Include="js\foundation\foundation.reveal.js" />
+    <Content Include="js\foundation\foundation.section.js" />
+    <Content Include="js\foundation\foundation.tooltips.js" />
+    <Content Include="js\foundation\foundation.topbar.js" />
+    <Content Include="js\jquery.flexslider.js" />
+    <Content Include="js\jquery.prettyPhoto.js" />
+    <Content Include="js\menu_min.js" />
+    <Content Include="js\script.js" />
+    <Content Include="js\tinynav.min.js" />
+    <Content Include="js\vendor\custom.modernizr.js" />
+    <Content Include="js\vendor\jquery.js" />
+    <Content Include="js\vendor\timeTo\jquery.timeTo.js" />
+    <Content Include="js\vendor\timeTo\jquery.timeTo.min.js" />
+    <Content Include="js\vendor\zepto.js" />
+    <Content Include="Areas\ControlPanel\Views\web.config" />
+    <Content Include="Areas\ControlPanel\css\fonts\fontawesome\fontawesome-webfont.eot" />
+    <Content Include="Areas\ControlPanel\css\fonts\fontawesome\fontawesome-webfont.ttf" />
+    <Content Include="Areas\ControlPanel\css\fonts\fontawesome\fontawesome-webfont.woff" />
+    <Content Include="Areas\ControlPanel\css\fonts\fontawesome\FontAwesome.otf" />
+    <Content Include="Areas\ControlPanel\css\fonts\glyphicons.filetypes.pro\glyphicons-filetypes-regular.eot" />
+    <Content Include="Areas\ControlPanel\css\fonts\glyphicons.filetypes.pro\glyphicons-filetypes-regular.ttf" />
+    <Content Include="Areas\ControlPanel\css\fonts\glyphicons.filetypes.pro\glyphicons-filetypes-regular.woff" />
+    <Content Include="Areas\ControlPanel\css\fonts\glyphicons.halflings.pro\glyphicons-halflings-regular.eot" />
+    <Content Include="Areas\ControlPanel\css\fonts\glyphicons.halflings.pro\glyphicons-halflings-regular.ttf" />
+    <Content Include="Areas\ControlPanel\css\fonts\glyphicons.halflings.pro\glyphicons-halflings-regular.woff" />
+    <Content Include="Areas\ControlPanel\css\fonts\glyphicons.pro\glyphicons-regular.eot" />
+    <Content Include="Areas\ControlPanel\css\fonts\glyphicons.pro\glyphicons-regular.ttf" />
+    <Content Include="Areas\ControlPanel\css\fonts\glyphicons.pro\glyphicons-regular.woff" />
+    <Content Include="Areas\ControlPanel\css\fonts\glyphicons.social.pro\glyphicons-social-regular.eot" />
+    <Content Include="Areas\ControlPanel\css\fonts\glyphicons.social.pro\glyphicons-social-regular.ttf" />
+    <Content Include="Areas\ControlPanel\css\fonts\glyphicons.social.pro\glyphicons-social-regular.woff" />
+    <Content Include="Areas\ControlPanel\Views\Shared\_Admin.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\Documents\Create.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\Documents\Delete.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\Documents\Details.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\Documents\Edit.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\Documents\Index.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\News\Create.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\News\Delete.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\News\Details.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\News\Edit.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\News\Index.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\Timeline\Create.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\Timeline\Delete.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\Timeline\Details.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\Timeline\Edit.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\Timeline\Index.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\Series\Index.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\Timeline\Promote.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\Timeline\CreateSubEvent.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\Timeline\DeleteSubEvent.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\Timeline\EditSubEvent.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\Accreditations\Create.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\Accreditations\Delete.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\Accreditations\Validate.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\Accreditations\Edit.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\Accreditations\Index.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\Orders\Delete.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\Orders\Edit.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\Orders\Index.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\Orders\List.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\Orders\StartNumbers.cshtml" />
+    <Content Include="css\Web.config" />
+    <Content Include="fonts\Web.config" />
+    <Content Include="images\Web.config" />
+    <Content Include="img\Web.config" />
+    <Content Include="js\Web.config" />
+    <Content Include="Areas\ControlPanel\Views\Partners\Create.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\Partners\Delete.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\Partners\Edit.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\Partners\Index.cshtml" />
+    <Content Include="js\vendor\timeTo\timeTo.jquery.json" />
+    <Content Include="Areas\Metadata\Views\web.config" />
+    <Content Include="Areas\ControlPanel\Views\Media\Index.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\Media\Create.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\Media\Edit.cshtml" />
+    <Content Include="Areas\Shop\Views\web.config" />
+    <Content Include="Portal.licenseheader" />
+    <None Include="Properties\PublishProfiles\test.pubxml" />
+    <Content Include="Properties\Settings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </Content>
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="MigrationFromRSP2.sql" />
+    <Content Include="red.css" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="style.css" />
+    <Content Include="Web References\TrackMePro\Group.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Views\Default\Timeline\RegistrationError.cshtml" />
+    <Content Include="Web References\TrackMePro\PenalityViewModel.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Views\Default\Timeline\Stage.cshtml" />
+    <Content Include="Views\Default\Timeline\Target.cshtml" />
+    <Content Include="Views\Default\Timeline\Penalities.cshtml" />
+    <Content Include="Views\Default\Timeline\Retires.cshtml" />
+    <Content Include="Views\Default\Timeline\Orders.cshtml" />
+    <Content Include="Views\Default\Timeline\Translation.cshtml" />
+    <Content Include="Views\Default\Timeline\RegistrationClosed.cshtml" />
+    <Content Include="Web References\TrackMePro\MessageViewModel.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Views\Default\Timeline\Comments.cshtml" />
+    <Content Include="Views\Default\_ViewStart.cshtml" />
+    <Content Include="Views\Default\Shared\_RSP.cshtml" />
+    <Content Include="Views\Default\Media\Index.cshtml" />
+    <Content Include="Views\Default\Media\Gallery.cshtml" />
+    <Content Include="Views\Default\Shared\_WhiteNights.cshtml" />
+    <Content Include="Views\RSP\_ViewStart.cshtml" />
+    <Content Include="Views\RSP\Timeline\Accreditation.cshtml" />
+    <Content Include="Views\RSP\Timeline\AccreditationFinish.cshtml" />
+    <Content Include="Views\RSP\Timeline\Comments.cshtml" />
+    <Content Include="Views\RSP\Timeline\Get.cshtml" />
+    <Content Include="Views\RSP\Timeline\Index.cshtml" />
+    <Content Include="Views\RSP\Timeline\Orders.cshtml" />
+    <Content Include="Views\RSP\Timeline\Penalities.cshtml" />
+    <Content Include="Views\RSP\Timeline\Register.cshtml" />
+    <Content Include="Views\RSP\Timeline\RegistrationClosed.cshtml" />
+    <Content Include="Views\RSP\Timeline\RegistrationComplete.cshtml" />
+    <Content Include="Views\RSP\Timeline\RegistrationError.cshtml" />
+    <Content Include="Views\RSP\Timeline\Retires.cshtml" />
+    <Content Include="Views\RSP\Timeline\Stage.cshtml" />
+    <Content Include="Views\RSP\Timeline\Target.cshtml" />
+    <Content Include="Views\RSP\Timeline\Translation.cshtml" />
+    <Content Include="Views\RSP\Shared\_Default.cshtml" />
+    <Content Include="Views\RSP\Shared\_RSP.cshtml" />
+    <Content Include="Views\RSP\Shared\_WhiteNights.cshtml" />
+    <Content Include="Views\RSP\News\Index.cshtml" />
+    <Content Include="Views\RSP\News\Item.cshtml" />
+    <Content Include="Views\RSP\Media\Gallery.cshtml" />
+    <Content Include="Views\RSP\Media\Index.cshtml" />
+    <Content Include="Views\RSP\Documents\Index.cshtml" />
+    <Content Include="Views\RSP\Documents\NoDocuments.cshtml" />
+    <Content Include="Views\RSP\Dashboard\_FeaturedBanner.cshtml" />
+    <Content Include="Views\RSP\Dashboard\_FeaturedMenu.cshtml" />
+    <Content Include="Views\RSP\Dashboard\Public.cshtml" />
+    <Content Include="Views\RSP\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\RSP\Account\_EditProfile.cshtml" />
+    <Content Include="Views\RSP\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\RSP\Account\_RemoveAccountPartial.cshtml" />
+    <Content Include="Views\RSP\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\RSP\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\RSP\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\RSP\Account\Login.cshtml" />
+    <Content Include="Views\RSP\Account\Manage.cshtml" />
+    <Content Include="Views\RSP\Account\Register.cshtml" />
+    <Content Include="Views\WhiteNights\_ViewStart.cshtml" />
+    <Content Include="Views\WhiteNights\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\WhiteNights\Account\_EditProfile.cshtml" />
+    <Content Include="Views\WhiteNights\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\WhiteNights\Account\_RemoveAccountPartial.cshtml" />
+    <Content Include="Views\WhiteNights\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\WhiteNights\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\WhiteNights\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\WhiteNights\Account\Login.cshtml" />
+    <Content Include="Views\WhiteNights\Account\Manage.cshtml" />
+    <Content Include="Views\WhiteNights\Account\Register.cshtml" />
+    <Content Include="Views\WhiteNights\Dashboard\_FeaturedBanner.cshtml" />
+    <Content Include="Views\WhiteNights\Dashboard\_FeaturedMenu.cshtml" />
+    <Content Include="Views\WhiteNights\Dashboard\Public.cshtml" />
+    <Content Include="Views\WhiteNights\Documents\Index.cshtml" />
+    <Content Include="Views\WhiteNights\Documents\NoDocuments.cshtml" />
+    <Content Include="Views\WhiteNights\Media\Gallery.cshtml" />
+    <Content Include="Views\WhiteNights\Media\Index.cshtml" />
+    <Content Include="Views\WhiteNights\News\Index.cshtml" />
+    <Content Include="Views\WhiteNights\News\Item.cshtml" />
+    <Content Include="Views\WhiteNights\Shared\_WhiteNights.cshtml" />
+    <Content Include="Views\WhiteNights\Timeline\Accreditation.cshtml" />
+    <Content Include="Views\WhiteNights\Timeline\AccreditationFinish.cshtml" />
+    <Content Include="Views\WhiteNights\Timeline\Comments.cshtml" />
+    <Content Include="Views\WhiteNights\Timeline\Get.cshtml" />
+    <Content Include="Views\WhiteNights\Timeline\Index.cshtml" />
+    <Content Include="Views\WhiteNights\Timeline\Orders.cshtml" />
+    <Content Include="Views\WhiteNights\Timeline\Penalities.cshtml" />
+    <Content Include="Views\WhiteNights\Timeline\Register.cshtml" />
+    <Content Include="Views\WhiteNights\Timeline\RegistrationClosed.cshtml" />
+    <Content Include="Views\WhiteNights\Timeline\RegistrationComplete.cshtml" />
+    <Content Include="Views\WhiteNights\Timeline\RegistrationError.cshtml" />
+    <Content Include="Views\WhiteNights\Timeline\Retires.cshtml" />
+    <Content Include="Views\WhiteNights\Timeline\Stage.cshtml" />
+    <Content Include="Views\WhiteNights\Timeline\Target.cshtml" />
+    <Content Include="Views\WhiteNights\Timeline\Translation.cshtml" />
+    <Content Include="Views\Fortuna\_ViewStart.cshtml" />
+    <Content Include="Views\Fortuna\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Fortuna\Account\_EditProfile.cshtml" />
+    <Content Include="Views\Fortuna\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Fortuna\Account\_RemoveAccountPartial.cshtml" />
+    <Content Include="Views\Fortuna\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\Fortuna\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Fortuna\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Fortuna\Account\Login.cshtml" />
+    <Content Include="Views\Fortuna\Account\Manage.cshtml" />
+    <Content Include="Views\Fortuna\Account\Register.cshtml" />
+    <Content Include="Views\Fortuna\Dashboard\_FeaturedBanner.cshtml" />
+    <Content Include="Views\Fortuna\Dashboard\_FeaturedMenu.cshtml" />
+    <Content Include="Views\Fortuna\Dashboard\Public.cshtml" />
+    <Content Include="Views\Fortuna\Documents\Index.cshtml" />
+    <Content Include="Views\Fortuna\Documents\NoDocuments.cshtml" />
+    <Content Include="Views\Fortuna\Media\Gallery.cshtml" />
+    <Content Include="Views\Fortuna\Media\Index.cshtml" />
+    <Content Include="Views\Fortuna\News\Index.cshtml" />
+    <Content Include="Views\Fortuna\News\Item.cshtml" />
+    <Content Include="Views\Fortuna\Shared\_Default.cshtml" />
+    <Content Include="Views\Fortuna\Shared\_RSP.cshtml" />
+    <Content Include="Views\Fortuna\Shared\_WhiteNights.cshtml" />
+    <Content Include="Views\Fortuna\Timeline\Accreditation.cshtml" />
+    <Content Include="Views\Fortuna\Timeline\AccreditationFinish.cshtml" />
+    <Content Include="Views\Fortuna\Timeline\Comments.cshtml" />
+    <Content Include="Views\Fortuna\Timeline\Get.cshtml" />
+    <Content Include="Views\Fortuna\Timeline\Index.cshtml" />
+    <Content Include="Views\Fortuna\Timeline\Orders.cshtml" />
+    <Content Include="Views\Fortuna\Timeline\Penalities.cshtml" />
+    <Content Include="Views\Fortuna\Timeline\Register.cshtml" />
+    <Content Include="Views\Fortuna\Timeline\RegistrationClosed.cshtml" />
+    <Content Include="Views\Fortuna\Timeline\RegistrationComplete.cshtml" />
+    <Content Include="Views\Fortuna\Timeline\RegistrationError.cshtml" />
+    <Content Include="Views\Fortuna\Timeline\Retires.cshtml" />
+    <Content Include="Views\Fortuna\Timeline\Stage.cshtml" />
+    <Content Include="Views\Fortuna\Timeline\Target.cshtml" />
+    <Content Include="Views\Fortuna\Timeline\Translation.cshtml" />
+    <Content Include="Views\Default\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Default\Account\ResetPassword.cshtml" />
+    <Content Include="Views\WhiteNights\Account\ResetPassword.cshtml" />
+    <Content Include="Views\WhiteNights\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\RSP\Account\ResetPassword.cshtml" />
+    <Content Include="Views\RSP\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Fortuna\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Fortuna\Account\ForgotPassword.cshtml" />
+    <None Include="Web References\TrackMePro\PortalConnector.disco" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\ControlPanel\Controllers\AccreditationsController.cs" />
+    <Compile Include="Areas\ControlPanel\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\ControlPanel\Controllers\DocumentsController.cs" />
+    <Compile Include="Areas\ControlPanel\Controllers\MediaController.cs" />
+    <Compile Include="Areas\ControlPanel\Controllers\NewsController.cs" />
+    <Compile Include="Areas\ControlPanel\Controllers\OrdersController.cs" />
+    <Compile Include="Areas\ControlPanel\Controllers\PartnersController.cs" />
+    <Compile Include="Areas\ControlPanel\Controllers\PlatformStatusController.cs" />
+    <Compile Include="Areas\ControlPanel\Controllers\SeriesController.cs" />
+    <Compile Include="Areas\ControlPanel\Controllers\TimelineController.cs" />
+    <Compile Include="Areas\ControlPanel\Controllers\TimelineController.SubEvent.cs" />
+    <Compile Include="Areas\ControlPanel\ControlPanelAreaRegistration.cs" />
+    <Compile Include="Areas\ControlPanel\Helpers\ModelTypeBinder.cs" />
+    <Compile Include="Areas\ControlPanel\Models\OrderListSummaryViewModel.cs" />
+    <Compile Include="Areas\Metadata\Controllers\RacesController.cs" />
+    <Compile Include="Areas\Metadata\MetadataAreaRegistration.cs" />
+    <Compile Include="Areas\Metadata\Models\CarResultItem.cs" />
+    <Compile Include="Areas\Metadata\Models\MessageItem.cs" />
+    <Compile Include="Areas\Metadata\Models\RaceViewModel.cs" />
+    <Compile Include="Areas\Metadata\Models\SchedulleItem.cs" />
+    <Compile Include="Areas\Shop\Controllers\BasketController.cs" />
+    <Compile Include="Areas\Shop\Controllers\CheckoutController.cs" />
+    <Compile Include="Areas\Shop\Controllers\VitrineController.cs" />
+    <Compile Include="Areas\Shop\Models\Category.cs" />
+    <Compile Include="Areas\Shop\Models\DeliveryProvider.cs" />
+    <Compile Include="Areas\Shop\Models\Order.cs" />
+    <Compile Include="Areas\Shop\Models\PaymentProvider.cs" />
+    <Compile Include="Areas\Shop\Models\Product.cs" />
+    <Compile Include="Areas\Shop\ShopAreaRegistration.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ContactsController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\DocumentsController.cs" />
+    <Compile Include="Controllers\FallbackController.cs" />
+    <Compile Include="Controllers\MediaController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\ThumbnailsController.cs" />
+    <Compile Include="Controllers\TimelineController.cs" />
+    <Compile Include="FallbackRoute.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\AsyncHelper.cs" />
+    <Compile Include="Helpers\StringHelper.cs" />
+    <Compile Include="Helpers\Subdomain\SubdomainLinksHelper.cs" />
+    <Compile Include="Helpers\Subdomain\SubdomainRoute.cs" />
+    <Compile Include="Helpers\Subdomain\SubDomainViewBagInitialisationFilter.cs" />
+    <Compile Include="Helpers\ThemeViewEngine.cs" />
+    <Compile Include="Migrations\201312050422528_NewsScheme.cs" />
+    <Compile Include="Migrations\201312050422528_NewsScheme.Designer.cs">
+      <DependentUpon>201312050422528_NewsScheme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312050437456_NewsScheme-2.cs" />
+    <Compile Include="Migrations\201312050437456_NewsScheme-2.Designer.cs">
+      <DependentUpon>201312050437456_NewsScheme-2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312050440480_NewsScheme-3.cs" />
+    <Compile Include="Migrations\201312050440480_NewsScheme-3.Designer.cs">
+      <DependentUpon>201312050440480_NewsScheme-3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312050539504_NewsScheme-4.cs" />
+    <Compile Include="Migrations\201312050539504_NewsScheme-4.Designer.cs">
+      <DependentUpon>201312050539504_NewsScheme-4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312070846042_Timeline-Basics.cs" />
+    <Compile Include="Migrations\201312070846042_Timeline-Basics.Designer.cs">
+      <DependentUpon>201312070846042_Timeline-Basics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312070916267_Timeline-Basics-2.cs" />
+    <Compile Include="Migrations\201312070916267_Timeline-Basics-2.Designer.cs">
+      <DependentUpon>201312070916267_Timeline-Basics-2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312070936315_Documents-Basic.cs" />
+    <Compile Include="Migrations\201312070936315_Documents-Basic.Designer.cs">
+      <DependentUpon>201312070936315_Documents-Basic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312070938510_Documents-Basic-2.cs" />
+    <Compile Include="Migrations\201312070938510_Documents-Basic-2.Designer.cs">
+      <DependentUpon>201312070938510_Documents-Basic-2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312090539075_Documents-Basic-3.cs" />
+    <Compile Include="Migrations\201312090539075_Documents-Basic-3.Designer.cs">
+      <DependentUpon>201312090539075_Documents-Basic-3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312090638183_Documents-Basic-4.cs" />
+    <Compile Include="Migrations\201312090638183_Documents-Basic-4.Designer.cs">
+      <DependentUpon>201312090638183_Documents-Basic-4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312160645201_Auth-0.cs" />
+    <Compile Include="Migrations\201312160645201_Auth-0.Designer.cs">
+      <DependentUpon>201312160645201_Auth-0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312191630570_TagList-1.cs" />
+    <Compile Include="Migrations\201312191630570_TagList-1.Designer.cs">
+      <DependentUpon>201312191630570_TagList-1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312200905323_Tags-2.cs" />
+    <Compile Include="Migrations\201312200905323_Tags-2.Designer.cs">
+      <DependentUpon>201312200905323_Tags-2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312200925083_Tags-3.cs" />
+    <Compile Include="Migrations\201312200925083_Tags-3.Designer.cs">
+      <DependentUpon>201312200925083_Tags-3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312230911433_OfficialEvent-0.cs" />
+    <Compile Include="Migrations\201312230911433_OfficialEvent-0.Designer.cs">
+      <DependentUpon>201312230911433_OfficialEvent-0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312230941515_OfficialEvent-1.cs" />
+    <Compile Include="Migrations\201312230941515_OfficialEvent-1.Designer.cs">
+      <DependentUpon>201312230941515_OfficialEvent-1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312240735006_OfficialEvent-2.cs" />
+    <Compile Include="Migrations\201312240735006_OfficialEvent-2.Designer.cs">
+      <DependentUpon>201312240735006_OfficialEvent-2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312250610541_Accreditation-0.cs" />
+    <Compile Include="Migrations\201312250610541_Accreditation-0.Designer.cs">
+      <DependentUpon>201312250610541_Accreditation-0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312250629113_Accreditation-1.cs" />
+    <Compile Include="Migrations\201312250629113_Accreditation-1.Designer.cs">
+      <DependentUpon>201312250629113_Accreditation-1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312250753579_Accreditation-2.cs" />
+    <Compile Include="Migrations\201312250753579_Accreditation-2.Designer.cs">
+      <DependentUpon>201312250753579_Accreditation-2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312250839025_Accreditation-3.cs" />
+    <Compile Include="Migrations\201312250839025_Accreditation-3.Designer.cs">
+      <DependentUpon>201312250839025_Accreditation-3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312251243323_Orders-0.cs" />
+    <Compile Include="Migrations\201312251243323_Orders-0.Designer.cs">
+      <DependentUpon>201312251243323_Orders-0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312251245125_Orders-1.cs" />
+    <Compile Include="Migrations\201312251245125_Orders-1.Designer.cs">
+      <DependentUpon>201312251245125_Orders-1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312260918453_Orders-2.cs" />
+    <Compile Include="Migrations\201312260918453_Orders-2.Designer.cs">
+      <DependentUpon>201312260918453_Orders-2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312261220498_Orders-3.cs" />
+    <Compile Include="Migrations\201312261220498_Orders-3.Designer.cs">
+      <DependentUpon>201312261220498_Orders-3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312261244314_Orders-4.cs" />
+    <Compile Include="Migrations\201312261244314_Orders-4.Designer.cs">
+      <DependentUpon>201312261244314_Orders-4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312291137586_Orders-5.cs" />
+    <Compile Include="Migrations\201312291137586_Orders-5.Designer.cs">
+      <DependentUpon>201312291137586_Orders-5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312301201060_Orders-6.cs" />
+    <Compile Include="Migrations\201312301201060_Orders-6.Designer.cs">
+      <DependentUpon>201312301201060_Orders-6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312301315547_AccreditationsUI-1.cs" />
+    <Compile Include="Migrations\201312301315547_AccreditationsUI-1.Designer.cs">
+      <DependentUpon>201312301315547_AccreditationsUI-1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201401030517364_Translation-1.cs" />
+    <Compile Include="Migrations\201401030517364_Translation-1.Designer.cs">
+      <DependentUpon>201401030517364_Translation-1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201401030543084_Translation-2.cs" />
+    <Compile Include="Migrations\201401030543084_Translation-2.Designer.cs">
+      <DependentUpon>201401030543084_Translation-2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201401040753355_Roles-2.cs" />
+    <Compile Include="Migrations\201401040753355_Roles-2.Designer.cs">
+      <DependentUpon>201401040753355_Roles-2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201401051650260_Bugfixing.cs" />
+    <Compile Include="Migrations\201401051650260_Bugfixing.Designer.cs">
+      <DependentUpon>201401051650260_Bugfixing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201401060102163_Series-Tags.cs" />
+    <Compile Include="Migrations\201401060102163_Series-Tags.Designer.cs">
+      <DependentUpon>201401060102163_Series-Tags.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201401060113244_Series-Tags-2.cs" />
+    <Compile Include="Migrations\201401060113244_Series-Tags-2.Designer.cs">
+      <DependentUpon>201401060113244_Series-Tags-2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201401060115272_Series-Tags-3.cs" />
+    <Compile Include="Migrations\201401060115272_Series-Tags-3.Designer.cs">
+      <DependentUpon>201401060115272_Series-Tags-3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201401060157356_DriversCount.cs" />
+    <Compile Include="Migrations\201401060157356_DriversCount.Designer.cs">
+      <DependentUpon>201401060157356_DriversCount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201401071257550_TranslationModelDelete.cs" />
+    <Compile Include="Migrations\201401071257550_TranslationModelDelete.Designer.cs">
+      <DependentUpon>201401071257550_TranslationModelDelete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201401071419577_Release1.cs" />
+    <Compile Include="Migrations\201401071419577_Release1.Designer.cs">
+      <DependentUpon>201401071419577_Release1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201401081342222_Orders-Print-1.cs" />
+    <Compile Include="Migrations\201401081342222_Orders-Print-1.Designer.cs">
+      <DependentUpon>201401081342222_Orders-Print-1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201401081349108_Orders-Print-2.cs" />
+    <Compile Include="Migrations\201401081349108_Orders-Print-2.Designer.cs">
+      <DependentUpon>201401081349108_Orders-Print-2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201401081505532_Orders-Print-3.cs" />
+    <Compile Include="Migrations\201401081505532_Orders-Print-3.Designer.cs">
+      <DependentUpon>201401081505532_Orders-Print-3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201401081729333_backgrounderremove.cs" />
+    <Compile Include="Migrations\201401081729333_backgrounderremove.Designer.cs">
+      <DependentUpon>201401081729333_backgrounderremove.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201401110720514_Partners.cs" />
+    <Compile Include="Migrations\201401110720514_Partners.Designer.cs">
+      <DependentUpon>201401110720514_Partners.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201401110743151_Partners-2.cs" />
+    <Compile Include="Migrations\201401110743151_Partners-2.Designer.cs">
+      <DependentUpon>201401110743151_Partners-2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201401111625528_CallbacksSupport.cs" />
+    <Compile Include="Migrations\201401111625528_CallbacksSupport.Designer.cs">
+      <DependentUpon>201401111625528_CallbacksSupport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402040752000_OrdersDisable.cs" />
+    <Compile Include="Migrations\201402040752000_OrdersDisable.Designer.cs">
+      <DependentUpon>201402040752000_OrdersDisable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402250633363_AccreditationTimingId.cs" />
+    <Compile Include="Migrations\201402250633363_AccreditationTimingId.Designer.cs">
+      <DependentUpon>201402250633363_AccreditationTimingId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402260632599_PublicMessages.cs" />
+    <Compile Include="Migrations\201402260632599_PublicMessages.Designer.cs">
+      <DependentUpon>201402260632599_PublicMessages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402261011239_RallyGuideSource-1.cs" />
+    <Compile Include="Migrations\201402261011239_RallyGuideSource-1.Designer.cs">
+      <DependentUpon>201402261011239_RallyGuideSource-1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402281036209_qc1.cs" />
+    <Compile Include="Migrations\201402281036209_qc1.Designer.cs">
+      <DependentUpon>201402281036209_qc1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201403191204459_SideHideLogic.cs" />
+    <Compile Include="Migrations\201403191204459_SideHideLogic.Designer.cs">
+      <DependentUpon>201403191204459_SideHideLogic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201403191242488_SecondaryId.cs" />
+    <Compile Include="Migrations\201403191242488_SecondaryId.Designer.cs">
+      <DependentUpon>201403191242488_SecondaryId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201403191249181_Scope.cs" />
+    <Compile Include="Migrations\201403191249181_Scope.Designer.cs">
+      <DependentUpon>201403191249181_Scope.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201403241337333_DomainFilterProto.cs" />
+    <Compile Include="Migrations\201403241337333_DomainFilterProto.Designer.cs">
+      <DependentUpon>201403241337333_DomainFilterProto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404031723204_Gallery.cs" />
+    <Compile Include="Migrations\201404031723204_Gallery.Designer.cs">
+      <DependentUpon>201404031723204_Gallery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201405261219548_Shop.cs" />
+    <Compile Include="Migrations\201405261219548_Shop.Designer.cs">
+      <DependentUpon>201405261219548_Shop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201406191317314_Initialization-Fix.cs" />
+    <Compile Include="Migrations\201406191317314_Initialization-Fix.Designer.cs">
+      <DependentUpon>201406191317314_Initialization-Fix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Accreditation.cs" />
+    <Compile Include="Models\Car.cs" />
+    <Compile Include="Models\Discipline.cs" />
+    <Compile Include="Models\Gallery.cs" />
+    <Compile Include="Models\Group.cs" />
+    <Compile Include="Models\License.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\Partner.cs" />
+    <Compile Include="Models\Site.cs" />
+    <Compile Include="Models\StuffOrder.cs" />
+    <Compile Include="Models\Team.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Providers\PartnerProvider.cs" />
+    <Compile Include="Services\DocumentService.cs" />
+    <Compile Include="Services\DomainFilterService.cs" />
+    <Compile Include="Services\EmailService.cs" />
+    <Compile Include="Services\EventService.cs" />
+    <Compile Include="Services\RssResult.cs" />
+    <Compile Include="Services\SearchService.cs" />
+    <Compile Include="Services\SettingsService.cs" />
+    <Compile Include="Services\TimingService.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\AccountViewModels.cs" />
+    <Compile Include="ViewModels\AdminViewModel.cs" />
+    <Compile Include="ViewModels\DocumentsTagViewModel.cs" />
+    <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\File.cs" />
+    <Compile Include="ViewModels\EventViewModel.cs" />
+    <Compile Include="ViewModels\FeaturableEventViewModel.cs" />
+    <Compile Include="ViewModels\FileViewModel.cs" />
+    <Compile Include="Models\News.cs" />
+    <Compile Include="Models\Series.cs" />
+    <Compile Include="Models\SportDataContext.cs" />
+    <Compile Include="Models\Tag.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\NewsProvider.cs" />
+    <Compile Include="Services\ThumbnailService.cs" />
+    <Compile Include="ViewModels\DashboardViewModel.cs" />
+    <Compile Include="ViewModels\GalleryViewModel.cs" />
+    <Compile Include="ViewModels\MarchalRequestViewModel.cs" />
+    <Compile Include="ViewModels\NewsDetailsViewModel.cs" />
+    <Compile Include="ViewModels\NewsListViewModel.cs" />
+    <Compile Include="ViewModels\OrderViewModel.cs" />
+    <Compile Include="ViewModels\PartnerListViewModel.cs" />
+    <Compile Include="ViewModels\TimelineListViewModel.cs" />
+    <Compile Include="ViewModels\Translation\MessageViewModel.cs" />
+    <Compile Include="ViewModels\Translation\PenalityViewModel.cs" />
+    <Compile Include="ViewModels\Translation\RetireViewModel.cs" />
+    <Compile Include="ViewModels\Translation\StageHeaderViewModel.cs" />
+    <Compile Include="ViewModels\Translation\StageViewModel.cs" />
+    <Compile Include="ViewModels\Translation\SummaryViewModel.cs" />
+    <Compile Include="ViewModels\Translation\TargetViewModel.cs" />
+    <Compile Include="Web References\TrackMePro\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <None Include="Properties\PublishProfiles\afspbTest - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\afspbTest - Web Deploy.pubxml" />
+    <Content Include="Views\Default\Shared\_Default.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Default\Dashboard\Public.cshtml" />
+    <Content Include="Views\Default\News\Index.cshtml" />
+    <Content Include="Views\Default\News\Item.cshtml" />
+    <Content Include="Views\Default\Timeline\Index.cshtml" />
+    <Content Include="Views\Default\Documents\Index.cshtml" />
+    <Content Include="Views\Default\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Default\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Default\Account\Login.cshtml" />
+    <Content Include="Views\Default\Account\Manage.cshtml" />
+    <Content Include="Views\Default\Account\Register.cshtml" />
+    <Content Include="Views\Default\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Default\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Default\Account\_RemoveAccountPartial.cshtml" />
+    <Content Include="Views\Default\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\Default\Documents\NoDocuments.cshtml" />
+    <Content Include="Views\Default\Timeline\Get.cshtml" />
+    <Content Include="Views\Default\Timeline\Accreditation.cshtml" />
+    <Content Include="Views\Default\Timeline\AccreditationFinish.cshtml" />
+    <Content Include="Views\Default\Timeline\Register.cshtml" />
+    <Content Include="Views\Default\Timeline\RegistrationComplete.cshtml" />
+    <Content Include="Views\Default\Account\_EditProfile.cshtml" />
+    <Content Include="Views\Default\Dashboard\_FeaturedMenu.cshtml" />
+    <Content Include="Views\Default\Dashboard\_FeaturedBanner.cshtml" />
+    <Content Include="Scripts\Web.config" />
+    <None Include="Web References\TrackMePro\PortalConnector.wsdl" />
+    <None Include="Web References\TrackMePro\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Web References\TrackMePro\ResultMatrixStage.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\TrackMePro\ResultStageViewModel.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\TrackMePro\RetireViewModel.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\TrackMePro\TargetStageViewModel.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\Files\" />
+    <Folder Include="App_Data\Thumbnails\" />
+    <Folder Include="Areas\ControlPanel\Views\PlatformStatus\" />
+    <Folder Include="Areas\Metadata\Views\Races\" />
+    <Folder Include="Areas\Metadata\Views\Shared\" />
+    <Folder Include="Areas\Shop\Views\Basket\" />
+    <Folder Include="Areas\Shop\Views\Checkout\" />
+    <Folder Include="Areas\Shop\Views\Shared\" />
+    <Folder Include="Areas\Shop\Views\Vitrine\" />
+    <Folder Include="Views\Contacts\" />
+    <Folder Include="Views\Default\Fallback\" />
+    <Folder Include="Views\Default\RolesAdmin\" />
+    <Folder Include="Views\Default\Search\" />
+    <Folder Include="Views\Default\Thumbnails\" />
+    <Folder Include="Views\Default\UserAdmin\" />
+    <Folder Include="Views\Fortuna\Fallback\" />
+    <Folder Include="Views\Fortuna\RolesAdmin\" />
+    <Folder Include="Views\Fortuna\Search\" />
+    <Folder Include="Views\Fortuna\Thumbnails\" />
+    <Folder Include="Views\Fortuna\UserAdmin\" />
+    <Folder Include="Views\RSP\Fallback\" />
+    <Folder Include="Views\RSP\RolesAdmin\" />
+    <Folder Include="Views\RSP\Search\" />
+    <Folder Include="Views\RSP\Thumbnails\" />
+    <Folder Include="Views\RSP\UserAdmin\" />
+    <Folder Include="Views\WhiteNights\Contacts\" />
+    <Folder Include="Views\WhiteNights\Fallback\" />
+    <Folder Include="Views\WhiteNights\RolesAdmin\" />
+    <Folder Include="Views\WhiteNights\Search\" />
+    <Folder Include="Views\WhiteNights\Thumbnails\" />
+    <Folder Include="Views\WhiteNights\UserAdmin\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\RSP4.Common\RSP4.Common.csproj">
+      <Project>{e39a7ebd-e9a7-48e5-b963-8b1f33fe943e}</Project>
+      <Name>RSP4.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201312050422528_NewsScheme.resx">
+      <DependentUpon>201312050422528_NewsScheme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312050437456_NewsScheme-2.resx">
+      <DependentUpon>201312050437456_NewsScheme-2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312050440480_NewsScheme-3.resx">
+      <DependentUpon>201312050440480_NewsScheme-3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312050539504_NewsScheme-4.resx">
+      <DependentUpon>201312050539504_NewsScheme-4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312070846042_Timeline-Basics.resx">
+      <DependentUpon>201312070846042_Timeline-Basics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312070916267_Timeline-Basics-2.resx">
+      <DependentUpon>201312070916267_Timeline-Basics-2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312070936315_Documents-Basic.resx">
+      <DependentUpon>201312070936315_Documents-Basic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312070938510_Documents-Basic-2.resx">
+      <DependentUpon>201312070938510_Documents-Basic-2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312090539075_Documents-Basic-3.resx">
+      <DependentUpon>201312090539075_Documents-Basic-3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312090638183_Documents-Basic-4.resx">
+      <DependentUpon>201312090638183_Documents-Basic-4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312160645201_Auth-0.resx">
+      <DependentUpon>201312160645201_Auth-0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312191630570_TagList-1.resx">
+      <DependentUpon>201312191630570_TagList-1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312200905323_Tags-2.resx">
+      <DependentUpon>201312200905323_Tags-2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312200925083_Tags-3.resx">
+      <DependentUpon>201312200925083_Tags-3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312230911433_OfficialEvent-0.resx">
+      <DependentUpon>201312230911433_OfficialEvent-0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312230941515_OfficialEvent-1.resx">
+      <DependentUpon>201312230941515_OfficialEvent-1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312240735006_OfficialEvent-2.resx">
+      <DependentUpon>201312240735006_OfficialEvent-2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312250610541_Accreditation-0.resx">
+      <DependentUpon>201312250610541_Accreditation-0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312250629113_Accreditation-1.resx">
+      <DependentUpon>201312250629113_Accreditation-1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312250753579_Accreditation-2.resx">
+      <DependentUpon>201312250753579_Accreditation-2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312250839025_Accreditation-3.resx">
+      <DependentUpon>201312250839025_Accreditation-3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312251243323_Orders-0.resx">
+      <DependentUpon>201312251243323_Orders-0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312251245125_Orders-1.resx">
+      <DependentUpon>201312251245125_Orders-1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312260918453_Orders-2.resx">
+      <DependentUpon>201312260918453_Orders-2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312261220498_Orders-3.resx">
+      <DependentUpon>201312261220498_Orders-3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312261244314_Orders-4.resx">
+      <DependentUpon>201312261244314_Orders-4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312291137586_Orders-5.resx">
+      <DependentUpon>201312291137586_Orders-5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312301201060_Orders-6.resx">
+      <DependentUpon>201312301201060_Orders-6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312301315547_AccreditationsUI-1.resx">
+      <DependentUpon>201312301315547_AccreditationsUI-1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401030517364_Translation-1.resx">
+      <DependentUpon>201401030517364_Translation-1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401030543084_Translation-2.resx">
+      <DependentUpon>201401030543084_Translation-2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401040753355_Roles-2.resx">
+      <DependentUpon>201401040753355_Roles-2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401051650260_Bugfixing.resx">
+      <DependentUpon>201401051650260_Bugfixing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401060102163_Series-Tags.resx">
+      <DependentUpon>201401060102163_Series-Tags.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401060113244_Series-Tags-2.resx">
+      <DependentUpon>201401060113244_Series-Tags-2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401060115272_Series-Tags-3.resx">
+      <DependentUpon>201401060115272_Series-Tags-3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401060157356_DriversCount.resx">
+      <DependentUpon>201401060157356_DriversCount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401071257550_TranslationModelDelete.resx">
+      <DependentUpon>201401071257550_TranslationModelDelete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401071419577_Release1.resx">
+      <DependentUpon>201401071419577_Release1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401081342222_Orders-Print-1.resx">
+      <DependentUpon>201401081342222_Orders-Print-1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401081349108_Orders-Print-2.resx">
+      <DependentUpon>201401081349108_Orders-Print-2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401081505532_Orders-Print-3.resx">
+      <DependentUpon>201401081505532_Orders-Print-3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401081729333_backgrounderremove.resx">
+      <DependentUpon>201401081729333_backgrounderremove.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401110720514_Partners.resx">
+      <DependentUpon>201401110720514_Partners.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401110743151_Partners-2.resx">
+      <DependentUpon>201401110743151_Partners-2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401111625528_CallbacksSupport.resx">
+      <DependentUpon>201401111625528_CallbacksSupport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402040752000_OrdersDisable.resx">
+      <DependentUpon>201402040752000_OrdersDisable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402250633363_AccreditationTimingId.resx">
+      <DependentUpon>201402250633363_AccreditationTimingId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402260632599_PublicMessages.resx">
+      <DependentUpon>201402260632599_PublicMessages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402261011239_RallyGuideSource-1.resx">
+      <DependentUpon>201402261011239_RallyGuideSource-1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402281036209_qc1.resx">
+      <DependentUpon>201402281036209_qc1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201403191204459_SideHideLogic.resx">
+      <DependentUpon>201403191204459_SideHideLogic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201403191242488_SecondaryId.resx">
+      <DependentUpon>201403191242488_SecondaryId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201403191249181_Scope.resx">
+      <DependentUpon>201403191249181_Scope.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201403241337333_DomainFilterProto.resx">
+      <DependentUpon>201403241337333_DomainFilterProto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404031723204_Gallery.resx">
+      <DependentUpon>201404031723204_Gallery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405261219548_Shop.resx">
+      <DependentUpon>201405261219548_Shop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201406191317314_Initialization-Fix.resx">
+      <DependentUpon>201406191317314_Initialization-Fix.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost:4259/EndPoints/PortalConnector/PortalConnector.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\TrackMePro\</RelPath>
+      <UpdateFromURL>http://localhost:4259/EndPoints/PortalConnector/PortalConnector.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Portal_TrackMePro_PortalConnector</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>63914</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:51663/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

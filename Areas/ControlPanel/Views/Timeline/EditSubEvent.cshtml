@@ -1,0 +1,106 @@
+﻿@model Portal.Models.SubEvent
+
+@{
+    ViewBag.Title = "CreateSubEvent";
+    Layout = "~/Areas/ControlPanel/Views/Shared/_Admin.cshtml";
+}
+<div id="pre-page-content">
+    <h1><i class="glyphicon-show_thumbnails_with_lines themed-color"></i> Календарь<br><small>Изменение серии соревнования</small></h1>
+</div>
+ <!-- END Pre Page Content -->
+
+            <!-- Page Content -->
+            <div id="page-content">
+                <!-- Breadcrumb -->
+                <ul class="breadcrumb breadcrumb-top">
+                    <li>
+                        <a href="/"><i class="glyphicon-display"></i></a> <span class="divider"><i class="icon-angle-right"></i></span>
+                    </li>
+                    <li>
+                        <a href="/controlpanel">Панель управления</a> <span class="divider"><i class="icon-angle-right"></i></span>
+                    </li>
+                    <li>
+                        <a href="/controlpanel/timeline">Календарь</a> <span class="divider"><i class="icon-angle-right"></i></span>
+                    </li>                    
+                    <li><a href="">Изменение серии соревнования</a></li>
+                </ul>
+                <!-- END Breadcrumb -->
+
+                <!-- Horizontal Form Block -->
+                <div class="block block-themed">
+                    <!-- Horizontal Form Title -->
+                    <div class="block-title">
+                        <h4></h4>
+                    </div>
+                    <!-- END Horizontal Form Title -->
+
+                    <!-- Horizontal Form Content -->
+                    <div class="block-content">
+                        @using (Html.BeginForm("EditSubEvent", "Timeline", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()                            
+    
+                                <div class="form-horizontal">        
+                                    @Html.ValidationSummary(true)
+
+                                    <div class="control-group">
+                                        @Html.LabelFor(model => model.Title, new { @class = "control-label col-md-2" })
+                                        <div class="controls">
+                                            @Html.EditorFor(model => model.Title)
+                                            @Html.ValidationMessageFor(model => model.Title)
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+                                        <div class="controls">
+                                            @Html.TextAreaFor(model => model.Description, new { @class = "textarea-editor textarea-large", rows=10 })
+                                            @Html.ValidationMessageFor(model => model.Description)
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label" for="seriesValue">Серия</label>
+                                        <div class="controls">
+                                            @Html.DropDownList("seriesValue", (IEnumerable<SelectListItem>)ViewBag.Series, new { @class = "select-chosen", value=Model.Series.Id })                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label" for="groups">Зачетные группы</label>
+                                        <div class="controls">
+                                            <select id="groups" name="groups" class="select-chosen" multiple>
+                                                @foreach (var group in (IEnumerable<Portal.Models.Group>)ViewBag.Groups)                                                
+                                                {
+                                                    <option value="@group.Id" @Html.Raw(Model.Groups.Any(g=>g.Id==group.Id) ? "selected":"")>@group.Title</option>
+                                                }
+                                            </select>                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label" for="mapFile">Укажите файл карты</label>
+                                        <div class="controls">
+                                            <input type="file" id="mapFile" name="mapFile">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="control-group">
+                                        @Html.LabelFor(model => model.TimingSystemId, new { @class = "control-label col-md-2" })
+                                        <div class="controls">
+                                            @Html.TextBoxFor(model => model.TimingSystemId)
+                                            @Html.ValidationMessageFor(model => model.TimingSystemId)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-actions">
+                                        <button type="reset" class="btn btn-danger"><i class="icon-repeat"></i> Reset</button>
+                                        <button type="submit" class="btn btn-success"><i class="icon-ok"></i> Submit</button>
+                                    </div>
+                                </div>
+                            }
+                    </div>
+                    <!-- END Horizontal Form Content -->
+                </div>
+                <!-- END Horizontal Form Block -->
+</div>

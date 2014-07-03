@@ -1,0 +1,185 @@
+﻿@model IEnumerable<Portal.ViewModels.Translation.StageViewModel>
+@using Portal.Helpers;
+@{        
+    ViewBag.HideSidebar = true;
+
+    Portal.Models.OfficialEvent ev = (Portal.Models.OfficialEvent)ViewBag.Event;
+    List<Portal.ViewModels.Translation.StageHeaderViewModel> headers = (List<Portal.ViewModels.Translation.StageHeaderViewModel>)ViewBag.Headers;
+    Portal.Models.SubEvent sEv = (Portal.Models.SubEvent)ViewBag.SubEvent;
+    string group = (string)ViewBag.Group;
+    List<string> groups = (List<string>)ViewBag.Groups;
+}
+
+            		<div class="content">                        
+                        <div class="homeposttitle">
+                            <h3 class="widget-title">
+                                <span>
+                            			Результаты спецучастка "@ViewBag.Title" @(!string.IsNullOrWhiteSpace(group)?" Зачет "+ group:"")
+                                </span>
+                            </h3>  
+                        </div>
+                                
+                        <p>
+                            @if (ev.Season == 2014)
+                             {
+                                 if(string.IsNullOrWhiteSpace(group)) {
+                                    <a href="~/timeline/@ev.Slug/Orders/@sEv.Series.Slug" class="button">Заявленные экипажи</a>                                                                      
+                                 } else {
+                                    <a href="~/timeline/@ev.Slug/Orders/@sEv.Series.Slug?group=@group" class="button">Заявленные экипажи</a>                                                                      
+                                 }
+                             } else {
+                                 if(string.IsNullOrWhiteSpace(group)) {
+                                    <a href="~/timeline/@ev.Season/@ev.Slug/Orders/@sEv.Series.Slug" class="button">Заявленные экипажи</a>                                                                  
+                                 } else {
+                                    <a href="~/timeline/@ev.Season/@ev.Slug/Orders/@sEv.Series.Slug?group=@group" class="button">Заявленные экипажи</a>                                                                                                      
+                                 }
+                             }
+
+                            @foreach(var stage in headers) {
+                                if (stage.Name == ViewBag.Title)
+                                {
+                                    <a class="button secondary">@stage.Name</a>                                  
+                                } else {
+                                  if (ev.Season == 2014)
+                                  {
+                                      if(string.IsNullOrWhiteSpace(group)) {
+                                          <a href="~/timeline/@ev.Slug/@(stage.IsTarget?"Target":"Stage")/@sEv.Series.Slug/@stage.Name" class="button">@stage.Name</a>                                  
+                                      } else {
+                                          <a href="~/timeline/@ev.Slug/@(stage.IsTarget?"Target":"Stage")/@sEv.Series.Slug/@stage.Name?group=@group" class="button">@stage.Name</a>                                  
+                                      }
+                                  } else {
+                                      if(string.IsNullOrWhiteSpace(group)) {
+                                        <a href="~/timeline/@ev.Season/@ev.Slug/@(stage.IsTarget?"Target":"Stage")/@sEv.Series.Slug/@stage.Name" class="button">@stage.Name</a>                                                                  
+                                      }
+                                      else {
+                                        <a href="~/timeline/@ev.Season/@ev.Slug/@(stage.IsTarget?"Target":"Stage")/@sEv.Series.Slug/@stage.Name?group=@group" class="button">@stage.Name</a>                                                                  
+                                      }
+                                  }
+                                }
+                             }
+                              @if (ev.Season == 2014)
+                             {
+                                 if(string.IsNullOrWhiteSpace(group)) {
+                                    <a href="~/timeline/@ev.Slug/Penalities/@sEv.Series.Slug" class="button">Пенализации</a>                                  
+                                    <a href="~/timeline/@ev.Slug/Retires/@sEv.Series.Slug" class="button">Сходы</a>                                                                   
+                                    <a href="~/timeline/@ev.Slug/Comments/@sEv.Series.Slug" class="button">Сообщения</a>                                                                   
+                                 } else {
+                                    <a href="~/timeline/@ev.Slug/Penalities/@sEv.Series.Slug?group=@group" class="button">Пенализации</a>                                  
+                                    <a href="~/timeline/@ev.Slug/Retires/@sEv.Series.Slug?group=@group" class="button">Сходы</a>                                           
+                                    <a href="~/timeline/@ev.Slug/Comments/@sEv.Series.Slug?group=@group" class="button">Сообщения</a>                                           
+                                 }
+                             } else {
+                                 if(string.IsNullOrWhiteSpace(group)) {
+                                    <a href="~/timeline/@ev.Season/@ev.Slug/Penalities/@sEv.Series.Slug" class="button">Пенализации</a>                                                                  
+                                    <a href="~/timeline/@ev.Season/@ev.Slug/Retires/@sEv.Series.Slug" class="button">Сходы</a>                                                                  
+                                    <a href="~/timeline/@ev.Season/@ev.Slug/Comments/@sEv.Series.Slug" class="button">Сообщения</a>                                                                  
+                                 } else {
+                                    <a href="~/timeline/@ev.Season/@ev.Slug/Penalities/@sEv.Series.Slug?group=@group" class="button">Пенализации</a>                                                                  
+                                    <a href="~/timeline/@ev.Season/@ev.Slug/Retires/@sEv.Series.Slug?group=@group" class="button">Сходы</a>                                                                  
+                                    <a href="~/timeline/@ev.Season/@ev.Slug/Comments/@sEv.Series.Slug?group=@group" class="button">Сообщения</a>                                                                  
+                                 }
+                             }
+                        </p>
+
+                        <p>
+                            @if(string.IsNullOrWhiteSpace(group)) {
+                                <a class="button">Абсолют</a>                                                                  
+                            } else {
+                                <a href="~/timeline/@ev.Slug/Stage/@sEv.Series.Slug/@ViewBag.Title" class="button secondary">Абсолют</a>
+                            }
+                            @foreach (var g in groups.Where(g=>g!="Абсолют"))
+                            {
+                                if(g==group) {
+                                    <a class="button secondary">@g</a>                                                                  
+                                } else {
+                                    <a href="~/timeline/@ev.Slug/Stage/@sEv.Series.Slug/@ViewBag.Title?group=@g" class="button ">@g</a>
+                                }    
+                            }
+                        </p>
+                        @{ 
+                            var stageSortedItems = Model.OrderBy(r => string.IsNullOrWhiteSpace(r.RetireReason)? r.StageResult: TimeSpan.FromDays(100)).ToArray();
+                            var overalSortedItems = Model.OrderBy(r => string.IsNullOrWhiteSpace(r.RetireReason) ? r.OveralResult : TimeSpan.FromDays(100)).ToArray();
+                            TimeSpan stageDiff = new TimeSpan();
+                            TimeSpan overalDiff = new TimeSpan();
+                        }              
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th colspan="6">Участок</th>
+                                    <th colspan="6">После участка</th>
+                                </tr>                                
+                                <tr>
+                                    <th>Поз.</th>
+                                    <th>Ст. №</th>
+                                    <th>Экипаж</th>
+                                    <th>Зачет</th>                                            
+                                    <th>Результат</th>
+                                    <th>Отст.</th>                                    
+                                    <th>Поз.</th>
+                                    <th>Ст. №</th>
+                                    <th>Экипаж</th>
+                                    <th>Зачет</th>                                            
+                                    <th>Результат</th>
+                                    <th>Отст.</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (var iCnt = 0; iCnt < Model.Count(); iCnt++)
+                                {
+                                    if (iCnt > 0)
+                                    {
+                                        stageDiff = stageSortedItems[iCnt].StageResult - stageSortedItems[iCnt - 1].StageResult;
+                                        overalDiff = overalSortedItems[iCnt].OveralResult - overalSortedItems[iCnt - 1].OveralResult;
+                                    }
+                                    <tr>
+                                        <td>@(iCnt+1)</td>
+                                        <td>@stageSortedItems[iCnt].StartNumber</td>
+                                        <td>@stageSortedItems[iCnt].Driver<br />
+                                            @stageSortedItems[iCnt].CoDriver
+                                        </td>
+                                        <td>@stageSortedItems[iCnt].Groups</td>
+                                        @if (string.IsNullOrWhiteSpace(stageSortedItems[iCnt].RetireReason))
+                                        {
+                                            <td>@stageSortedItems[iCnt].Result.ToMinutes()    
+                                                @if (stageSortedItems[iCnt].Penality.TotalSeconds != 0)
+                                                {
+                                                    <br />
+                                                    <span style="color:red">(+@stageSortedItems[iCnt].Penality.ToMinutes() )</span>
+                                                }                                                                                            
+                                            </td>
+                                            <td>@stageDiff.ToMinutes()</td>    
+                                        } else {
+                                            <td colspan="2">@stageSortedItems[iCnt].RetireReason</td>                                        
+                                        }
+                                        
+
+                                        <td>@(iCnt+1)
+                                            @if (overalSortedItems[iCnt].PostStagePosition > overalSortedItems[iCnt].PreStagePosition)
+                                            {
+                                                <i class="fa-sort-desc"></i>
+                                            }
+                                            else if (overalSortedItems[iCnt].PostStagePosition < overalSortedItems[iCnt].PreStagePosition)
+                                            {
+                                                <i class="fa-sort-asc"></i>
+                                            }
+                                        </td>
+                                        <td>@overalSortedItems[iCnt].StartNumber</td>
+                                        <td>@overalSortedItems[iCnt].Driver<br />@overalSortedItems[iCnt].CoDriver</td>
+                                        <td>@overalSortedItems[iCnt].Groups</td>
+                                        @if (string.IsNullOrWhiteSpace(overalSortedItems[iCnt].RetireReason))
+                                        {
+                                            <td>@overalSortedItems[iCnt].OveralResult.ToMinutes()</td>
+                                            <td>@overalDiff.ToMinutes()</td>    
+                                        } else {
+                                            <td colspan="2">@overalSortedItems[iCnt].RetireReason</td>                                        
+                                        }
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>                       
+                    </div>
+               
+				</div><!-- large 12 -->
+			</div><!-- end row -->
+            
+		</div><!-- end large 8 -->

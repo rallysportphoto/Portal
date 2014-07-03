@@ -1,0 +1,46 @@
+/* #Basic Styles
+================================================== */
+
+.blox { padding:45px 0 63px; clear:both; background:#f1f8fc; text-shadow: 1px 1px 0 #fff; }
+.blox.dark { background:#384852;  text-shadow: 1px 1px 0 #333;}
+.blox.gray { background:#f1f1f1; }
+.blox.redbox { background:#ffc5cb; text-shadow:none; }
+.blox.greenbox { background:#dbebb9; text-shadow:none; }
+.blox.yellowbox { background:#f7c218; text-shadow:none; }
+.dark.redbox { background:#de3059; text-shadow:none; }
+.dark.bluebox { background:#128abc; text-shadow:none; }
+.blox hr { border-color: rgba(255, 255, 255, 0.2); }
+.dark.bluebox a.magicmore { display: inline-block; color:rgba(255, 255, 255, 0.9);  border-radius:14px; padding:2px 20px 2px 14px;  background:rgba(0, 0, 0, 0.1) url(../images/rowp8.png) no-repeat 92% 57%; font-size:12px; -webkit-transition: background 0.12s ease; -moz-transition: background 0.12s ease; -ms-transition: background 0.12s ease; -o-transition: background 0.12s ease; transition: background 0.12s ease; }
+.dark.bluebox a.magicmore:hover { background:rgba(255, 255, 255, 0.2) url(../images/rowp8.png) no-repeat 98% 57%; color:rgba(0, 0, 0, 0.5); }
+
+.dark.greenbox { background:#5aa300; }
+.dark.yellowbox { background:#d1b900; text-shadow: 1px 1px 0 #837400;}
+.blox.dark * { color:#fff; }
+.blox.dark a { color:#07add4; }
+.blox.dark a:lhover { color:#ff9900;}
+.blox.dark .magic-link a { color:#fff; }
+.blox.dark p { color:rgba(255, 255, 255, 0.9); }
+.blox.dark small { color:rgba(255, 255, 255, 0.8); }
+.bloxcirc { width:70px; height:70px; border-radius:35px; background:#e53f51 url(../images/ico-bulb1.png) no-repeat center center; position:relative; margin:-78px auto 21px; display:block; }
+.bloxcirc.bell-bg { background:#e53f51 url(../images/ico-bell1.png) no-repeat center center; }
+.bloxcirc.flash-bg { background:#e53f51 url(../images/ico-flash1.png) no-repeat center center; }
+.bloxcirc.eye-bg { background:#e53f51 url(../images/ico-eye1.png) no-repeat center center; }
+.bloxcirc.calendar-bg { background:#e53f51 url(../images/ico-calendar1.png) no-repeat center center; }
+.bloxcirc.video-bg { background:#e53f51 url(../images/ico-video1.png) no-repeat center center; }
+.bloxcirc.clock-bg { background:#e53f51 url(../images/ico-clock1.png) no-repeat center center; }
+img.drod { padding:4px; background:#f2f6f8; border-radius: 7px;}
+.blox img.drod { padding:3px 11px; border: 6px solid #d4edf9; background: #fafcfd; border-radius:23px;}
+.blox.greenbox img.drod { border:0; background: #effad9; }
+
+/* Super Columns */
+.s-qoute-man { padding-left:40px; background: url(../images/quote-ico1.png) no-repeat top right; margin-right:10px;}
+.s-qoute-man img, .s-team-man img  { width:160px; height:160px; border-radius:80px; max-width:100%;}
+.s-qoute-man .blog-author { text-align:center; }
+
+
+.alert-info.super { background:#fff url(../images/super-info-bg1.png) repeat-x bottom; padding:14px 12px; display:block; border-color:#b3b9ba; box-shadow: 0px 0px 6px rgba(0,0,0,0.2) inset; }
+.super p { margin:7px; }
+.magic li, ul.magic li { border:0 none; margin-bottom:3px; list-style:none; }
+.blox.dark.bot-blox { padding:14px 0; clear:both; background: #303740 url(../images/pattern-bg2.png); border-top:5px solid #242e38; margin:0; }
+.dark.bot-blox .magic-link { margin:0; float:right; }
+*+html .blox.dark.bot-blox { margin-bottom:-21px; }

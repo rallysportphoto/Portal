@@ -1,0 +1,15 @@
+/* #Color7 Styles
+================================================== */
+
+#footer { border-top:5px solid #9661ab; }
+#headline2 { background-color:#9661ab; }
+#top-head { border-bottom:4px solid #fbfbfb; background:#f8f8f8; }
+#nav a { border-top-color:#fbfbfb; }
+#hero { border-top:4px solid #eddff2; border-bottom:4px solid #eddff2; }
+.dark.bluebox, .l1-s1, h4.tit4blg span { background:#9661ab; }
+ul#main-port li { background-color:#ece4f0;}
+ul#main-port li:nth-child(even) { background-color:#f6f0f7;}
+ul#main-port li.active9 { background:#fbfbfb; border-bottom-color:#ffcc00; }
+.jcarousel-next, .jcarousel-prev { background-color:#bd96cc;  }
+.jcarousel-next-disabled, .jcarousel-next-disabled:hover,
+.jcarousel-prev-disabled, .jcarousel-prev-disabled:hover {	background-color: #e5eae5;	cursor: auto; }

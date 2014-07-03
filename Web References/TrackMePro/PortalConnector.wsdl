@@ -1,0 +1,764 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="AvailableGroups">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eventId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AvailableGroupsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AvailableGroupsResult" type="tns:ArrayOfGroup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGroup">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Group" nillable="true" type="tns:Group" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Group">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SortOrder" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsCountable" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="EntryFee" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="EntryFormView" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Entries" type="tns:ArrayOfEntry" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEntry">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Entry" nillable="true" type="tns:Entry" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Entry">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="License" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BirthDay" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Location" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="INN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Passport" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CoDriverFirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CoDriverLastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CoDriverLicense" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CoDriverCity" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CoDriverBirthDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="CoDriverEmail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CoDriverPhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CoDriverPassport" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CoDriverAddress" />
+          <s:element minOccurs="0" maxOccurs="1" name="TeamPhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Team" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TeamLicense" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TeamFax" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TeamEmail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TeamCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TeamAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Groups" type="tns:ArrayOfGroup" />
+          <s:element minOccurs="1" maxOccurs="1" name="EnsuranceTill" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="MedicalCheckTill" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ParentPermission" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="EntryFeeToPay" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="EntryFeeToPaid" nillable="true" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mark" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Model" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegistrationNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Engine" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CarYear" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartNumber" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="State" type="tns:EntryState" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="EntryState">
+        <s:restriction base="s:string">
+          <s:enumeration value="Redimmed" />
+          <s:enumeration value="Preliminary" />
+          <s:enumeration value="AdministrativePassed" />
+          <s:enumeration value="TechChecksComplete" />
+          <s:enumeration value="Retired" />
+          <s:enumeration value="Excluded" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="RegisterOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eventId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="entryId" nillable="true" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="entry" type="tns:Entry" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegisterOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RegisterOrderResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOrderPrintForm">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eventId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="entryId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOrderPrintFormResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOrderPrintFormResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegisterAccreditation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eventId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="accreditationId" nillable="true" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="accreditation" type="tns:Accreditation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Accreditation">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BirthDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Passport" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Car" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Media" type="tns:ArrayOfMediaInfoEntry" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfMediaInfoEntry">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MediaInfoEntry" nillable="true" type="tns:MediaInfoEntry" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MediaInfoEntry">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Media" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Position" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Organisation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Fax" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Web" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Type" type="tns:MediaType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Region" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Frequency" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Edition" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="MediaType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Print" />
+          <s:enumeration value="Web" />
+          <s:enumeration value="TV" />
+          <s:enumeration value="Photo" />
+          <s:enumeration value="Team" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="RegisterAccreditationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RegisterAccreditationResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAccreditationPrintForm">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eventId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="accreditationId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAccreditationPrintFormResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAccreditationPrintFormResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Stages">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eventId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResultMatrixStage">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Overdue" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="DetailsAction" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsTarget" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfResultMatrixStage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ResultMatrixStage" nillable="true" type="tns:ResultMatrixStage" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="StagesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StagesResult" type="tns:ArrayOfResultMatrixStage" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Stage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eventId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="stageId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResultStageViewModel">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IsSecondsResult" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartNumber" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Driver" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CoDriver" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Group" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResultBefore" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="PositionBefore" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Result" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Penality" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResultRaw" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResultAfter" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="PositionAfter" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="PenalityDetails" type="tns:ArrayOfPenalityDetail" />
+          <s:element minOccurs="1" maxOccurs="1" name="HasResult" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="RetireReason" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPenalityDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PenalityDetail" nillable="true" type="tns:PenalityDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PenalityDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ControlPoint" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Reason" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Value" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfResultStageViewModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ResultStageViewModel" nillable="true" type="tns:ResultStageViewModel" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="StageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StageResult" type="tns:ArrayOfResultStageViewModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Target">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eventId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="stageId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TargetStageViewModel">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="StartNumber" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Driver" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CoDriver" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Group" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Result" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartTime" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfTargetStageViewModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TargetStageViewModel" nillable="true" type="tns:TargetStageViewModel" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TargetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TargetResult" type="tns:ArrayOfTargetStageViewModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AllPenalities">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eventId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PenalityViewModel">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="StartNumber" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Driver" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CoDriver" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Groups" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ControlPointName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Reason" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValueSeconds" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="ControlPointOrder" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPenalityViewModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PenalityViewModel" nillable="true" type="tns:PenalityViewModel" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AllPenalitiesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AllPenalitiesResult" type="tns:ArrayOfPenalityViewModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AllRetires">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eventId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RetireViewModel">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="StartNumber" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Driver" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CoDriver" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Groups" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ControlPointName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Reason" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ControlPointOrder" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRetireViewModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RetireViewModel" nillable="true" type="tns:RetireViewModel" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AllRetiresResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AllRetiresResult" type="tns:ArrayOfRetireViewModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AllMessages">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eventId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MessageViewModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Time" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfMessageViewModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MessageViewModel" nillable="true" type="tns:MessageViewModel" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AllMessagesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AllMessagesResult" type="tns:ArrayOfMessageViewModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegisterCallbackOnChange">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eventId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="url" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegisterCallbackOnChangeResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AvailableGroupsSoapIn">
+    <wsdl:part name="parameters" element="tns:AvailableGroups" />
+  </wsdl:message>
+  <wsdl:message name="AvailableGroupsSoapOut">
+    <wsdl:part name="parameters" element="tns:AvailableGroupsResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegisterOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:RegisterOrder" />
+  </wsdl:message>
+  <wsdl:message name="RegisterOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:RegisterOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOrderPrintFormSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOrderPrintForm" />
+  </wsdl:message>
+  <wsdl:message name="GetOrderPrintFormSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOrderPrintFormResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegisterAccreditationSoapIn">
+    <wsdl:part name="parameters" element="tns:RegisterAccreditation" />
+  </wsdl:message>
+  <wsdl:message name="RegisterAccreditationSoapOut">
+    <wsdl:part name="parameters" element="tns:RegisterAccreditationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAccreditationPrintFormSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAccreditationPrintForm" />
+  </wsdl:message>
+  <wsdl:message name="GetAccreditationPrintFormSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAccreditationPrintFormResponse" />
+  </wsdl:message>
+  <wsdl:message name="StagesSoapIn">
+    <wsdl:part name="parameters" element="tns:Stages" />
+  </wsdl:message>
+  <wsdl:message name="StagesSoapOut">
+    <wsdl:part name="parameters" element="tns:StagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="StageSoapIn">
+    <wsdl:part name="parameters" element="tns:Stage" />
+  </wsdl:message>
+  <wsdl:message name="StageSoapOut">
+    <wsdl:part name="parameters" element="tns:StageResponse" />
+  </wsdl:message>
+  <wsdl:message name="TargetSoapIn">
+    <wsdl:part name="parameters" element="tns:Target" />
+  </wsdl:message>
+  <wsdl:message name="TargetSoapOut">
+    <wsdl:part name="parameters" element="tns:TargetResponse" />
+  </wsdl:message>
+  <wsdl:message name="AllPenalitiesSoapIn">
+    <wsdl:part name="parameters" element="tns:AllPenalities" />
+  </wsdl:message>
+  <wsdl:message name="AllPenalitiesSoapOut">
+    <wsdl:part name="parameters" element="tns:AllPenalitiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="AllRetiresSoapIn">
+    <wsdl:part name="parameters" element="tns:AllRetires" />
+  </wsdl:message>
+  <wsdl:message name="AllRetiresSoapOut">
+    <wsdl:part name="parameters" element="tns:AllRetiresResponse" />
+  </wsdl:message>
+  <wsdl:message name="AllMessagesSoapIn">
+    <wsdl:part name="parameters" element="tns:AllMessages" />
+  </wsdl:message>
+  <wsdl:message name="AllMessagesSoapOut">
+    <wsdl:part name="parameters" element="tns:AllMessagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegisterCallbackOnChangeSoapIn">
+    <wsdl:part name="parameters" element="tns:RegisterCallbackOnChange" />
+  </wsdl:message>
+  <wsdl:message name="RegisterCallbackOnChangeSoapOut">
+    <wsdl:part name="parameters" element="tns:RegisterCallbackOnChangeResponse" />
+  </wsdl:message>
+  <wsdl:portType name="PortalConnectorSoap">
+    <wsdl:operation name="AvailableGroups">
+      <wsdl:input message="tns:AvailableGroupsSoapIn" />
+      <wsdl:output message="tns:AvailableGroupsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterOrder">
+      <wsdl:input message="tns:RegisterOrderSoapIn" />
+      <wsdl:output message="tns:RegisterOrderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderPrintForm">
+      <wsdl:input message="tns:GetOrderPrintFormSoapIn" />
+      <wsdl:output message="tns:GetOrderPrintFormSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterAccreditation">
+      <wsdl:input message="tns:RegisterAccreditationSoapIn" />
+      <wsdl:output message="tns:RegisterAccreditationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAccreditationPrintForm">
+      <wsdl:input message="tns:GetAccreditationPrintFormSoapIn" />
+      <wsdl:output message="tns:GetAccreditationPrintFormSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Stages">
+      <wsdl:input message="tns:StagesSoapIn" />
+      <wsdl:output message="tns:StagesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Stage">
+      <wsdl:input message="tns:StageSoapIn" />
+      <wsdl:output message="tns:StageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Target">
+      <wsdl:input message="tns:TargetSoapIn" />
+      <wsdl:output message="tns:TargetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AllPenalities">
+      <wsdl:input message="tns:AllPenalitiesSoapIn" />
+      <wsdl:output message="tns:AllPenalitiesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AllRetires">
+      <wsdl:input message="tns:AllRetiresSoapIn" />
+      <wsdl:output message="tns:AllRetiresSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AllMessages">
+      <wsdl:input message="tns:AllMessagesSoapIn" />
+      <wsdl:output message="tns:AllMessagesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterCallbackOnChange">
+      <wsdl:input message="tns:RegisterCallbackOnChangeSoapIn" />
+      <wsdl:output message="tns:RegisterCallbackOnChangeSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PortalConnectorSoap" type="tns:PortalConnectorSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AvailableGroups">
+      <soap:operation soapAction="http://tempuri.org/AvailableGroups" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterOrder">
+      <soap:operation soapAction="http://tempuri.org/RegisterOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderPrintForm">
+      <soap:operation soapAction="http://tempuri.org/GetOrderPrintForm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterAccreditation">
+      <soap:operation soapAction="http://tempuri.org/RegisterAccreditation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccreditationPrintForm">
+      <soap:operation soapAction="http://tempuri.org/GetAccreditationPrintForm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Stages">
+      <soap:operation soapAction="http://tempuri.org/Stages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Stage">
+      <soap:operation soapAction="http://tempuri.org/Stage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Target">
+      <soap:operation soapAction="http://tempuri.org/Target" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllPenalities">
+      <soap:operation soapAction="http://tempuri.org/AllPenalities" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllRetires">
+      <soap:operation soapAction="http://tempuri.org/AllRetires" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllMessages">
+      <soap:operation soapAction="http://tempuri.org/AllMessages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterCallbackOnChange">
+      <soap:operation soapAction="http://tempuri.org/RegisterCallbackOnChange" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PortalConnectorSoap12" type="tns:PortalConnectorSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AvailableGroups">
+      <soap12:operation soapAction="http://tempuri.org/AvailableGroups" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterOrder">
+      <soap12:operation soapAction="http://tempuri.org/RegisterOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderPrintForm">
+      <soap12:operation soapAction="http://tempuri.org/GetOrderPrintForm" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterAccreditation">
+      <soap12:operation soapAction="http://tempuri.org/RegisterAccreditation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccreditationPrintForm">
+      <soap12:operation soapAction="http://tempuri.org/GetAccreditationPrintForm" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Stages">
+      <soap12:operation soapAction="http://tempuri.org/Stages" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Stage">
+      <soap12:operation soapAction="http://tempuri.org/Stage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Target">
+      <soap12:operation soapAction="http://tempuri.org/Target" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllPenalities">
+      <soap12:operation soapAction="http://tempuri.org/AllPenalities" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllRetires">
+      <soap12:operation soapAction="http://tempuri.org/AllRetires" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllMessages">
+      <soap12:operation soapAction="http://tempuri.org/AllMessages" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterCallbackOnChange">
+      <soap12:operation soapAction="http://tempuri.org/RegisterCallbackOnChange" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PortalConnector">
+    <wsdl:port name="PortalConnectorSoap" binding="tns:PortalConnectorSoap">
+      <soap:address location="http://localhost:4259/EndPoints/PortalConnector/PortalConnector.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PortalConnectorSoap12" binding="tns:PortalConnectorSoap12">
+      <soap12:address location="http://localhost:4259/EndPoints/PortalConnector/PortalConnector.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

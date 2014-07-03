@@ -1,0 +1,65 @@
+﻿@model Portal.ViewModels.NewsDetailsViewModel
+
+@{
+    ViewBag.Title = "Автомобильная Федерация Санкт-Петербурга и Ленинградской области";    
+}
+
+
+			<div class="row">
+				<div class="large-12 columns">
+
+            		<div class="content">
+
+                    	<div class="singletop">
+                            <div class="search">
+                                <form method="get" action="#">
+									<input id="s" type="text" value="Search" name="s">
+                                </form>	
+                            </div>
+                            <nav class="breadcrumbs">
+                              <a href="/">Главная</a>
+                              <a href="/news">Новости</a>
+                              <a class="current" href="#">@Model.Title</a>
+                            </nav>
+                        </div>
+
+                        <div class="homeposttitle">
+                            <h3 class="widget-title">
+                                <span>
+                                		<i class="fa fa-pencil homeposticon"></i>
+                            			@Model.Title
+                                </span>
+                            </h3>  
+                            
+                            <ul class="post-date clearfix">
+                                <li><i class="fa fa-calendar"></i> @Model.Date.ToString("dd MMM yyyy")</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="entry post-thumb">
+                        	<a href="@Html.Raw(Model.LogoThumbnail)" data-gal="prettyPhoto" rel="prettyPhoto"><img src="@Html.Raw(Model.LogoUrl)" alt=""><span class="magnifier"></span></a>
+                        </div>
+                        
+                        <div class="single-wrapper">
+                            @Html.Raw(Model.Body)
+                        
+                            @if (Model.Attachments.Any())
+                            {
+                                <div class="post-tags">
+                                    <i class="fa fa-file-o"></i> Документы:
+                                    @foreach(var doc in Model.Attachments) {
+                                        <br /> <a title="@doc.Title" href="/file/@doc.FileName">@doc.Title</a>
+                                    }
+                                </div>
+                            }
+                        </div>
+                    
+                    @*<div class="authorbox">
+                    	<img class="th authorimg clearing-featured-img" src="img/01_author.png" alt="">  
+                        <h3>Posted by DesigningMedia</h3>
+                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                    </div>*@
+                        
+				</div>
+				</div><!-- large 12 -->
+			</div><!-- end row -->

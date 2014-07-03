@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Portal.Models.Series>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/ControlPanel/Views/Shared/_Admin.cshtml";
+}
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/ControlPanel/Views/Shared/_Admin.cshtml";
+}
+
+<!-- Page Content -->
+<div id="page-content">
+    <!-- Breadcrumb -->
+    <ul class="breadcrumb breadcrumb-top">
+        <li>
+            <a href="/"><i class="glyphicon-display"></i></a> <span class="divider"><i class="icon-angle-right"></i></span>
+        </li>
+        <li>
+            <a href="/controlpanel">Панель управления</a> <span class="divider"><i class="icon-angle-right"></i></span>
+        </li>
+        <li><a href="">Серии</a></li>
+    </ul>
+    <!-- END Breadcrumb -->
+    <div class="block-section">
+        @*@Html.ActionLink("Добавить", "Create", null, new { @class="btn"})*@
+
+        @foreach (var season in Model.Select(m => m.Season).Distinct().OrderByDescending(s=>s))
+        {
+             <!-- Horizontal Form Block -->
+                <div class="block block-themed">
+                    <!-- Horizontal Form Title -->
+                    <div class="block-title">
+                        <h4>Сезон @season</h4>
+                    </div>
+                    <!-- END Horizontal Form Title -->
+
+                    <!-- Horizontal Form Content -->
+                    <div class="block-content">
+                        <table class="table">
+                        <thead>
+                            <tr>                                        
+                                <th class="span2 text-center">Сокращение</th>
+                                <th class="span4">Серия</th>
+                                <th class="span2">Дисциплина</th>                                        
+                                <th class="span1 text-center"><i class="icon-bolt"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Where(s => s.Season == season).OrderBy(s => s.Discipline.Id).ThenBy(s => s.Id))
+                            {
+                                <tr>
+                                    <td class="span2 text-center">@Html.DisplayFor(modelItem => item.ShortName)</td>
+                                    <td class="span4">@Html.DisplayFor(modelItem => item.Title)</td>
+                                    <td class="span2">@item.Discipline.Title</td>
+                                    <td class="span1 text-center">
+                                        @*<a href="@Url.Action("Edit", new { id = item.Id })" data-toggle="tooltip" title="Изменить" class="btn btn-mini btn-success"><i class="icon-pencil"></i></a>
+                                        <a href="@Url.Action("Delete", new { id = item.Id })" data-toggle="tooltip" title="Удалить" class="btn btn-mini btn-danger"><i class="icon-remove"></i></a>*@
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                        </table>
+                    </div>
+                </div>
+        }        
+        @*@Html.ActionLink("Добавить", "Create", null, new { @class="btn"})*@
+    </div>
+

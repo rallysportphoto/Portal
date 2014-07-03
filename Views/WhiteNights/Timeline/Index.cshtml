@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Portal.ViewModels.TimelineListViewModel>
+
+@{
+    ViewBag.Title = "Index";    
+}
+
+			<div class="row">
+				<div class="large-12 columns">
+
+            		<div class="content">
+
+                    	<div class="singletop">
+                            <div class="search">
+                                <form method="get" action="#">
+									<input id="s" type="text" value="Search" name="s">
+                                </form>	
+                            </div>
+                            <nav class="breadcrumbs">
+                              <a href="/">Главная</a>
+                              @if (ViewBag.Season == 2014)
+                              {
+                                  <a href="/timeline" class="current">Календарь</a>
+                              } else {
+                                <a href="/timeline">Календарь</a>
+                                <a class="current" href="/timeline/@ViewBag.Season">@ViewBag.Season</a>
+                              }
+                            </nav>
+                        </div>
+                        
+                        <div class="homeposttitle">
+                            <h3 class="widget-title">
+                                <span>
+                            			Календарь соревнований на @ViewBag.Season год
+                                </span>
+                            </h3>  
+                        </div>
+                        
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Числа</th>
+                                    <th>Дисциплина</th>
+                                    <th>Наименование</th>
+                                    <th>Статус</th>
+                                    <th>Место проведения</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach (var month in Model.Select(m => m.Month).Distinct().OrderBy(m => m))
+                                {
+                                    var monthEvents = Model.Where(m => m.Month == month);
+                                    <tr>
+                                        <td colspan="5">@month.ToString("MMMM")</td>
+                                    </tr>
+                                    foreach (var ev in monthEvents)
+                                    {
+                                        <tr>
+                                            <td>@ev.Dates</td>
+                                            <td>@ev.Disciplines</td>
+                                            <td>
+                                                @if(ev.IsExternal) {
+                                                    <a href="@Html.Raw(ev.Url)" target="_blank">@ev.Title</a>
+                                                } else if (ev.IsOfficial) {
+                                                    <a href="@Html.Raw(ev.Url)">@ev.Title</a>
+                                                }
+                                                else {
+                                                    <text>
+                                                        @ev.Title
+                                                    </text>
+                                                }
+                                            </td>
+                                            <td>@ev.Series</td>
+                                            <td>@ev.Place</td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+
+                        </table>
+                    </div>
+               
+				</div><!-- large 12 -->
+			</div><!-- end row -->

@@ -1,0 +1,36 @@
+﻿@model Portal.Models.OfficialEvent
+@{
+    ViewBag.Title = "RegisterFinish";    
+}
+
+<div class="row">
+				<div class="large-12 columns">
+
+            		<div class="content">
+
+                    	<div class="singletop">
+                            <div class="search">
+                                <form method="get" action="#">
+									<input id="s" type="text" value="Search" name="s">
+                                </form>	
+                            </div>
+                            <nav class="breadcrumbs">
+                              <a href="/">Главная</a>   
+                              <a href="/timeline">Календарь</a>                                
+                              <a href="/timeline/@Model.Slug">@Model.Title</a>   
+                              <a class="current" href="#">Заявка на участие в соревновании</a>
+                            </nav>
+                        </div>
+                        
+                        <div class="homeposttitle">
+                            <h3 class="widget-title">
+                                <span>
+                                       Прием заявок на @Model.Title окончен.
+                                </span>
+                            </h3>  
+                        </div>
+                        <p>К сожалению, подача заявок в автоматическом режиме на соревнование @Model.Title окончена. Вы можете уточнить возможность размещения вашей заявки по электронной почте <a href="mailto:afspb@list.ru">afspb@list.ru</a></p>                            
+                        <p>Коллектив АФСПб</p>
+                    </div>
+                </div>
+</div>

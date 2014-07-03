@@ -1,0 +1,15 @@
+/* #Color3 Styles
+================================================== */
+
+#footer { border-top:5px solid #1fa79e; }
+#headline2 { background-color:#1fa79e; }
+#top-head { border-bottom:4px solid #f2faf9; background:#d9f0ef; }
+#nav a { border-top-color:#f2faf9; }
+#hero { border-top:4px solid #e6f5f4; border-bottom:4px solid #e6f5f4; }
+.dark.bluebox, .l1-s1, h4.tit4blg span{ background:#1fa79e; }
+ul#main-port li { background-color:#e9f1e9;}
+ul#main-port li:nth-child(even) { background-color:#f1f5f1;}
+ul#main-port li.active9 { background:#fafafa; border-bottom-color:#ffcc00; }
+.jcarousel-next, .jcarousel-prev { background-color:#c8e7c9;  }
+.jcarousel-next-disabled, .jcarousel-next-disabled:hover,
+.jcarousel-prev-disabled, .jcarousel-prev-disabled:hover {	background-color: #e5eae5;	cursor: auto; }

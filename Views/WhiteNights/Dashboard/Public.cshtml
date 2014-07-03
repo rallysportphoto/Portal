@@ -1,0 +1,115 @@
+﻿@model Portal.ViewModels.DashboardViewModel
+
+<section id="headline">
+<div class="container">
+<h3>Хронология - <small>что есть и что было</small></h3>
+</div>
+</section>
+
+<section id="main-timeline">
+<div class="container">
+<div id="tline-content">
+
+@{ var iCnt =0;}   
+@foreach (var item in Model.FeaturedEvents.OrderByDescending(e=>e.Year))
+{
+	<div class="tline-topdate">@item.Year</div>
+    if(iCnt++ % 2 == 0) {
+        <article  class="tline-box">
+            <span class="tline-row-l"></span>
+
+            <img src="@Html.Raw(item.Logo)"/><br>
+            @*<h6 class="blog-cat"><strong>in</strong> Business, News, Company </h6>*@
+            <h4><a href="@Html.Raw(item.Url)">@item.Title</a></h4>
+            @*<h6 class="blog-author"><strong>by</strong> John Smith </h6>*@
+            <br />
+            @if(!string.IsNullOrWhiteSpace(item.Intro)) {
+                <p>
+                    @item.Intro <a href="@item.Url" >... Подробнее</a>
+                </p>
+            }
+            
+            <div class="blog-date-sp">
+            <h3>@item.Days</h3><span>@item.Month<br>@item.Year</span></div>
+    </article>      
+    } else {
+               
+        <article  class="tline-box rgtline">
+            <span class="tline-row-r"></span>
+            <img src="@Html.Raw(item.Logo)"/><br>
+            @*<h6 class="blog-cat"><strong>in</strong> Business, News, Company </h6>*@
+            <h4><a href="@Html.Raw(item.Url)">@item.Title</a></h4>
+            @*<h6 class="blog-author"><strong>by</strong> John Smith </h6>*@
+            <br />
+            @if(!string.IsNullOrWhiteSpace(item.Intro)) {
+                <p>
+                    @item.Intro <a href="@item.Url" >... Подробнее</a>
+                </p>
+            }
+            <div class="blog-date-sp">
+            <h3>@item.Days</h3><span>@item.Month<br>@item.Year</span></div>
+        </article>
+    }
+}
+
+<div class="tline-topdate">1993</div>
+
+<article  class="tline-box">
+<span class="tline-row-l"></span>
+<img src="/Thumbnail/406/275/x_df695611.jpg"><br>
+<h4><a href="#">В 1991, 1992 годах ралли не проводилось</a></h4>
+<br />
+<p>
+В связи с общей обстановкой в стране в 1991 и 1992 годах гонка не проводилась. Ралли возродилось в 1993 году...
+</p>
+<div class="blog-date-sp">
+<h3></h3><span>1991<br>
+1992</span>
+</div>
+</article>
+
+<div class="tline-topdate">1991</div>
+<article  class="tline-box rgtline">
+<span class="tline-row-r"></span>
+<img src="http://whitenightsrally.ru/Thumbnail/406/275/0VRxOG5_HDk.jpg"><br>
+<h4><a href="blog-single.html">Впервые в статусе Чемпионата СССР</a></h4>
+<br />
+<p>
+Старейшее ралли в России, впервые состоялось в 1963 году в статусе Чемпионата СССР. У истоков ее создания стояли великие спортивные деятели Советского Союза – Киселев Н.С., Ионайтис Е.В
+</p>
+<div class="blog-date-sp">
+<h3></h3><span>Июнь<br>
+1963</span></div>
+</article>
+
+
+<div class="tline-topdate">1963</div>
+
+<article  class="tline-box">
+<span class="tline-row-l"></span>
+<img src="/Thumbnail/406/275/v3HDUlAVTT4.jpg"><br>
+<h4><a href="#">Впервые ралли было проведено в 1955г</a></h4>
+<br />
+<p>
+В 1955 году первое ралли Белые Ночи стартовало с Дворцовой площади Ленинграда (8 июля 1955 года), затем экипажам предстояло преодолеть 2300 км трассы, которая проходила через Таллинн, Тарту, Ригу, Вильнюс, Минск, Смоленск и финишировало в Москве 14 июля.  Первым победителем первого ралли стал учитель физкультуры ленинградской школы Евгений ИОНАЙТЕС, который впоследствии и стал одним из основателей ралли «Белые ночи».
+</p>
+<div class="blog-date-sp">
+<h3>08</h3><span>Июля<br>
+1955</span></div>
+
+
+</article>
+
+
+<div class="tline-topdate enddte">1955</div>
+
+    
+
+</div><!-- end-pin-content -->
+
+<p>К сожалению не все страницы истории данной гонки дошли до наших дней. Пожалуйста, напишите нам, если вам есть чем дополнить рассказ о данной гонке.</p>
+
+<div class="white-space"></div>
+
+</div>  
+</section><!-- end-main-content-pin -->

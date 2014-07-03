@@ -1,0 +1,204 @@
+﻿@model Portal.Models.Event
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/ControlPanel/Views/Shared/_Admin.cshtml";
+}
+<!-- Pre Page Content -->
+            <div id="pre-page-content">
+                <h1><i class="glyphicon-show_thumbnails_with_lines themed-color"></i> Календарь<br><small>Изменение соревнования</small></h1>
+            </div>
+            <!-- END Pre Page Content -->
+
+            <!-- Page Content -->
+            <div id="page-content">
+                <!-- Breadcrumb -->
+                <ul class="breadcrumb breadcrumb-top">
+                    <li>
+                        <a href="/"><i class="glyphicon-display"></i></a> <span class="divider"><i class="icon-angle-right"></i></span>
+                    </li>
+                    <li>
+                        <a href="/controlpanel">Панель управления</a> <span class="divider"><i class="icon-angle-right"></i></span>
+                    </li>
+                    <li>
+                        <a href="/controlpanel/timeline">Календарь</a> <span class="divider"><i class="icon-angle-right"></i></span>
+                    </li>
+                    <li><a href="">Изменение соревнования</a></li>
+                </ul>
+                <!-- END Breadcrumb -->
+
+                <!-- Horizontal Form Block -->
+                <div class="block block-themed">
+                    <!-- Horizontal Form Title -->
+                    <div class="block-title">
+                        <h4></h4>
+                    </div>
+                    <!-- END Horizontal Form Title -->
+
+                    <!-- Horizontal Form Content -->
+                    <div class="block-content">
+                        @using (Html.BeginForm("Edit", "Timeline", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.Hidden("modelType", Model.GetType().ToString())
+    
+    <div class="form-horizontal">        
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.Season, new { @class = "control-label col-md-2" })
+            <div class="controls">
+                @Html.EditorFor(model => model.Season)
+                @Html.ValidationMessageFor(model => model.Season)
+            </div>
+        </div>
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.Title, new { @class = "control-label col-md-2" })
+            <div class="controls">
+                @Html.EditorFor(model => model.Title)
+                @Html.ValidationMessageFor(model => model.Title)
+            </div>
+        </div>
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.StartDate, new { @class = "control-label col-md-2" })
+            <div class="controls">
+                @Html.TextBoxFor(model => model.StartDate, new { @class = "input-datepicker" })
+                @Html.ValidationMessageFor(model => model.StartDate)
+            </div>
+        </div>
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.FinishDate, new { @class = "control-label col-md-2" })
+            <div class="controls">
+                @Html.TextBoxFor(model => model.FinishDate, new { @class = "input-datepicker" })                
+                @Html.ValidationMessageFor(model => model.FinishDate)
+            </div>
+        </div>
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.Place, new { @class = "control-label col-md-2" })
+            <div class="controls">
+                @Html.EditorFor(model => model.Place)
+                @Html.ValidationMessageFor(model => model.Place)
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="series">Серии</label>
+            <div class="controls">
+                <select id="general-chosen-multiple" name="series" class="select-chosen" multiple>
+                    @foreach (var series in (List<Portal.Models.Series>)ViewBag.Series)
+                    {
+                        <option value="@series.Id" @Html.Raw(Model.Series.Any(s=>s.Id==series.Id)? "selected":"")>@series.Title @series.Season @series.Discipline.Title</option>    
+                    }                     
+                </select>                
+            </div>
+        </div>
+        @if (Model is Portal.Models.FeaturableEvent)
+        {
+            <div class="control-group">
+                @Html.LabelFor(model => ((Portal.Models.FeaturableEvent)model).IsFeatured, new { @class = "control-label col-md-2" })
+                <div class="controls">
+                    @Html.EditorFor(model => ((Portal.Models.FeaturableEvent)model).IsFeatured)
+                    @Html.ValidationMessageFor(model => ((Portal.Models.FeaturableEvent)model).IsFeatured)
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="introFile">Баннер главной страницы</label>
+                <div class="controls">
+                    <input type="file" name="introFile">
+                </div>
+            </div>
+            
+        }
+
+        @if (Model is Portal.Models.ExternalEvent)
+        {
+            <div class="control-group">
+            @Html.LabelFor(model => ((Portal.Models.ExternalEvent)model).Url, new { @class = "control-label col-md-2" })
+            <div class="controls">
+                @Html.EditorFor(model => ((Portal.Models.ExternalEvent)model).Url)
+                @Html.ValidationMessageFor(model => ((Portal.Models.ExternalEvent)model).Url)
+            </div>
+        </div>
+        }
+
+        @if (Model is Portal.Models.OfficialEvent)
+        {
+            <div class="control-group">
+                @Html.LabelFor(model => ((Portal.Models.OfficialEvent)model).Slug, new { @class = "control-label col-md-2" })
+                <div class="controls">
+                    @Html.EditorFor(model => ((Portal.Models.OfficialEvent)model).Slug)
+                    @Html.ValidationMessageFor(model => ((Portal.Models.OfficialEvent)model).Slug)
+                </div>
+            </div>
+            
+            <div class="control-group">
+                @Html.LabelFor(model => ((Portal.Models.OfficialEvent)model).History, new { @class = "control-label col-md-2" })
+                <div class="controls">
+                    @Html.TextAreaFor(model => ((Portal.Models.OfficialEvent)model).History, new { rows = 6, @class="textarea-editor textarea-large" })
+                    @Html.ValidationMessageFor(model => ((Portal.Models.OfficialEvent)model).History)
+                </div>
+            </div>
+            
+            <div class="control-group">
+                @Html.LabelFor(model => ((Portal.Models.OfficialEvent)model).AccreditationsEnabled, new { @class = "control-label col-md-2" })
+                <div class="controls">
+                    @Html.CheckBoxFor(model => ((Portal.Models.OfficialEvent)model).AccreditationsEnabled)
+                    @Html.ValidationMessageFor(model => ((Portal.Models.OfficialEvent)model).AccreditationsEnabled)
+                </div>
+            </div>
+            
+            <div class="control-group">
+                @Html.LabelFor(model => ((Portal.Models.OfficialEvent)model).OrdersDisabled, new { @class = "control-label col-md-2" })
+                <div class="controls">
+                    @Html.CheckBoxFor(model => ((Portal.Models.OfficialEvent)model).OrdersDisabled)
+                    @Html.ValidationMessageFor(model => ((Portal.Models.OfficialEvent)model).OrdersDisabled)
+                </div>
+            </div>
+            
+            <p>Перед редактированием списка зачетов не забудьте сохранить изменения!</p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Серия</th>
+                        <th>Статус</th>
+                        <th>Карта</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var se in ((Portal.Models.OfficialEvent)Model).SubEvents)
+                {
+                    <tr>
+                        <td>@se.Series.Title</td>
+                        <td>@se.Title</td>
+                        <td>@Html.CheckBox("none", se.Map != null, new { disabled = true })</td>
+                        <td>
+                            <div class="btn-group">
+                                    <a href="@Url.Action("EditSubEvent", new { id = se.Id })" data-toggle="tooltip" title="Изменить" class="btn btn-mini btn-success"><i class="icon-pencil"></i></a>                                    
+                                    <a href="@Url.Action("DeleteSubEvent", new { id = se.Id })" data-toggle="tooltip" title="Удалить" class="btn btn-mini btn-danger"><i class="icon-remove"></i></a>
+                                </div>                 
+                        </td>
+                    </tr>    
+                }
+                </tbody>
+            </table>
+            @Html.ActionLink("Добавить зачет", "CreateSubEvent", new { eventId = Model.Id }, new { @class = "btn" })
+        }
+
+        <div class="form-actions">
+            <button type="reset" class="btn btn-danger"><i class="icon-repeat"></i> По-умолчанию</button>
+            <button type="submit" class="btn btn-success"><i class="icon-ok"></i> Изменить</button>
+        </div>
+    </div>
+}
+                    </div>
+                    <!-- END Horizontal Form Content -->
+                </div>
+                <!-- END Horizontal Form Block -->
+</div>
+

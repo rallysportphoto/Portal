@@ -1,0 +1,225 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" ><!--<![endif]-->
+
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Ралли "Белые Ночи"</title>
+
+	<!-- Stylesheet
+	================================================== -->
+	<link rel="stylesheet" href="/wn.css">
+    <link rel="stylesheet" href="~/css/chosen.css">
+    <link rel="stylesheet" href="~/css/timeTo.css">
+
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="/images/favicon.ico">
+	<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+
+	<script src="/js/vendor/custom.modernizr.js"></script>
+    
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-21436499-16', 'whitenightsrally.ru');
+        ga('send', 'pageview');
+    </script>
+</head>
+<body>
+
+	<header class="row">
+       <div class="large-4 columns">
+            <div class="logo">
+                @Html.Action("Logo", "Dashboard", new { domain = ViewBag.Domain, url="/images/logown.png" })
+				
+            </div><!-- End Logo -->  
+        </div>
+        
+        <div class="large-4 columns">
+            <ul class="top-menu">                
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li><a href="/Account/Manage"><i class="fa fa-tasks"></i> Профиль</a></li>
+                    <li><a href="/Account/LogOff"><i class="fa fa-user"></i> Выход</a></li>
+                }
+                else
+                {
+                    @*<li><a href="/Account/LogOn"><i class="fa fa-user"></i> Вход</a></li>*@
+                }
+                @*<li><a href="login.html"><i class="fa fa-unlock"></i> Register</a></li>*@
+                @*<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> 0 items - $0</a></li>*@
+            </ul>
+        </div>
+         
+        <div class="large-4 columns">
+            <ul class="dm-social">
+                <li><a href="http://vk.com/whitenightsrally" class="fa fa-vk" title="ВКонтакте">ВКонтакте</a></li>
+                @*<li><a href="https://twitter.com/afspb_org_ru/" class="fa fa-twitter" title="Twitter">Twitter</a></li>*@
+                @*<li><a href="https://www.facebook.com/afspborgru" class="fa fa-facebook" title="Facebook">Facebook</a></li>*@
+                @*<li><a href="#" class="fa fa-google-plus" title="Google+">Google+</a></li>*@
+                
+
+                @*<li><a href="#" class="fa fa-pinterest" title="Pinterest">Pinterest</a></li>
+                <li><a href="#" class="fa fa-linkedin" title="Linkedin">Linkedin</a></li>*@
+                <li><a href="/rss" class="fa fa-rss" title="RSS">RSS</a></li>
+            </ul><!-- End Social --> 
+        </div>
+	</header>
+
+	<div class="wrapper row">
+   
+        @if(!(ViewBag.HideSidebar??false)) {
+		<div class="large-4 columns">
+			<aside class="sidebar">
+                <nav class="menu clearing-container">
+					<ul>
+                        @*@Html.Action("HomeTitle", "Dashboard", new { domain = ViewBag.Domain })*@
+						<li><a href="/"><i class="fa fa-home"></i> Главная</a></li>
+                        <li><a href="/media"><i class="fa fa-camera-retro"></i> Медиа</a></li>
+                        <li><a href="/news"><i class="fa fa-edit"></i> Новости</a></li>
+                        @*<li><a href="/documents"><i class="fa fa-folder-open"></i> Документы</a></li> *@                       
+					</ul>
+				</nav><!-- End Menu -->
+                
+                <div class="widget clearing-container">
+                    <h3 class="widget-title">
+                        <span>Контактная информация:</span>
+                    </h3>
+					<p>
+                        Телефон/факс : <a href="tel:78123287003">+7 (812) 328 7003</a>,<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="tel:78123286862">+7 (812) 328 6862</a><br />
+                        e-mail: <a href="mailto:afspb@list.ru">afspb@list.ru</a><br />
+                        СПб, <a href="https://maps.google.ru/maps?f=q&source=s_q&hl=ru&geocode=&q=%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F+%D0%A4%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F+%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3%D0%B0+%D0%98+%D0%9B%D0%B5%D0%BD%D0%B8%D0%BD%D0%B3%D1%80%D0%B0%D0%B4%D1%81%D0%BA%D0%BE%D0%B9+%D0%9E%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D0%B8&sll=59.947035,30.286812&sspn=0.002149,0.006968&g=199004,+%D0%92%D0%B0%D1%81%D0%B8%D0%BB%D0%B5%D0%BE%D1%81%D1%82%D1%80%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9+%D0%90%D0%B4%D0%BC.+%D1%80%D0%B0%D0%B9%D0%BE%D0%BD,+%D0%B3%D0%BE%D1%80%D0%BE%D0%B4+%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3,+%D0%A2%D1%83%D1%87%D0%BA%D0%BE%D0%B2+%D0%BF%D0%B5%D1%80.,+24&ie=UTF8&hq=%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F+%D0%A4%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F+%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3%D0%B0+%D0%98+%D0%9B%D0%B5%D0%BD%D0%B8%D0%BD%D0%B3%D1%80%D0%B0%D0%B4%D1%81%D0%BA%D0%BE%D0%B9+%D0%9E%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D0%B8&hnear=199004,+%D0%B3%D0%BE%D1%80%D0%BE%D0%B4+%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3,+%D0%A2%D1%83%D1%87%D0%BA%D0%BE%D0%B2+%D0%BF%D0%B5%D1%80.,+24&z=18&iwloc=A" target="_blank">ВО, Тучков переулок, дом 24</a>
+					</p>
+                </div>
+
+                @*<div class="widget clearing-container">
+                    <h3 class="widget-title">
+                        <span>Recent Works</span>
+                    </h3>
+                        <div class="slider">
+                            <div class="widget-slider">
+                                <ul class="entry slides">
+                                <li>
+                                    <a href="#"><img src="img/01_portfolio.jpg" alt="" /><span class="magnifier"></span></a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="img/02_portfolio.jpg" alt="" /><span class="magnifier"></span></a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="img/03_portfolio.jpg" alt="" /><span class="magnifier"></span></a>
+                                </li>
+                                </ul>
+                            </div>
+                        </div><!-- End Slider Widget -->
+				</div>*@
+
+          
+                @*<div class="widget clearing-container">
+                    <h3 class="widget-title">
+                        <span>Categories</span>
+                    </h3>
+                        <ul>
+                            <li><a title="View all posts filed under News" href="#">News</a> (3)</li>
+                            <li><a title="View all posts filed under Magazine" href="#">Magazine</a> (4)</li>
+                            <li><a title="View all posts filed under Shopping" href="#">Shopping</a> (12)</li>
+                            <li><a title="View all posts filed under Graphic" href="#">Graphic</a> (12)</li>
+                            <li><a title="View all posts filed under Updates" href="#">Updates</a> (7)</li>
+                        </ul>
+                </div>*@
+                                
+			</aside><!-- End Sidebar -->
+		</div><!-- end large 4 -->
+
+        <div class="large-8 columns">
+            @RenderBody()		
+        </div>
+        } else {
+            @RenderBody()
+        }
+	</div><!-- end wrapper -->
+
+
+	<footer class="row">
+		<div class="large-4 columns">
+			<div class="widget">
+                <div class="logo">
+                    <a href="/"><img width="150" src="/images/logo.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+        
+		<div class="large-8 columns">
+			<div class="widget">
+			<h3 class="widget-title">
+				<span><i class="fa fa-quote-left"></i> Использование материалов</span>
+			</h3>                
+            <p class="copyright">© 2014 <a href="http://afspb.org.ru">Автомобильная Федерация Санкт-Петербурга и Ленинградской области</a>. Использование материалов допускается только со ссылкой на первоисточник информации.</p>
+            </div>
+		</div>
+        
+@*        <div class="large-4 columns">
+        <div class="widget">
+			<h3 class="widget-title">
+				<span><i class="fa fa-envelope"></i> Email Newsletter</span>
+			</h3>
+		<form id="subscribe">
+          <div class="row">
+            <div class="large-12 columns">
+              <div class="row collapse">
+                <div class="small-9 columns">
+                  <input type="text" placeholder="Enter your email address">
+                </div>
+                <div class="small-3 columns">
+                  <a href="#" class="button secondary prefix">Subscribe</a>
+                </div>
+              </div>
+            </div>
+           </div>
+        </form>
+        </div>
+        </div>*@
+
+    <div class="dmtop">Наверх</div>
+    </footer>
+    
+
+    <script>
+        document.write('<script src=/js/vendor/'
+          + ('__proto__' in {} ? 'zepto' : 'jquery')
+          + '.js><\/script>');
+    </script>
+
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="~/js/jquery.flexslider.js"></script>
+    <script src="~/js/tinynav.min.js"></script>
+	<script src="~/js/menu_min.js"></script>
+	<script src="~/js/foundation.min.js"></script>
+  <script src="~/js/foundation/foundation.orbit.js"></script>
+    <script src="~/js/foundation/foundation.section.js"></script>
+	<script src="~/js/jquery.prettyPhoto.js"></script>
+	<script src="~/js/script.js"></script>
+  <script>
+      $(document).foundation();
+      $('.select-chosen').chosen();
+  </script>
+
+    @RenderSection("Scripts",false)
+
+
+  
+</body>
+</html>

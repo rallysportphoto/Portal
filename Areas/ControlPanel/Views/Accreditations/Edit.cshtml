@@ -1,0 +1,206 @@
+﻿@model Portal.Models.Accreditation
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/ControlPanel/Views/Shared/_Admin.cshtml";
+}
+
+
+<!-- Pre Page Content -->
+            <div id="pre-page-content">
+                <h1><i class="glyphicon-show_thumbnails_with_lines themed-color"></i> Аккредитации<br><small>Изменение аккредитационной информации</small></h1>
+            </div>
+            <!-- END Pre Page Content -->
+
+            <!-- Page Content -->
+            <div id="page-content">
+                <!-- Breadcrumb -->
+                <ul class="breadcrumb breadcrumb-top">
+                    <li>
+                        <a href="/"><i class="glyphicon-display"></i></a> <span class="divider"><i class="icon-angle-right"></i></span>
+                    </li>
+                    <li>
+                        <a href="/controlpanel">Панель управления</a> <span class="divider"><i class="icon-angle-right"></i></span>
+                    </li>
+                    <li>
+                        <a href="/controlpanel/accreditations">Аккредитация</a> <span class="divider"><i class="icon-angle-right"></i></span>
+                    </li>
+                    <li><a href="">Изменение аккредитации</a></li>
+                </ul>
+                <!-- END Breadcrumb -->
+
+                <!-- Horizontal Form Block -->
+                <div class="block block-themed">
+                    <!-- Horizontal Form Title -->
+                    <div class="block-title">
+                        <h4></h4>
+                    </div>
+                    <!-- END Horizontal Form Title -->
+
+                    <!-- Horizontal Form Content -->
+                    <div class="block-content">
+                        @using (Html.BeginForm("Edit", "Accreditations", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.User.Id)
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.Car, new { @class = "control-label col-md-2" })
+            <div class="controls">
+                @Html.TextBoxFor(model => model.Car)
+                @Html.ValidationMessageFor(model => model.Car)
+            </div>
+        </div>
+        
+        <div class="block block-themed themed-default">
+            <div class="block-title"><h4>Журналист</h4></div>            
+            <div class="block-content full">
+                
+                <div class="control-group">
+                    @Html.LabelFor(model => model.User.LastName, new { @class = "control-label col-md-2" })
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.User.LastName)
+                        @Html.ValidationMessageFor(model => model.User.LastName)
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    @Html.LabelFor(model => model.User.FirstName, new { @class = "control-label col-md-2" })
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.User.FirstName)
+                        @Html.ValidationMessageFor(model => model.User.FirstName)
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    @Html.LabelFor(model => model.User.Passport, new { @class = "control-label col-md-2" })
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.User.Passport)
+                        @Html.ValidationMessageFor(model => model.User.Passport)
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    @Html.LabelFor(model => model.User.Email, new { @class = "control-label col-md-2" })
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.User.Email)
+                        @Html.ValidationMessageFor(model => model.User.Email)
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    @Html.LabelFor(model => model.User.Phone, new { @class = "control-label col-md-2" })
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.User.Phone)
+                        @Html.ValidationMessageFor(model => model.User.Phone)
+                    </div>
+                </div>
+                <div class="control-group">
+                    @Html.LabelFor(model => model.User.Address, new { @class = "control-label col-md-2" })
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.User.Address)
+                        @Html.ValidationMessageFor(model => model.User.Address)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @for (var iCnt = 0; iCnt < Model.Media.Count; iCnt++)
+        {
+            @Html.HiddenFor(model => model.Media[iCnt].Id)
+            <div class="block block-themed themed-default">
+                <div class="block-title"><h4>@Model.Media[iCnt].Media</h4></div>
+                <div class="block-content full">
+                    <div class="control-group">
+                        @Html.LabelFor(model => model.Media[iCnt].Media, new { @class = "control-label col-md-2" })
+                        <div class="controls">
+                            @Html.TextBoxFor(model => model.Media[iCnt].Media)
+                            @Html.ValidationMessageFor(model => model.Media[iCnt].Media)
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        @Html.LabelFor(model => model.Media[iCnt].Organisation, new { @class = "control-label col-md-2" })
+                        <div class="controls">
+                            @Html.TextBoxFor(model => model.Media[iCnt].Organisation)
+                            @Html.ValidationMessageFor(model => model.Media[iCnt].Organisation)
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        @Html.LabelFor(model => model.Media[iCnt].Position, new { @class = "control-label col-md-2" })
+                        <div class="controls">
+                            @Html.TextBoxFor(model => model.Media[iCnt].Position)
+                            @Html.ValidationMessageFor(model => model.Media[iCnt].Position)
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        @Html.LabelFor(model => model.Media[iCnt].Region, new { @class = "control-label col-md-2" })
+                        <div class="controls">
+                            @Html.TextBoxFor(model => model.Media[iCnt].Region)
+                            @Html.ValidationMessageFor(model => model.Media[iCnt].Region)
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        @Html.LabelFor(model => model.Media[iCnt].Edition, new { @class = "control-label col-md-2" })
+                        <div class="controls">
+                            @Html.TextBoxFor(model => model.Media[iCnt].Edition)
+                            @Html.ValidationMessageFor(model => model.Media[iCnt].Edition)
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        @Html.LabelFor(model => model.Media[iCnt].Frequency, new { @class = "control-label col-md-2" })
+                        <div class="controls">
+                            @Html.TextBoxFor(model => model.Media[iCnt].Frequency)
+                            @Html.ValidationMessageFor(model => model.Media[iCnt].Frequency)
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        @Html.LabelFor(model => model.Media[iCnt].Email, new { @class = "control-label col-md-2" })
+                        <div class="controls">
+                            @Html.TextBoxFor(model => model.Media[iCnt].Email)
+                            @Html.ValidationMessageFor(model => model.Media[iCnt].Email)
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        @Html.LabelFor(model => model.Media[iCnt].Fax, new { @class = "control-label col-md-2" })
+                        <div class="controls">
+                            @Html.TextBoxFor(model => model.Media[iCnt].Fax)
+                            @Html.ValidationMessageFor(model => model.Media[iCnt].Fax)
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        @Html.LabelFor(model => model.Media[iCnt].Phone, new { @class = "control-label col-md-2" })
+                        <div class="controls">
+                            @Html.TextBoxFor(model => model.Media[iCnt].Phone)
+                            @Html.ValidationMessageFor(model => model.Media[iCnt].Phone)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        
+
+         <div class="form-actions">
+            <button type="reset" class="btn btn-danger"><i class="icon-repeat"></i> Сбросить на начальные</button>
+            <button type="submit" class="btn btn-success"><i class="icon-ok"></i> Изменить</button>
+        </div>
+
+    </div>
+}
+                    </div>
+                    <!-- END Horizontal Form Content -->
+                </div>
+                <!-- END Horizontal Form Block -->
+</div>

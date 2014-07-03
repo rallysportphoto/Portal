@@ -1,0 +1,36 @@
+﻿@model Portal.Models.OfficialEvent
+@{
+    ViewBag.Title = "RegisterFinish";    
+}
+
+<div class="row">
+				<div class="large-12 columns">
+
+            		<div class="content">
+
+                    	<div class="singletop">
+                            <div class="search">
+                                <form method="get" action="#">
+									<input id="s" type="text" value="Search" name="s">
+                                </form>	
+                            </div>
+                            <nav class="breadcrumbs">
+                              <a href="/">Главная</a>   
+                              <a href="/timeline">Календарь</a>                                
+                              <a href="/timeline/@Model.Slug">@Model.Title</a>   
+                              <a class="current" href="#">Форма заявки на участие</a>
+                            </nav>
+                        </div>
+                        
+                        <div class="homeposttitle">
+                            <h3 class="widget-title">
+                                <span>
+                            			Ошибка.
+                                </span>
+                            </h3>  
+                        </div>
+                        <p>@ViewBag.Error</p>
+                        <a href="javascript:window.history.back();" class="button small">Вернуться к заполнению заявки</a>
+                    </div>
+                </div>
+</div>

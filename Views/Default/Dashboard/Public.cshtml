@@ -1,0 +1,157 @@
+﻿@model Portal.ViewModels.DashboardViewModel
+
+
+			<div class="row">
+				<div class="large-12 columns">
+
+                    @Html.Action("Featured","Dashboard",new { isMenu=false, domain = Model.Domain})				
+                
+                <div class="services clearfix">
+                    @foreach(var news in Model.Top3News) {
+                    <div class="box large-4 columns">
+                    <h3 class="widget-title">
+                    <span><i class="fa fa-laptop"></i> @news.Title</span>
+                    </h3>
+                        <p>@Html.Raw(news.Brief) <a href="/news/@news.Slug">далее →</a> </p>
+                    </div>
+                    }
+                </div><!-- end services -->
+                
+                @if (Model.UpcommingEvents.Any())
+                {
+                    <div class="homewidget clearfix">
+                        <h3 class="widget-title">
+                            <span>Ближайшие события</span>
+                        </h3>
+                        @foreach (var ev in Model.UpcommingEvents)
+                        {                            
+                             <div class="homepost large-6">
+                                <div class="homeposttitle">
+                                    <h3>
+                                        <i class="fa fa-ticket homeposticon"></i>
+                                        <a href="/timeline/@ev.Slug">@ev.Name</a>
+                                    </h3>
+                                    @if(DateTime.Now < ev.StartDate) {
+                                        <text>
+                                        <i class="fa fa-clock-o"></i> До старта осталось: 
+                                        <div class='countdown' data-stop='@ev.StartDate.ToString("yyyy-MM-ddTHH:mm:00")'></div>
+                                        </text>
+                                    } else if (DateTime.Now < ev.FinishDate) {
+                                        <text>
+                                        <i class="fa fa-flag-o"></i> До финиша осталось: <div class="countdown" data-stop="@ev.FinishDate.ToString("yyyy-MM-ddTHH:mm:00")"></div>
+                                        </text>
+                                    } else {
+                                        <text>
+                                        <i class="fa fa-flag-checkered"></i> Соревнование завершено
+                                        </text>
+                                    }<br />  
+                                    @if(ev.OrdersEnabled) {
+                                        <a href='/timeline/@ev.Slug/Register'>Подать заявку</a><br />
+                                    }
+                                    @if(ev.AccreditationsEnabled) {
+                                        <a href='/timeline/@ev.Slug/Accreditation'>Аккредитация СМИ</a><br />
+                                    }                              
+                                    @if(ev.TranslationEnabled) {
+                                        <a href='/timeline/@ev.Slug/Translation'>Трансляция результатов</a><br />
+                                    }                                                                         
+                                                                      
+                                </div>   
+                            </div>                        
+                        }
+                    </div><!-- end services -->
+                }
+
+                @if(Model.GlobalPartners.Any()) {
+                <div class="works clearfix">
+                    <div class="box large-12 columns">
+                        <h3 class="widget-title">
+                        <span>Партнеры</span>
+                        </h3>
+                    </div>
+                    @foreach(var item in Model.GlobalPartners.OrderBy(p=>p.Position)) {
+                        <div class="homeportfolio large-4 columns">
+                            <div class="entry">
+                                <a href="@Html.Raw(item.Url)">
+                                    <img src="@item.Logo" alt="@item.Name">                                    
+                                </a>
+                            </div>
+                            <h3><a href="@Html.Raw(item.Url)" target="_blank">@item.Title</a></h3>
+                        </div>    
+                    }
+                </div><!-- end works -->
+                }
+                
+                
+                
+                @*<div class="homewidget clearfix">
+                
+                    <div class="box large-6 columns">
+                        <h3 class="widget-title">
+                            <span>Recent Posts</span>
+                        </h3>
+                        
+                        <div class="homepost">
+                            <div class="homeposttitle">
+                                <h3>
+                                    <i class="fa fa-pencil homeposticon"></i>
+                                    <a href="single.html">Illustration of chalkboard with chalk.</a>
+                                </h3>
+                                <ul class="post-date clearfix">
+                                    <li><i class="fa fa-calendar"></i> Oct 13, 2013</li>
+                                    <li><i class="fa fa-user"></i> admin</li>
+                                </ul>
+                            </div>   
+                        </div>
+                        
+                        <div class="homepost">
+                            <div class="homeposttitle">
+                                <h3>
+                                    <i class="fa fa-film homeposticon"></i>
+                                    <a href="single.html">Illustration of chalkboard with chalk.</a>
+                                </h3>
+                                <ul class="post-date clearfix">
+                                    <li><i class="fa fa-calendar"></i> Oct 11, 2013</li>
+                                    <li><i class="fa fa-user"></i> admin</li>
+                                </ul>
+							</div>   
+                        </div>
+
+
+                    </div>
+                    
+                    <div class="box large-6 columns">
+                        <h3 class="widget-title">
+                        <span>Happy Customers</span>
+                        </h3>
+                        <ul class="clients">
+                            <li class="entry"><a href="#"><img alt="Client #1" src="images/client.png"></a><span class="magnifier"></span></li>
+                            <li class="entry"><a href="#"><img alt="Client #2" src="images/client.png"></a><span class="magnifier"></span></li>
+                            <li class="entry"><a href="#"><img alt="Client #3" src="images/client.png"></a><span class="magnifier"></span></li>
+                            <li class="entry"><a href="#"><img alt="Client #4" src="images/client.png"></a><span class="magnifier"></span></li>
+                            <li class="entry"><a href="#"><img alt="Client #5" src="images/client.png"></a><span class="magnifier"></span></li>
+                            <li class="entry"><a href="#"><img alt="Client #6" src="images/client.png"></a><span class="magnifier"></span></li>
+                        </ul>
+                    </div>
+                    
+                </div><!-- end homewidget -->*@
+                
+				</div><!-- large 12 -->
+			</div><!-- end row -->
+
+@section Scripts {
+    <script type="text/javascript" src="/js/vendor/timeTo/jquery.timeTo.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.countdown').each(function () {
+                var timeValue = $(this).data('stop');
+                $(this).timeTo({
+                    timeTo: new Date(timeValue),
+                    fontSize: 12
+                }).css('display','inline');
+            });
+        });
+    </script>
+}
+            
+
+

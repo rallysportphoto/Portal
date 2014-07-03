@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Portal.Models.FeaturableEvent>
+
+<li><a href="/competitions" class="active"><i class="fa fa-flag"></i> Крупнейшие события</a>
+<ul style="display:block">
+        @foreach (var item in Model.OrderBy(d => d.FinishDate))
+        {
+            var externalEvent = item as Portal.Models.ExternalEvent;
+            var officialEvent = item as Portal.Models.OfficialEvent;
+            if(externalEvent!=null) {
+                <li><a href="@Html.Raw(externalEvent.Url)" target="_blank">@externalEvent.Title</a></li>    
+            }
+            if (officialEvent != null)
+            {
+                <li><a href="/timeline/@officialEvent.Slug">@officialEvent.Title</a></li>
+            }
+        }        
+    </ul>				
+</li>

@@ -1,0 +1,85 @@
+﻿@model Portal.Models.Event
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/ControlPanel/Views/Shared/_Admin.cshtml";
+}
+<!-- Pre Page Content -->
+            <div id="pre-page-content">
+                <h1><i class="glyphicon-show_thumbnails_with_lines themed-color"></i> Календарь<br><small>Изменение типа соревнования</small></h1>
+            </div>
+            <!-- END Pre Page Content -->
+
+            <!-- Page Content -->
+            <div id="page-content">
+                <!-- Breadcrumb -->
+                <ul class="breadcrumb breadcrumb-top">
+                    <li>
+                        <a href="/"><i class="glyphicon-display"></i></a> <span class="divider"><i class="icon-angle-right"></i></span>
+                    </li>
+                    <li>
+                        <a href="/controlpanel">Панель управления</a> <span class="divider"><i class="icon-angle-right"></i></span>
+                    </li>
+                    <li>
+                        <a href="/controlpanel/timeline">Календарь</a> <span class="divider"><i class="icon-angle-right"></i></span>
+                    </li>
+                    <li><a href="">Изменение типа соревнования</a></li>
+                </ul>
+                <!-- END Breadcrumb -->
+
+                <!-- Horizontal Form Block -->
+                <div class="block block-themed">
+                    <!-- Horizontal Form Title -->
+                    <div class="block-title">
+                        <h4></h4>
+                    </div>
+                    <!-- END Horizontal Form Title -->
+
+                    <!-- Horizontal Form Content -->
+                    <div class="block-content">
+                        @using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">        
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+
+        @{
+            var selectedItem = 0;
+            if (Model is Portal.Models.ExternalEvent)
+            {
+                selectedItem = 1;
+            }
+            else if (Model is Portal.Models.OfficialEvent) {
+                selectedItem = 2;
+            }
+        }
+
+        <div class="control-group">
+                <label class="control-label">Тип соревнования</label>
+                <div class="controls">
+                    <label for="mode2">
+                        <input type="radio" id="mode1" name="mode" class="input-themed" value="0" @Html.Raw(selectedItem==0?"checked='checked'":"")> Запись календаря
+                    </label>
+                    <label for="mode2">
+                        <input type="radio" id="mode2" name="mode" class="input-themed" value="1" @Html.Raw(selectedItem==1?"checked='checked'":"")> Соревнование внешнего организатора
+                    </label>
+                    <label for="mode3">
+                        <input type="radio" id="mode3" name="mode" class="input-themed" value="2" @Html.Raw(selectedItem==2?"checked='checked'":"")> Официальная информация
+                    </label>
+                </div>
+            </div>
+
+        <div class="form-actions">
+            <button type="reset" class="btn btn-danger"><i class="icon-repeat"></i> По-умолчанию</button>
+            <button type="submit" class="btn btn-success"><i class="icon-ok"></i> Изменить</button>
+        </div>
+    </div>
+}
+                    </div>
+                    <!-- END Horizontal Form Content -->
+                </div>
+                <!-- END Horizontal Form Block -->
+</div>
+

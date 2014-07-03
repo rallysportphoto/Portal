@@ -1,0 +1,27 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Portal.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Theme" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">WhiteNights</Value>
+    </Setting>
+    <Setting Name="BaseDomain" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">afspb.org.local</Value>
+    </Setting>
+    <Setting Name="Portal_TrackMePro_PortalConnector" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://track-me.pro/EndPoints/PortalConnector/PortalConnector.asmx</Value>
+    </Setting>
+    <Setting Name="ShowFeaturedOnMainPage" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="FallbackUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ImageThumbnailWidth" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">406</Value>
+    </Setting>
+    <Setting Name="ImageThumbnailHeight" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">275</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

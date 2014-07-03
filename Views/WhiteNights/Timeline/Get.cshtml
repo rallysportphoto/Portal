@@ -1,0 +1,173 @@
+﻿@model Portal.ViewModels.EventViewModel
+
+@{
+    ViewBag.Title = "Get";    
+}
+
+
+<section id="headline2">
+<div class="container">
+<h3>@Model.Title</h3>
+</div>
+</section>
+
+<section class="container page-content" >
+
+<p>&nbsp;</p>
+<div class="row">
+<div class="eleven columns">
+
+<h1><strong>@Model.Dates</strong></h1>	
+<h4>@Model.Description</h4>
+
+</div>
+</div>
+<br class="clear">
+<p>&nbsp;</p>
+
+@if(Model.Series.SelectMany(s=>s.Galleries).Any()) {
+<div class="sixteen columns">
+<div class="title">
+<h4>Медиа</h4>
+</div>
+</div>
+<p>&nbsp;</p>
+<br class="clear">	
+
+
+<div class="sixteen columns">
+
+    <div  class="portfolio">
+        @{ var iCnt=0; }
+
+        @foreach(var item in Model.Series.SelectMany(s=>s.Galleries)) {
+            if(string.IsNullOrWhiteSpace(item.Code)) {
+                <div class="portfolio-item one-third column entry video -item @(iCnt++ %3 == 2? "right-item":"")">
+                    <a class="Single-Item"  href="/media/@Html.Raw(item.Slug)">
+                            <img src="@Html.Raw(item.LogoThumbnail)" border="0" />                            
+                    </a>
+                    <a href="/media/@Html.Raw(item.Slug)">
+                        <h5> @item.Name </h5>		                
+                    </a>
+                </div>
+                    <!-- end-portfolio-item-->
+            } else {
+                <div class="portfolio-item one-third column entry video -item @(iCnt++ %3 == 2? "right-item":"")">
+                    <a class="Single-Item" >
+                        @Html.Raw(item.Code)                            
+                    </a>
+                    <a href="#">
+                        <h5> @item.Name </h5>		                
+                    </a>
+                </div>
+                    <!-- end-portfolio-item-->
+            }
+        }
+    </div>
+</div>
+<div class="white-space"></div>
+}
+
+@if(Model.Series.Any()) {
+<div class="sixteen columns">
+<div class="title">
+<h4>Зачеты</h4>
+</div>
+<p>&nbsp;</p>
+    @{ var bFirstSeries = true; }
+<ul id="myTab" class="nav nav-tabs">
+    @foreach (var item in Model.Series)
+    {
+        if (bFirstSeries)
+        {
+            bFirstSeries = false;
+            <li><a href="#@item.Slug" class="active" data-toggle="tab">@item.SeriesName</a></li>        
+        } else {
+            <li><a href="#@item.Slug" data-toggle="tab">@item.SeriesName</a></li>        
+        }
+    }
+</ul>
+<div id="myTabContent" class="tab-content">
+    @{ bFirstSeries = true; }
+    @foreach (var item in Model.Series)
+    {
+        <div class="tab-pane fade @Html.Raw(bFirstSeries ? " in active" : "")" id="@item.Slug">
+            @{
+                bFirstSeries = false;  
+            }
+            <div class="two columns"><img src="/Content/WhiteNights/images/slider-icons-big3.png" alt=""></div>
+            <div class="thirteen columns omega">
+                <p>&nbsp;</p>
+                <h5 class="helvetic5">@item.Title</h5>
+
+                @if (!string.IsNullOrWhiteSpace(item.MapThumbnailUrl710))
+                {
+                    <p>
+                    <a href="@Html.Raw(item.MapUrl)" class="fancy">
+                        <img src="@Html.Raw(item.MapThumbnailUrl710)" />
+                    </a>
+                    </p>
+                    @Html.Raw(item.Description)
+                    if (item.Documents.Any())
+                    {   
+                        <h3>Документы</h3>                     
+                        <p>                        
+                        @foreach (var file in item.Documents)
+                        {
+                            <a href="/file/@Html.Raw(file.FileName)">@file.Title</a><br />
+                        }
+                        </p>
+                    }                                        
+                }
+                <p>&nbsp;</p>
+            </div>
+        </div>
+    }
+        
+    </div><!-- end -->
+    </div>
+    <div class="white-space"></div>
+}
+
+@if (Model.Series.SelectMany(s => s.Partners).Any())
+{
+    <div class="sixteen columns">
+    <div class="title">
+    <h4>Партнеры</h4>
+    </div>
+    <div class="jcarousel-container">
+    <div class="jcarousel-clip">
+    <ul id="our-clients" class="our-clients">
+        @foreach (var partner in Model.Series.SelectMany(s => s.Partners).OrderBy(s=>s.Position))
+        {
+            <li><img src="@partner.LogoLow" alt=""></li>
+        }    
+    </ul>
+    </div></div>
+    </div>
+    <div class="white-space"></div>
+}
+
+</section><!-- container -->
+
+@section Scripts {
+    <script type="text/javascript" src="/Content/WhiteNights/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+    <script type="text/javascript" src="/Content/WhiteNights/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+    
+    <script type="text/javascript" src="/Content/WhiteNights/js/jcarousel.js" ></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            jQuery('#our-clients').jcarousel();
+            $("a.fancy").fancybox({
+                'titlePosition': 'outside',
+                'overlayColor': '#000',
+                'overlayOpacity': 0.9
+            });
+        });
+</script> 
+<script type="text/javascript" src="/Content/WhiteNights/js/yalin-custom.js" ></script>
+<script src="/Content/WhiteNights/js/bootstrap-alert.js"></script>
+<script src="/Content/WhiteNights/js/bootstrap-dropdown.js"></script>
+<script src="/Content/WhiteNights/js/bootstrap-tab.js"></script>
+<script src="/Content/WhiteNights/js/bootstrap-tooltip.js"></script>
+}

@@ -1,0 +1,26 @@
+extensions: designer.cs generated.cs
+extensions: .cs .cpp .h
+/*
+
+ Copyright (c) 2013-2014 Dmitry Fedorov
+ Distributed under the GNU GPL v2. For full terms see the file COPYING.txt
+
+*/
+extensions: .aspx .ascx
+<%-- 
+ Copyright (c) 2013-2014 Dmitry Fedorov
+ Distributed under the GNU GPL v2. For full terms see the file COPYING.txt
+--%>
+extensions: .vb
+'Copyright (c) 2013-2014 Dmitry Fedorov
+ 'Distributed under the GNU GPL v2. For full terms see the file COPYING.txt
+extensions:  .xml .config .xsd
+<!--
+Copyright (c) 2013-2014 Dmitry Fedorov
+ Distributed under the GNU GPL v2. For full terms see the file COPYING.txt
+-->
+extensions:  .cshtml
+@*
+Copyright (c) 2013-2014 Dmitry Fedorov
+ Distributed under the GNU GPL v2. For full terms see the file COPYING.txt
+*@

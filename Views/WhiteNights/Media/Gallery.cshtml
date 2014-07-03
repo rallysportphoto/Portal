@@ -1,0 +1,63 @@
+﻿@model Portal.ViewModels.GalleryViewModel
+
+@{
+    ViewBag.Title = "Index";    
+}
+<section id="headline">
+    <div class="container">
+        <h3>Фото - <small>@Model.Name</small></h3>
+    </div>
+</section>
+
+<section class="container page-content" >
+    @*<nav class="primary clearfix">
+
+        <ul>
+            <li><a href="#" class="selected" data-filter="*">All</a></li>
+            <li><a class="" href="#" data-filter=".web">Web Design</a></li>
+            <li><a class="" href="#" data-filter=".logg">Logo</a></li>
+            <li><a class="" href="#" data-filter=".video">Video</a></li>
+            <li><a class="" href="#" data-filter=".print">Print </a></li>
+        </ul>
+    </nav>*@
+
+    <p>@Model.Description</p>
+
+    <div  class="portfolio">
+
+        @{ var iCnt=0; }
+
+        @foreach(var item in Model.Images) {
+            <div class="portfolio-item one-third column entry video -item @(iCnt++ %3 == 2? "right-item":"")">
+                <a class="Single-Item" rel="gallery" href="@Html.Raw(item.FileName)">
+                        <img src="@Html.Raw(item.Logo)" border="0" />                        
+                </a>                
+            </div>
+                <!-- end-portfolio-item-->
+        }
+
+
+    </div><!-- end-portfolio -->
+
+    <script src="/Content/WhiteNights/isotope/isotope.js"></script>
+<script src="/Content/WhiteNights/isotope/isotope-custom.js"></script>
+<script type="text/javascript" src="/Content/WhiteNights/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+<script type="text/javascript" src="/Content/WhiteNights/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        /*
+        *   Examples - images
+        */
+
+        $("a.Single-Item").fancybox({
+            'titlePosition': 'outside',
+            'overlayColor': '#000',
+            'overlayOpacity': 0.9
+        });
+
+
+    });
+</script>
+
+</section><!-- container -->

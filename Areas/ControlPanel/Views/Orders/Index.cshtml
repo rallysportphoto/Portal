@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Portal.Areas.ControlPanel.Models.OrderListSummaryViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/ControlPanel/Views/Shared/_Admin.cshtml";
+}
+<!-- Page Content -->
+<div id="page-content">
+    <!-- Breadcrumb -->
+    <ul class="breadcrumb breadcrumb-top">
+        <li>
+            <a href="/"><i class="glyphicon-display"></i></a> <span class="divider"><i class="icon-angle-right"></i></span>
+        </li>
+        <li>
+            <a href="/controlpanel">Панель управления</a> <span class="divider"><i class="icon-angle-right"></i></span>
+        </li>
+        <li><a href="">Заявки</a></li>
+    </ul>
+    <!-- END Breadcrumb -->
+    <div class="block-section">        
+       <div class="row-fluid">
+           @{var iCnt = 1;}
+           @foreach(var ev in Model) {
+               <div class="span3">
+                        <div class="block block-themed themed-default">
+                        <div class="block-title"><h4>@ev.EventName<br />@ev.SubEvent</h4></div>
+                        <div class="block-content full">
+                            Заявлено: @ev.OrdersCount<br />
+                            Отозвано: @ev.RedimmedCount<br />
+                            Без стартовых номеров: @ev.OrdersWithoutNumbersCount<br />
+                                                       
+                            @Html.ActionLink("Назначение стартовых номеров", "StartNumbers", new { id = ev.Id })<br />
+                            @Html.ActionLink("Список заявок", "List", new { id = ev.Id })
+                        </div>
+                    </div>
+                </div>
+                if (iCnt++ % 4 == 0)
+                {
+                    <text>
+                    @Html.Raw("</div><div class='row-fluid'>")
+                    </text>
+                }
+           }
+       </div>
+    </div>
+</div>

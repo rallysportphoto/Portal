@@ -1,0 +1,343 @@
+﻿@model Portal.Models.OfficialEvent
+
+@{
+    ViewBag.Title = "Register";    
+}
+
+<div class="row">
+				<div class="large-12 columns">
+
+            		<div class="content">
+
+                    	<div class="singletop">
+                            <div class="search">
+                                <form method="get" action="#">
+									<input id="s" type="text" value="Search" name="s">
+                                </form>	
+                            </div>
+                            <nav class="breadcrumbs">
+                              <a href="/">Главная</a>   
+                              <a href="/timeline">Календарь</a>                                
+                              <a href="/timeline/@Model.Slug">@Model.Title</a>   
+                              <a class="current" href="#">Форма заявки на участие</a>
+                            </nav>
+                        </div>
+                        
+                        <div class="homeposttitle">
+                            <h3 class="widget-title">
+                                <span>
+                            			Заявка на участие в @Model.Title
+                                </span>
+                            </h3>  
+                        </div>
+                        
+                        <form action="/timeline/@Model.Slug/Register" method="post" role="form">                        
+                            @Html.AntiForgeryToken()
+               	          <div class="large-12 columns">
+                                 <label for="car">Зачеты</label>                                 
+                                 <select id="groups" name="groups" class="select-chosen" multiple>
+                                    @foreach (var tag in Model.SubEvents)                                                
+                                    {
+                                        foreach(var group in tag.Groups) {
+                                            <option value="@(tag.Id + "_" + @group.Id)">@tag.Series.ShortName: @group.Title</option>
+                                        }
+                                    }
+                                 </select>                                                                                                                 
+
+                                 <div class="row">
+                                     <h4>Участник</h4>                                     
+
+                                     <div class="row">
+                                         <div class="large-8 columns">
+                                            <label for="car">Участник</label>
+                                            @Html.TextBox("Entrant","",new { @class="form-control"})
+                                         </div>
+                                         <div class="large-4 columns entrant-found" style="display:none;">
+                                             <p>Участник найден в базе. Ввод дополнительных данных не требуется.</p>
+                                         </div>
+                                         <div class="large-4 columns entrant-details">
+                                             <label for="car">Город, страна</label>
+                                            @Html.TextBox("EntrantCity","",new { @class="form-control"})
+                                        </div>
+                                     </div>
+
+                                     
+                                     <div class="row">
+                                     <div class="large-3 columns entrant-details">
+                                        <label for="car">Лицензия заявителя</label>
+                                        @Html.TextBox("EntrantLicense","",new { @class="form-control"})
+                                     </div>
+
+                                     <div class="large-3 columns entrant-details">
+                                        <label for="car">Выдана НАФ</label>
+                                        @Html.TextBox("EntrantASN","",new { @class="form-control"})
+                                     </div>
+
+                                     <div class="large-6 columns entrant-details">
+                                     <label for="car">Контактный адрес</label>
+                                     @Html.TextBox("EntrantAddress","",new { @class="form-control"})
+                                     </div>
+                                     </div>
+                                     <div class="row">
+                                     <div class="large-3 columns entrant-details">
+                                        <label for="car">Телефон для связи</label>
+                                        @Html.TextBox("EntrantPhone","",new { @class="form-control"})
+                                     </div>
+
+                                     <div class="large-3 columns entrant-details">
+                                        <label for="car">Факс</label>
+                                        @Html.TextBox("EntrantFax","",new { @class="form-control"})
+                                     </div>
+
+                                     <div class="large-6 columns entrant-details">
+                                     <label for="car">E-mail</label>
+                                     @Html.TextBox("EntrantEmail","",new { @class="form-control"})
+                                     </div>
+                                     </div>
+
+                                     
+                                     <hr />
+                                 </div>
+
+                                 <div class="row">
+                                    <h4>1й водитель</h4>
+                                     <div class="row">
+                                         <div class="large-3 columns">
+                                            <a href="#" id="btnDriver1UseMyData" class="button small">Использовать информацию обо мне</a>                                            
+                                         </div>
+                                         <div class="large-3 columns">
+                                            <label for="car">Лицензия водителя</label>
+                                            @Html.TextBox("Driver1License","",new { @class="form-control"})
+                                         </div>
+                                         <div class="large-6 columns"></div>
+                                         <div class="large-6 columns driver1-found" style="display:none;">Водитель найден в базе. Ввод дополнительных данных не требуется.</div>
+                                         <div class="large-6 columns driver1-me" style="display:none;">Используются мои данные. Дополнительный ввод данных не требуется.</div>
+                                     </div>
+                                     <div class="row">
+                                         <label for="car">Фамилия, имя</label>
+                                         <div class="large-6 columns">                                            
+                                            @Html.TextBox("Driver1LastName","",new { @class="form-control name"})
+                                         </div>
+                                         <div class="large-6 columns">
+                                            @Html.TextBox("Driver1FirstName","",new { @class="form-control name"})
+                                         </div>
+                                     </div>
+                                     <div class="row">
+                                         <div class="large-6 columns driver1-details">
+                                             <label for="car">Город, страна</label>
+                                             @Html.TextBox("Driver1City","",new { @class="form-control"})
+                                         </div>
+                                         <div class="large-3 columns driver1-details">
+                                             <label for="car">Дата рождения</label>
+                                             @Html.TextBox("Driver1BirthDate","",new { @class="form-control"})
+                                         </div>
+                                         <div class="large-3 columns driver1-details">
+                                             <label for="car">Контактный телефон</label>
+                                             @Html.TextBox("Driver1Phone","",new { @class="form-control"})
+                                         </div>
+                                     </div>
+                                     <div class="row">
+                                         <div class="large-6 columns driver1-details">
+                                             <label for="car">Адрес</label>
+                                             @Html.TextBox("Driver1Address","",new { @class="form-control"})
+                                         </div>
+                                         <div class="large-6 columns driver1-details">
+                                             <label for="car">Паспортные данные</label>
+                                             @Html.TextBox("Driver1Passport","",new { @class="form-control"})
+                                         </div>
+                                     </div>
+                                     <input type="hidden" name="Driver1Id" id ="Driver1Id" value="null" />
+                                 <hr />     
+                                 </div>
+                                 
+                                 @if(ViewBag.Driver2Enabled) {
+                                 <div class="row">
+                                    <h4>2й водитель</h4>
+                                     <div class="row">
+                                         <div class="large-3 columns">
+                                            <a href="#" id="btnDriver2UseMyData" class="button small" title="Использовать информацию обо мне">Использовать информацию обо мне</a>                                            
+                                         </div>
+                                         <div class="large-3 columns">
+                                            <label for="car">Лицензия водителя</label>
+                                            @Html.TextBox("Driver2License","",new { @class="form-control"})
+                                         </div>
+                                         <div class="large-6 columns"></div>
+                                         <div class="large-6 columns driver2-found" style="display:none;">Водитель найден в базе. Ввод дополнительных данных не требуется.</div>
+                                            <div class="large-6 columns driver2-me" style="display:none;">Используются мои данные. Дополнительный ввод данных не требуется.</div>                                            
+                                     </div>
+                                     <div class="row">
+                                         <label for="car">Фамилия, имя</label>
+                                         <div class="large-6 columns">                                            
+                                            @Html.TextBox("Driver2LastName","",new { @class="form-control"})
+                                         </div>
+                                         <div class="large-6 columns">
+                                            @Html.TextBox("Driver2FirstName","",new { @class="form-control"})
+                                         </div>
+                                     </div>
+                                     <div class="row">
+                                         <div class="large-6 columns driver2-details">
+                                             <label for="car">Город, страна</label>
+                                             @Html.TextBox("Driver2City","",new { @class="form-control"})
+                                         </div>
+                                         <div class="large-3 columns driver2-details">
+                                             <label for="car">Дата рождения</label>
+                                             @Html.TextBox("Driver2BirthDate","",new { @class="form-control"})
+                                         </div>
+                                         <div class="large-3 columns driver2-details">
+                                             <label for="car">Контактный телефон</label>
+                                             @Html.TextBox("Driver2Phone","",new { @class="form-control"})
+                                         </div>
+                                     </div>
+                                     <div class="row">
+                                         <div class="large-6 columns driver2-details">
+                                             <label for="car">Адрес</label>
+                                             @Html.TextBox("Driver2Address","",new { @class="form-control"})
+                                         </div>
+                                         <div class="large-6 columns driver2-details">
+                                             <label for="car">Паспортные данные</label>
+                                             @Html.TextBox("Driver2Passport","",new { @class="form-control"})
+                                         </div>
+                                     </div>
+                                     <input type="hidden" name="Driver2Id" id ="Driver2Id" value="null" />
+                                 <hr />     
+                                 </div> 
+                                 }
+                                                                                                                                          
+                                 @* Пока не предлагаем выбрать из списка. Будем это добавлять позднее *@
+                                 <div class="row">
+                                     <h4>Автомобиль</h4>            
+                                     
+                                     <div class="row">
+                                         <div class="large-4 columns">                                      
+                                            <label for="car">Марка</label>
+                                            @Html.TextBox("Mark","",new { @class="form-control"})
+                                        </div>
+
+                                         <div class="large-4 columns">
+                                            <label for="car">Модель</label>
+                                            @Html.TextBox("Model","",new { @class="form-control"})
+                                         </div>
+                                         <div class="large-4 columns">
+                                            <label for="car">Гос. номер</label>
+                                            @Html.TextBox("Number","",new { @class="form-control"})
+                                         </div>
+                                      </div>
+                                     <div class="row">
+                                         <div class="large-4 columns">
+                                            <label for="car">Год выпуска</label>
+                                            @Html.TextBox("Year","",new { @class="form-control"})
+                                         </div>
+
+                                         <div class="large-4 columns">
+                                            <label for="car">Объем двигателя</label>
+                                            @Html.TextBox("Engine","",new { @class="form-control"})
+                                         </div>
+                                         <div class="large-4 columns"></div>
+                                         <hr />
+                                     </div>
+                                 </div>
+
+                                <input type="submit" name="submit" id="submit" class="button small" value="Подать заявку" />                                                						                                                  
+                                 </div>
+                        </form>
+                    </div>
+				</div><!-- large 12 -->
+			</div><!-- end row -->
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#Entrant').on('input', function () {
+                if ($(this).val().length > 2) {                    
+                    $(document).ajaxStop();
+                    $.getJSON('/search/team?name=' + $(this).val(), function (response) {
+                        if (response.found) {
+                            $('.entrant-details').hide();
+                            $('.entrant-found').show();
+                        }
+                        else {
+                            $('.entrant-details').show();
+                            $('.entrant-found').hide();
+                        }
+                    });
+                }
+            });
+
+            $('#Driver1License').on('input', function () {
+                if ($(this).val().length > 2) {
+                    $(document).ajaxStop();
+                    $.getJSON('/search/driver?license=' + $(this).val(), function (response) {
+                        if (response.found) {
+                            $('.driver1-details').hide();
+                            $('.driver1-found').show();
+
+                            $('#Driver1LastName').val(response.lastName).attr("disabled", true);
+                            $('#Driver1FirstName').val(response.firstName).attr("disabled", true);
+                        }
+                        else {
+                            $('.driver1-details').show();
+                            $('.driver1-found').hide();
+                            
+                            $('#Driver1LastName').attr("disabled", false);
+                            $('#Driver1FirstName').attr("disabled", false);
+                        }
+                    });
+                }
+            });
+
+            $('#Driver2License').on('input', function () {
+                if ($(this).val().length > 2) {
+                    $(document).ajaxStop();
+                    $.getJSON('/search/driver?license=' + $(this).val(), function (response) {
+                        if (response.found) {
+                            $('.driver2-details').hide();
+                            $('.driver2-found').show();
+
+                            $('#Driver2LastName').val(response.lastName).attr("disabled", true);
+                            $('#Driver2FirstName').val(response.firstName).attr("disabled", true);
+                        }
+                        else {
+                            $('.driver2-details').show();
+                            $('.driver2-found').hide();
+
+                            $('#Driver2LastName').attr("disabled", false);
+                            $('#Driver2FirstName').attr("disabled", false);
+                        }
+                    });
+                }
+            });
+
+            $('#btnDriver1UseMyData').click(function () {
+                $(document).ajaxStop();
+                $.getJSON('/search/me', function (response) {
+                    if (response.found) {
+                        $('.driver1-details').hide();
+                        $('.driver1-me').show();
+
+                        $('#Driver1LastName').val(response.lastName).attr("disabled", true);
+                        $('#Driver1FirstName').val(response.firstName).attr("disabled", true);
+                        $('#Driver1License').val(response.license);
+                        $('#Driver1Id').val(response.userId);
+                    }
+
+                });
+            });
+
+            $('#btnDriver2UseMyData').click(function () {
+                $(document).ajaxStop();
+                $.getJSON('/search/me', function (response) {
+                    if (response.found) {
+                        $('.driver2-details').hide();
+                        $('.driver2-me').show();
+
+                        $('#Driver2LastName').val(response.lastName).attr("disabled", true);
+                        $('#Driver2FirstName').val(response.firstName).attr("disabled", true);
+                        $('#Driver2Id').val(response.userId);
+                    }
+
+                });
+            });
+        });
+    </script>
+
+}

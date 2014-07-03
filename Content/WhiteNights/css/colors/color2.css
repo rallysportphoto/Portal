@@ -1,0 +1,15 @@
+/* #Color2 Styles
+================================================== */
+
+#footer { border-top:5px solid #93516a; }
+#headline2 { background-color:#93516a; }
+#top-head { border-bottom:4px solid #f9f6f7; background:#f0e6ea; }
+#nav a { border-top-color:#f9f6f7; }
+#hero { border-top:4px solid #f7f1f3; border-bottom:4px solid #f7f1f3; }
+.dark.bluebox, .l1-s1, h4.tit4blg span { background:#93516a; }
+ul#main-port li { background-color:#e9e3e5;}
+ul#main-port li:nth-child(even) { background-color:#f4eef0;}
+ul#main-port li.active9 { background:#fafafa; border-bottom-color:#ffcc00; }
+.jcarousel-next, .jcarousel-prev { background-color:#b98498;  }
+.jcarousel-next-disabled, .jcarousel-next-disabled:hover,
+.jcarousel-prev-disabled, .jcarousel-prev-disabled:hover {	background-color: #e5eae5;	cursor: auto; }

@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="ru"> <!--<![endif]-->
+<head>
+
+	<!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>Ралли Белые Ночи</title>
+	<meta name="description" content="Ралли Белые Ночи. История и наше время.">
+	<meta name="author" content="Техническая команда Автомобильной Федерации Санкт-Петербурга">
+
+	<!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- CSS
+  ================================================== -->
+	<link rel="stylesheet" href="/Content/WhiteNights/css/style.css" type="text/css"  media="all">
+	<link rel="stylesheet" href="/Content/WhiteNights/fancybox/fancybox.css" type="text/css">
+	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900|Oswald:300,400' rel='stylesheet' type='text/css'>
+
+	<!-- JS
+  ================================================== -->
+   <script type="text/javascript" src="/Content/WhiteNights/js/jquery.min.js" ></script>
+	<!-- HTML5 Shiv events -->
+   <script type="text/javascript" src="/Content/WhiteNights/js/modernizr.custom.11889.js" ></script>
+    <!-- HTML5 Shiv events (end)-->
+    <script type="text/javascript" src="/Content/WhiteNights/js/nav-resp.js"></script>
+	<script type="text/javascript">
+
+	    (function (i, s, o, g, r, a, m) {
+	        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+	            (i[r].q = i[r].q || []).push(arguments)
+	        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+	    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+	    ga('create', 'UA-21436499-16', 'whitenightsrally.ru');
+	    ga('send', 'pageview');
+
+	</script>
+
+	<!-- Favicons
+  ================================================== -->
+	<link rel="shortcut icon" href="/Content/WhiteNights/images/favicon.ico">
+
+    </head>
+<body>
+
+	<!-- Primary Page Layout
+	================================================== -->
+
+<div id="wrap">
+<section id="top-head">
+<div class="container">
+@*<div class="top-links"><img src="/Content/WhiteNights/images/ico-ad04.png" alt=""> <a href="#">Form</a> | <a href="#">Terms</a> | <a href="#">Contact</a></div>*@
+<div class="top-social">
+    @*<a href="#"><img src="/Content/WhiteNights/images/social-icons/facebook.png" alt=""></a>
+    <a href="#"><img src="/Content/WhiteNights/images/social-icons/twitter.png" alt=""></a>
+    <a href="#"><img src="/Content/WhiteNights/images/social-icons/youtube.png" alt=""></a>
+    <a href="#"><img src="/Content/WhiteNights/images/social-icons/linkedin.png" alt=""></a>
+    <a href="#"><img src="/Content/WhiteNights/images/social-icons/rss.png" alt=""></a></div></div>*@
+</section>
+<header id="header" class="container">
+<div class="four columns logo"><a href="/"><img src="/Content/WhiteNights/images/logo.png" alt="Ралли Белые Ночи"></a><br>
+<h4 class="slogan1">Старейшее ралли в России</h4></div>
+<nav id="nav-wrap" class="twelve columns">
+					<ul id="nav">
+				        <li><a data-description="Что есть? И что было?" href="/">Хронология</a></li>
+                        <li><a data-description="Как выглядело?" href="/media">Фото и видео</a></li>
+                        @*<li><a data-description="Кто? Когда? На каком месте?" href="/results">Результаты</a></li>*@
+                        @*<li><a data-description="Как связаться?" href="/contacts">Контакты</a></li>                        *@
+					</ul>
+	</nav>
+		<!-- /nav-wrap -->
+<p>&nbsp;</p>
+</header><!-- end-header -->
+
+@RenderBody()
+
+<footer id="footer">
+<div class="container footer-in">
+<div class="disclaimer four columns">
+<h4 class="subtitle">Благодарности</h4>
+<br />
+<p>
+Благодарим Людмилу Белолипскую, Александра Фейерабенда, Александра Маржецкого, Игоря Апухтина, Валерия Богатырева, Сергея Герасименко, Лину Арнаутову за помощь в подготовке материалов.
+</p>
+<br />
+<div class="copyright-txt">&nbsp; © 2014. Автомобильная Федерация Санкт-Петербурга.<br>
+@*<a href="#" class="terms">Terms of Service</a> | <a href="#" class="terms">Privacy Policy</a>*@</div>
+</div><!-- Disclaimer -->
+
+
+<div class="four columns">
+<h4 class="subtitle">Мы ВКонтакте</h4>
+<br />
+<script type="text/javascript" src="//vk.com/js/api/openapi.js?113"></script>
+
+<!-- VK Widget -->
+<div id="vk_groups"></div>
+<script type="text/javascript">
+    VK.Widgets.Group("vk_groups", { mode: 0, width: "300", height: "400", color1: 'FFFFFF', color2: '2B587A', color3: '5B7FA6' }, 61701817);
+</script>
+</div><!-- end-follow2 -->
+
+<div class="four columns">
+<h4 class="subtitle">flickr photostream</h4>
+<br />
+<div class="flickr-feed">
+<script type="text/javascript" src="http://www.flickr.com/badge_code.gne?count=12&display=random&size=square&nsid=125521723@N02&raw=1"></script>
+<div class="clear"></div>
+</div>
+</div><!-- end-flickr -->
+
+<div class="four columns">
+<h4 class="subtitle">Контактная информация</h4>
+<br />
+<p><img src="/Content/WhiteNights/images/social_address.png" class="alignleft"  alt="">&nbsp;<strong>Адрес:</strong>
+<br />
+Санкт-Петербург, ВО, Тучков переулок, д. 24</p>
+
+<p><img src="/Content/WhiteNights/images/social_phone.png" class="alignleft" alt="">&nbsp;<strong>Стационарный телефон:</strong>
+<br />
++7 (812) 328 6862<br />
+</p>
+
+<p><img src="/Content/WhiteNights/images/social_phone.png" class="alignleft" alt="">&nbsp;<strong>Телефон соревнования:</strong>
+<br />
++7 (921) 750 6820<br />
+</p>
+
+<p><img src="/Content/WhiteNights/images/social_mail.png" class="alignleft" alt="">&nbsp;<strong>Email организатора:</strong>
+<br />
+afspb@list.ru<br />
+</p>
+
+<p><img src="/Content/WhiteNights/images/social_mail.png" class="alignleft" alt="">&nbsp;<strong>По вопросам развития сайта:</strong>
+<br />
+rallysportphoto@live.ru<br />
+</p>
+</div><!-- end-contact2 -->
+</div><!-- end-footer-in -->
+<div class="footbot" >
+@*<img src="/Content/WhiteNightsimages/logo-footer.png" alt="">*@
+</div><!-- end-footbot -->
+</footer>
+<!-- end-footer -->
+<span id="scroll-top"><a class="scrollup"></a></span>
+</div><!-- end-wrap -->
+<!-- End Document
+================================================== -->
+<script type="text/javascript" src="/Content/WhiteNights/js/jcarousel.js" ></script>
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        jQuery('#main-port').jcarousel(), jQuery('#our-clients').jcarousel();
+    });
+</script>  
+<script type="text/javascript" src="/Content/WhiteNights/js/yalin-custom.js" ></script>
+
+<script src="/Content/WhiteNights/layerslider/jQuery/jquery-easing-1.3.js" type="text/javascript"></script>
+
+@RenderSection("Scripts",false)
+
+</body>
+</html>

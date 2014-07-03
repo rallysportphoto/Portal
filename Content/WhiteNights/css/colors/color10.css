@@ -1,0 +1,15 @@
+/* #Color9 Styles
+================================================== */
+
+#footer { border-top:5px solid #ea8005; }
+#headline2 { background-color:#ea8005; }
+#top-head { border-bottom:4px solid #fef8f0; background:#fceddc; }
+#nav a { border-top-color:#fef8f0; }
+#hero { border-top:4px solid #fdf4e8; border-bottom:4px solid #fdf4e8; }
+.dark.bluebox, .l1-s1, h4.tit4blg span { background:#ea8005; }
+ul#main-port li { background-color:#f3ede8;}
+ul#main-port li:nth-child(even) { background-color:#f5f4f1;}
+ul#main-port li.active9 { background:#fdfcf9; border-bottom-color:#ffcc00; }
+.jcarousel-next, .jcarousel-prev { background-color:#e69a42;  }
+.jcarousel-next-disabled, .jcarousel-next-disabled:hover,
+.jcarousel-prev-disabled, .jcarousel-prev-disabled:hover {	background-color: #e5eae5;	cursor: auto; }

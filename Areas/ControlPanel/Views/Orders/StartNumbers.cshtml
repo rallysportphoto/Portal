@@ -1,0 +1,113 @@
+﻿@model IEnumerable<Portal.Models.Order>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Areas/ControlPanel/Views/Shared/_Admin.cshtml";
+}
+
+<!-- Page Content -->
+<div id="page-content">
+    <!-- Breadcrumb -->
+    <ul class="breadcrumb breadcrumb-top">
+        <li>
+            <a href="/"><i class="glyphicon-display"></i></a> <span class="divider"><i class="icon-angle-right"></i></span>
+        </li>
+        <li>
+            <a href="/controlpanel">Панель управления</a> <span class="divider"><i class="icon-angle-right"></i></span>
+        </li>
+        <li>
+            <a href="/controlpanel/orders">Заявки</a> <span class="divider"><i class="icon-angle-right"></i></span>
+        </li>
+        <li><a href="">@ViewBag.EventName</a></li>
+    </ul>
+    <!-- END Breadcrumb -->
+    <div class="block-section">
+        @*@Html.ActionLink("Добавить", "Create", null, new { @class="btn"})*@
+        <table class="table">
+            <thead>
+                <tr>                                        
+                    <th class="span2 text-center">Ст. №</th>
+                    <th class="span4">Экипаж</th>
+                    <th class="span2">Город</th>
+                    <th class="span2">№ лицензии</th>                                                                                
+                    <th class="span4">Участник</th>
+                    <th class="span2">Город</th>                                        
+                    <th class="span2">Автомобиль</th>                                        
+                    <th class="span2">Зачет</th>                                        
+                    <th class="span1 text-center"><i class="icon-bolt"></i></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.OrderBy(m=>m.StartNumber))
+                {                    
+                        <tr>
+                            <td class="span2 text-center">
+                                @Html.TextBoxFor(modelItem => item.StartNumber, new { data_id = item.Id, @class="startNumber"})&nbsp;<i></i>                                
+                            </td>
+                            <td class="span4">
+                                @Html.DisplayFor(modelItem => item.Driver.LastName) @Html.DisplayFor(modelItem => item.Driver.FirstName)<br />
+                                @Html.DisplayFor(modelItem => item.CoDriver.LastName) @Html.DisplayFor(modelItem => item.CoDriver.FirstName)<br />
+                            </td>
+                            <td class="span4">
+                                @Html.DisplayFor(modelItem => item.Driver.Location) <br />
+                                @Html.DisplayFor(modelItem => item.CoDriver.Location)
+                            </td>
+                            <td class="span4">
+                                @{ var driverLicense = item.Driver.Licenses.OrderByDescending(l => l.IssuesOn).FirstOrDefault(l => l.Season == 2014 && l.Type == Portal.Models.LicenseType.Driver);
+                                   var coDriverLicense = item.CoDriver.Licenses.OrderByDescending(l => l.IssuesOn).FirstOrDefault(l => l.Season == 2014 && l.Type == Portal.Models.LicenseType.Driver);
+                                }                                                   
+                                @(driverLicense!=null? driverLicense.Number:"")<br />
+                                @(coDriverLicense!=null? coDriverLicense.Number:"")
+                            </td>
+                            <td class="span2">
+                                @Html.DisplayFor(modelItem => item.Team.Name)<br />
+                                @Html.DisplayFor(modelItem => item.Team.License)
+                            </td>        
+                            <td class="span2">
+                                @Html.DisplayFor(modelItem => item.Team.City)
+                            </td>
+                            <td class="span2">
+                                @Html.DisplayFor(modelItem => item.Car.Mark) @Html.DisplayFor(modelItem => item.Car.Model)
+                            </td>
+                            <td class="span2">
+                                @string.Join(",",  item.Group.Select(g=>g.Title))
+                            </td>
+                            <td class="span1 text-center">  
+                                <div class="btn-group">
+                                    <a href="@Url.Action("Edit", new { id = item.Id })" data-toggle="tooltip" title="Изменить" class="btn btn-mini btn-success"><i class="icon-pencil"></i></a>
+                                    <a href="@Url.Action("Delete", new { id = item.Id })" data-toggle="tooltip" title="Удалить" class="btn btn-mini btn-danger"><i class="icon-remove"></i></a>
+                                </div>                                
+                            </td>
+                        </tr>                    
+                }
+            </tbody>
+        </table>                
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.startNumber').on('change', function () {
+                var $self = $(this);
+                var id = $self.data('id');
+                var $indicator = $self.parent().find('i');
+                $indicator.addClass('loader-02').removeClass('icon-remove-sign');
+
+                $.post('/controlpanel/orders/SetStartNumber', { orderId: id, number: $(this).val() })
+                    .done(function (value) {
+                        if (value.success) {
+                            $indicator.removeClass('loader-02');
+                        }
+                        else {
+                            $indicator.removeClass('loader-02').addClass('icon-remove-sign');
+                        }
+                    })
+                    .fail(function () {
+                        $indicator.removeClass('loader-02').addClass('icon-remove-sign');
+                    });
+            });
+        });
+    </script>
+}
+

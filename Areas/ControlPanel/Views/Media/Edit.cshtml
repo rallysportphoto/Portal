@@ -1,0 +1,129 @@
+﻿@model Portal.Models.Gallery
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/ControlPanel/Views/Shared/_Admin.cshtml";
+}
+
+<!-- Pre Page Content -->
+            <div id="pre-page-content">
+                <h1><i class="glyphicon-show_thumbnails_with_lines themed-color"></i> Новости<br><small>Изменение новости</small></h1>
+            </div>
+            <!-- END Pre Page Content -->
+
+            <!-- Page Content -->
+            <div id="page-content">
+                <!-- Breadcrumb -->
+                <ul class="breadcrumb breadcrumb-top">
+                    <li>
+                        <a href="/"><i class="glyphicon-display"></i></a> <span class="divider"><i class="icon-angle-right"></i></span>
+                    </li>
+                    <li>
+                        <a href="/controlpanel">Панель управления</a> <span class="divider"><i class="icon-angle-right"></i></span>
+                    </li>
+                    <li>
+                        <a href="/controlpanel/news">Новости</a> <span class="divider"><i class="icon-angle-right"></i></span>
+                    </li>
+                    <li><a href="">Изменение новости</a></li>
+                </ul>
+                <!-- END Breadcrumb -->
+
+                <!-- Horizontal Form Block -->
+                <div class="block block-themed">
+                    <!-- Horizontal Form Title -->
+                    <div class="block-title">
+                        <h4></h4>
+                    </div>
+                    <!-- END Horizontal Form Title -->
+
+                    <!-- Horizontal Form Content -->
+                    <div class="block-content">
+                        @using (Html.BeginForm("Edit", "Media", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.PublicationTime, new { @class = "control-label col-md-2" })
+            <div class="controls">
+                @Html.TextBoxFor(model => model.PublicationTime, new { @class = "input-datepicker" })
+                @Html.ValidationMessageFor(model => model.PublicationTime)
+            </div>
+        </div>
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.Slug, new { @class = "control-label col-md-2" })
+            <div class="controls">
+                @Html.TextBoxFor(model => model.Slug, new { @class = "input-xlarge" })
+                @Html.ValidationMessageFor(model => model.Slug)
+            </div>
+        </div>
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            <div class="controls">
+                @Html.TextBoxFor(model => model.Name, new { @class = "input-xlarge" })
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.Author, new { @class = "control-label col-md-2" })
+            <div class="controls">
+                @Html.TextAreaFor(model => model.Author, new { rows = 6, @class="textarea-editor textarea-large" })
+                @Html.ValidationMessageFor(model => model.Author)
+            </div>
+        </div>
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.Code, new { @class = "control-label col-md-2" })
+            <div class="controls">
+                @Html.EditorFor(model => model.Code)
+                @Html.ValidationMessageFor(model => model.Code)
+            </div>
+        </div>
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.IsPublic, new { @class = "control-label col-md-2" })
+            <div class="controls">
+                @Html.EditorFor(model => model.IsPublic)
+                @Html.ValidationMessageFor(model => model.IsPublic)
+            </div>
+        </div>              
+
+        <div class="control-group">
+            <label class="control-label" for="series">Категории</label>
+            <div class="controls">
+                <select id="general-chosen" name="tag" class="select-chosen">
+                    @foreach (var tag in (List<Portal.Models.Tag>)ViewBag.Tags)
+                    {
+                        <option value="@tag.Id" @Html.Raw(Model.Tag!=null && Model.Tag.Id==tag.Id)? "selected":"")>@tag.Name</option>                        
+                    }                     
+                </select>                
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="attachments">Фотографии</label>
+            <div class="controls">
+                <input type="file" name="files" multiple>
+            </div>
+        </div>
+
+         <div class="form-actions">
+            <button type="submit" class="btn btn-success"><i class="icon-ok"></i> Сохранить</button>
+             <button type="reset" class="btn btn-danger"><i class="icon-repeat"></i> Отмена</button>
+            
+        </div>
+
+    </div>
+}
+                    </div>
+                    <!-- END Horizontal Form Content -->
+                </div>
+                <!-- END Horizontal Form Block -->
+</div>

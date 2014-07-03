@@ -1,0 +1,357 @@
+﻿@model Portal.ViewModels.OrderViewModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/ControlPanel/Views/Shared/_Admin.cshtml";
+}
+
+<!-- Pre Page Content -->
+            <div id="pre-page-content">
+                <h1><i class="glyphicon-show_thumbnails_with_lines themed-color"></i> Зявки участников<br><small>Изменение заявки участника</small></h1>
+            </div>
+            <!-- END Pre Page Content -->
+
+            <!-- Page Content -->
+            <div id="page-content">
+                <!-- Breadcrumb -->
+                <ul class="breadcrumb breadcrumb-top">
+                    <li>
+                        <a href="/"><i class="glyphicon-display"></i></a> <span class="divider"><i class="icon-angle-right"></i></span>
+                    </li>
+                    <li>
+                        <a href="/controlpanel">Панель управления</a> <span class="divider"><i class="icon-angle-right"></i></span>
+                    </li>
+                    <li>
+                        <a href="/controlpanel/orders">Заявки</a> <span class="divider"><i class="icon-angle-right"></i></span>
+                    </li>
+                    <li>
+                        <a href="/controlpanel/orders/List/@ViewBag.EventId">@ViewBag.EventName</a> <span class="divider"><i class="icon-angle-right"></i></span>
+                    </li>
+                    <li><a href="">Изменение заявки участника</a></li>
+                </ul>
+                <!-- END Breadcrumb -->
+
+                <!-- Horizontal Form Block -->
+                <div class="block block-themed">
+                    <!-- Horizontal Form Title -->
+                    <div class="block-title">
+                        <h4></h4>
+                    </div>
+                    <!-- END Horizontal Form Title -->
+
+                    <!-- Horizontal Form Content -->
+                    <div class="block-content">
+                        @using (Html.BeginForm("Edit", "Orders", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)       
+        
+        <div class="control-group">
+            @Html.LabelFor(model => model.StartNumber, new { @class = "control-label col-md-2" })
+            <div class="controls">
+                @Html.TextBoxFor(model => model.StartNumber)
+                @Html.ValidationMessageFor(model => model.StartNumber)
+            </div>
+        </div>    
+        
+        
+        <div class="control-group">
+            @Html.LabelFor(model => model.Groups, new { @class = "control-label col-md-2" })
+            <div class="controls">
+                <select name="groups" class="select-chosen" multiple>
+                    @foreach (var group in (List<Portal.Models.Group>)ViewBag.Groups)
+                    {
+                        <option value="@group.Id" @Html.Raw(Model.Groups.Any(g=>g==group.Id.ToString())? "selected":"")>@group.Title</option>                        
+                    }
+                </select>                
+                @Html.ValidationMessageFor(model => model.Groups)
+            </div>
+        </div>    
+
+        <div class="block block-themed themed-default">
+            <div class="block-title"><h4>1й водитель</h4></div>            
+            <div class="block-content full">
+                @Html.HiddenFor(model => model.Driver1Id)
+                <div class="control-group">
+                    @Html.LabelFor(model => model.Driver1LastName, new { @class = "control-label col-md-2" })
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.Driver1LastName)
+                        @Html.ValidationMessageFor(model => model.Driver1LastName)
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    @Html.LabelFor(model => model.Driver1FirstName, new { @class = "control-label col-md-2" })
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.Driver1FirstName)
+                        @Html.ValidationMessageFor(model => model.Driver1FirstName)
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    @Html.LabelFor(model => model.Driver1License, new { @class = "control-label col-md-2" })
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.Driver1License)
+                        @Html.ValidationMessageFor(model => model.Driver1License)
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    @Html.LabelFor(model => model.Driver1City, new { @class = "control-label col-md-2" })
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.Driver1City)
+                        @Html.ValidationMessageFor(model => model.Driver1City)
+                    </div>
+                </div>
+
+                <div class="accordion" id="driverDetails">
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#driverDetails" href="#driverDetails-content1">Персональные данные</a>
+                        </div>
+                        <div id="driverDetails-content1" class="accordion-body collapse">
+                            <div class="accordion-inner">
+
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.Driver1Phone, new { @class = "control-label col-md-2" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.Driver1Phone)
+                                        @Html.ValidationMessageFor(model => model.Driver1Phone)
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.Driver1BirthDate, new { @class = "control-label col-md-2" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.Driver1BirthDate)
+                                        @Html.ValidationMessageFor(model => model.Driver1BirthDate)
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    @Html.LabelFor(model =>  model.Driver1Address, new { @class = "control-label col-md-2" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model =>  model.Driver1Address)
+                                        @Html.ValidationMessageFor(model =>  model.Driver1Address)
+                                    </div>
+                                </div>                
+
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.Driver1Passport, new { @class = "control-label col-md-2" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.Driver1Passport)
+                                        @Html.ValidationMessageFor(model => model.Driver1Passport)
+                                    </div>
+                                </div>                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="block block-themed themed-default">
+            <div class="block-title"><h4>2й водитель</h4></div>            
+            <div class="block-content full">
+                @Html.HiddenFor(model => model.Driver2Id)
+                <div class="control-group">
+                    @Html.LabelFor(model => model.Driver2LastName, new { @class = "control-label col-md-2" })
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.Driver2LastName)
+                        @Html.ValidationMessageFor(model => model.Driver2LastName)
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    @Html.LabelFor(model => model.Driver2FirstName, new { @class = "control-label col-md-2" })
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.Driver2FirstName)
+                        @Html.ValidationMessageFor(model => model.Driver2FirstName)
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    @Html.LabelFor(model => model.Driver2License, new { @class = "control-label col-md-2" })
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.Driver2License)
+                        @Html.ValidationMessageFor(model => model.Driver2License)
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    @Html.LabelFor(model => model.Driver2City, new { @class = "control-label col-md-2" })
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.Driver2City)
+                        @Html.ValidationMessageFor(model => model.Driver2City)
+                    </div>
+                </div>
+
+                <div class="accordion" id="codriverDetails">
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#codriverDetails" href="#codriverDetails-content1">Персональные данные</a>
+                        </div>
+                        <div id="codriverDetails-content1" class="accordion-body collapse">
+                            <div class="accordion-inner">
+
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.Driver2Phone, new { @class = "control-label col-md-2" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.Driver2Phone)
+                                        @Html.ValidationMessageFor(model => model.Driver2Phone)
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.Driver2BirthDate, new { @class = "control-label col-md-2" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.Driver2BirthDate)
+                                        @Html.ValidationMessageFor(model => model.Driver2BirthDate)
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    @Html.LabelFor(model =>  model.Driver2Address, new { @class = "control-label col-md-2" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model =>  model.Driver2Address)
+                                        @Html.ValidationMessageFor(model =>  model.Driver2Address)
+                                    </div>
+                                </div>                
+
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.Driver2Passport, new { @class = "control-label col-md-2" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.Driver2Passport)
+                                        @Html.ValidationMessageFor(model => model.Driver2Passport)
+                                    </div>
+                                </div>                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="block block-themed themed-default">
+            <div class="block-title"><h4>Участник</h4></div>            
+            <div class="block-content full">
+                <div class="control-group">
+                    @Html.LabelFor(model => model.Entrant, new { @class = "control-label col-md-2" })
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.Entrant)
+                        @Html.ValidationMessageFor(model => model.Entrant)
+                    </div>
+
+                    <div class="control-group">
+                        @Html.LabelFor(model => model.EntrantLicense, new { @class = "control-label col-md-2" })
+                        <div class="controls">
+                            @Html.TextBoxFor(model => model.EntrantLicense)
+                            @Html.ValidationMessageFor(model => model.EntrantLicense)
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        @Html.LabelFor(model => model.EntrantASN, new { @class = "control-label col-md-2" })
+                        <div class="controls">
+                            @Html.TextBoxFor(model => model.EntrantASN)
+                            @Html.ValidationMessageFor(model => model.EntrantASN)
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        @Html.LabelFor(model => model.EntrantCity, new { @class = "control-label col-md-2" })
+                        <div class="controls">
+                            @Html.TextBoxFor(model => model.EntrantCity)
+                            @Html.ValidationMessageFor(model => model.EntrantCity)
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        @Html.LabelFor(model => model.EntrantAddress, new { @class = "control-label col-md-2" })
+                        <div class="controls">
+                            @Html.TextBoxFor(model => model.EntrantAddress)
+                            @Html.ValidationMessageFor(model => model.EntrantAddress)
+                        </div>
+                    </div>
+                                        
+                    <div class="control-group">
+                        @Html.LabelFor(model => model.EntrantEmail, new { @class = "control-label col-md-2" })
+                        <div class="controls">
+                            @Html.TextBoxFor(model => model.EntrantEmail)
+                            @Html.ValidationMessageFor(model => model.EntrantEmail)
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        @Html.LabelFor(model => model.EntrantFax, new { @class = "control-label col-md-2" })
+                        <div class="controls">
+                            @Html.TextBoxFor(model => model.EntrantFax)
+                            @Html.ValidationMessageFor(model => model.EntrantFax)
+                        </div>
+                    </div>                                      
+
+                    <div class="control-group">
+                        @Html.LabelFor(model => model.EntrantPhone, new { @class = "control-label col-md-2" })
+                        <div class="controls">
+                            @Html.TextBoxFor(model => model.EntrantPhone)
+                            @Html.ValidationMessageFor(model => model.EntrantPhone)
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="block block-themed themed-default">
+            <div class="block-title"><h4>Автомобиль</h4></div>            
+            <div class="block-content full">
+                @Html.HiddenFor(model => model.CarId)
+                <div class="control-group">
+                    @Html.LabelFor(model => model.Mark, new { @class = "control-label col-md-2" })
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.Mark)
+                        @Html.ValidationMessageFor(model => model.Mark)
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    @Html.LabelFor(model => model.Model, new { @class = "control-label col-md-2" })
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.Model)
+                        @Html.ValidationMessageFor(model => model.Model)
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    @Html.LabelFor(model => model.Number, new { @class = "control-label col-md-2" })
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.Number)
+                        @Html.ValidationMessageFor(model => model.Number)
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    @Html.LabelFor(model => model.Engine, new { @class = "control-label col-md-2" })
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.Engine)
+                        @Html.ValidationMessageFor(model => model.Engine)
+                    </div>
+                </div>
+            </div>
+        </div>
+         <div class="form-actions">
+            <button type="reset" class="btn btn-danger"><i class="icon-repeat"></i> Сбросить на начальные</button>
+            <button type="submit" class="btn btn-success"><i class="icon-ok"></i> Изменить</button>
+        </div>
+
+    </div>
+}
+                    </div>
+                    <!-- END Horizontal Form Content -->
+                </div>
+                <!-- END Horizontal Form Block -->
+</div>

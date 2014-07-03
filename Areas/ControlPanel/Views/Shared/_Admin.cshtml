@@ -1,0 +1,323 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+
+        <title>Автомобильная Федерация Санкт-Петербурга и Ленинградской области</title>
+
+        <meta name="description" content="Панель управления порталом спортивной организации">
+        <meta name="author" content="track-me.pro">
+        <meta name="robots" content="noindex, nofollow">
+
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
+
+        <!-- Icons -->
+        <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
+        <link rel="shortcut icon" href="/areas/controlpanel/img/favicon.ico">
+        <link rel="apple-touch-icon" href="/areas/controlpanel/img/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="57x57" href="/areas/controlpanel/img/apple-touch-icon-57x57-precomposed.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/areas/controlpanel/img/apple-touch-icon-72x72-precomposed.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/areas/controlpanel/img/apple-touch-icon-114x114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="/areas/controlpanel/img/apple-touch-icon-precomposed.png">
+        <!-- END Icons -->
+
+        <!-- Stylesheets -->
+        <!-- The Open Sans font is included from Google Web Fonts -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,700,700italic">
+
+        <!-- Bootstrap is included in its original form, unaltered -->
+        <link rel="stylesheet" href="/areas/controlpanel/css/bootstrap.css">
+
+        <!-- Related styles of various icon packs and javascript plugins -->
+        <link rel="stylesheet" href="/areas/controlpanel/css/plugins.css">
+
+        <!-- The main stylesheet of this template. All Bootstrap overwrites are defined in here -->
+        <link rel="stylesheet" href="/areas/controlpanel/css/main.css">
+
+        <!-- Load a specific file here from css/themes/ folder to alter the default theme of all the template -->
+
+        <!-- The themes stylesheet of this template (for using specific theme color in individual elements (must included last) -->
+        <link rel="stylesheet" href="/areas/controlpanel/css/themes.css">
+        <!-- END Stylesheets -->
+
+        <!-- Modernizr (Browser feature detection library) & Respond.js (Enable responsive CSS code on browsers that don't support it) -->
+        <script src="/areas/controlpanel/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    </head>
+
+    <!-- Body -->
+    <!-- In the PHP version you can set the following options from the config file -->
+    <!-- Add the class .hide-side-content to <body> to hide side content by default -->
+    <body>
+        <!-- Page Container -->
+        <!-- In the PHP version you can set the following options from the config file -->
+        <!-- Add the class .full-width for a full width page -->
+        <div id="page-container" class="full-width">
+            <!-- Header -->
+            <!-- In the PHP version you can set the following options from the config file -->
+            <!-- Add the class .navbar-fixed-top or .navbar-fixed-bottom for a fixed header on top or bottom respectively -->
+            <!-- If you add the class .navbar-fixed-top remember to add the class .header-fixed-top to <body> element! -->
+            <!-- If you add the class .navbar-fixed-bottom remember to add the class .header-fixed-bottom to <body> element! -->
+            <!-- <header class="navbar navbar-inverse navbar-fixed-top"> -->
+            <!-- <header class="navbar navbar-inverse navbar-fixed-bottom"> -->
+            <header class="navbar navbar-inverse">
+                <!-- Navbar Inner -->
+                <div class="navbar-inner">
+                    <!-- div#row-fluid -->
+                    <div class="row-fluid">
+                        <!-- Sidebar Toggle Buttons (Desktop & Tablet) -->
+                        <div class="span4 hidden-phone">
+                            <ul class="nav pull-left">
+                                <!-- Desktop Button (Visible only on desktop resolutions) -->
+                                <li class="visible-desktop">
+                                    <a href="javascript:void(0)" id="toggle-side-content">
+                                        <i class="icon-reorder"></i>
+                                    </a>
+                                </li>
+                                <!-- END Desktop Button -->
+
+                                <!-- Tablet Button -->
+                                <li class="visible-tablet">
+                                    <!-- It is set to open and close the left sidebar on tablets. The class .nav-collapse was added to aside#page-sidebar -->
+                                    <a href="javascript:void(0)" data-toggle="collapse" data-target=".nav-collapse">
+                                        <i class="icon-reorder"></i>
+                                    </a>
+                                </li>
+                                <!-- END Tablet Button -->
+
+                                <!-- Divider -->
+                                <li class="divider-vertical remove-margin"></li>
+                            </ul>
+                        </div>
+                        <!-- END Sidebar Toggle Buttons -->
+
+                        <!-- Brand and Search Section -->
+                        <div class="span4 text-center">
+                            <!-- Top search -->
+                            <form id="top-search" class="pull-left" action="page_ready_search_results.html" method="post">
+                                <input type="text" id="search-term" name="search-term" placeholder="Search..">
+                            </form>
+                            <!-- END Top search -->
+
+                            <!-- Logo -->
+                            <a href="index.html" class="brand">
+                                <img src="/areas/controlpanel/img/template/logo.png" alt="logo">
+                            </a>
+                            <!-- END Logo -->
+
+                            <!-- Loading Indicator, Used for demostrating how loading of notifications could happen, check main.js - uiDemo() -->
+                            <div id="loading" class="hide"><i class="icon-spinner icon-spin"></i></div>
+                        </div>
+                        <!-- END Brand and Search Section -->
+
+                        <!-- Header Nav Section -->
+                        <div id="header-nav-section" class="span4 clearfix">
+                            <!-- Header Nav -->
+                            <ul class="nav pull-right">                                
+                                <!-- Divider -->
+                                <li class="divider-vertical remove-margin"></li>
+
+                                <!-- Notifications -->
+                                <li class="dropdown dropdown-notifications">
+                                    <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="icon-warning-sign"></i>
+                                        <span class="badge badge-neutral">4</span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <div class="alert">
+                                                <i class="icon-bell"></i> <strong>App</strong> Please pay attention!
+                                            </div>
+                                            <div class="alert alert-error">
+                                                <i class="icon-bell-alt"></i> <strong>App</strong> There was an error!
+                                            </div>
+                                            <div class="alert alert-info">
+                                                <i class="icon-bolt"></i> <strong>App</strong> Info message!
+                                            </div>
+                                            <div class="alert alert-success">
+                                                <i class="icon-bullhorn"></i> <strong>App</strong> Service restarted!
+                                            </div>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a href="javascript:void(0)"><i class="icon-warning-sign pull-right"></i>Notification Center</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- END Notifications -->
+
+                                <!-- Messages -->
+                                <li class="dropdown dropdown-messages">
+                                    <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="icon-envelope-alt"></i>
+                                        <span class="badge badge-neutral display-none"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <div class="media">
+                                                <a class="pull-left" href="javascript:void(0)" data-toggle="tooltip" title="Newbie">
+                                                    <img src="/areas/controlpanel/img/placeholders/image_64x64_dark.png" alt="fakeimg" class="img-circle">
+                                                </a>
+                                                <div class="media-body">
+                                                    <div class="media-heading clearfix"><span class="label label-success">1 min ago</span><a href="javascript:void(0)">Username</a></div>
+                                                    <div class="media">Lorem ipsum dolor sit amet, consectetur..</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <div class="media">
+                                                <a class="pull-left" href="javascript:void(0)" data-toggle="tooltip" title="Pro">
+                                                    <img src="/areas/controlpanel/img/placeholders/image_64x64_dark.png" alt="fakeimg" class="img-circle">
+                                                </a>
+                                                <div class="media-body">
+                                                    <div class="media-heading clearfix"><span class="label label-success">2 hours ago</span><a href="javascript:void(0)">Username</a></div>
+                                                    <div class="media">Lorem ipsum dolor sit amet, consectetur..</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <div class="media">
+                                                <a class="pull-left" href="javascript:void(0)" data-toggle="tooltip" title="VIP">
+                                                    <img src="/areas/controlpanel/img/placeholders/image_64x64_dark.png" alt="fakeimg" class="img-circle">
+                                                </a>
+                                                <div class="media-body">
+                                                    <div class="media-heading clearfix"><a href="javascript:void(0)">Username</a><span class="label label-success">3 days ago</span></div>
+                                                    <div class="media">Lorem ipsum dolor sit amet, consectetur..</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a href="page_comp_inbox.html"><i class="icon-envelope-alt pull-right"></i>Message Center</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- END Messages -->
+                            </ul>
+                            <!-- END Header Nav -->
+
+                            <!-- Mobile Navigation, Shows up on mobile -->
+                            <ul class="nav pull-left visible-phone">
+                                <li>
+                                    <!-- It is set to open and close the main navigation on mobiles. The class .nav-collapse was added to aside#page-sidebar -->
+                                    <a href="javascript:void(0)" data-toggle="collapse" data-target=".nav-collapse">
+                                        <i class="icon-reorder"></i>
+                                    </a>
+                                </li>
+                                <li class="divider-vertical remove-margin"></li>
+                            </ul>
+                            <!-- END Mobile Navigation, Shows up on mobile -->
+                        </div>
+                        <!-- END Header Nav Section -->
+                    </div>
+                    <!-- END div#row-fluid -->
+                </div>
+                <!-- END Navbar Inner -->
+            </header>
+            <!-- END Header -->
+
+            <!-- Left Sidebar -->
+            <!-- In the PHP version you can set the following options from the config file -->
+            <!-- Add the class .sticky for a sticky sidebar -->
+            <aside id="page-sidebar" class="nav-collapse collapse">
+                <!--
+                Wrapper for scrolling functionality
+                Used only if the .sticky class added above. You can remove it and you will have a sticky sidebar
+                without scrolling enabled when you set the sidebar to be sticky
+                -->
+                <div class="side-scrollable">
+                    <!-- Mini Profile -->
+                    <div class="mini-profile">
+                        <div class="mini-profile-options">
+                            <a href="javascript:window.location.reload();" class="badge badge-info loading-on" data-toggle="tooltip" data-placement="right" title="Обновить">
+                                <i class="icon-refresh"></i>
+                            </a>                            
+                            <a href="~/account/logoff" class="badge badge-important" data-toggle="tooltip" data-placement="right" title="Выход">
+                                <i class="icon-signout"></i>
+                            </a>
+                        </div>
+                        <a href="/account/LogOff">
+                            <img src="/areas/controlpanel/img/template/avatar2.jpg" alt="Avatar" class="img-circle">
+                        </a>
+                    </div>
+                    <!-- END Mini Profile -->
+
+                    <!-- Sidebar Tabs -->
+                    <div class="sidebar-tabs-con">
+                        <ul class="sidebar-tabs" data-toggle="tabs">
+                            <li class="active">
+                                <a href="#side-tab-menu"><i class="glyphicon-list"></i></a>
+                            </li>                            
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="side-tab-menu">
+                                <!-- Primary Navigation -->
+                                <nav id="primary-nav">
+                                    <ul>
+                                        <li>
+                                            <a href="/controlpanel" class="menu-link"><i class="glyphicon-display"></i>Dashboard</a>
+                                            <ul>
+                                                <li>
+                                                    <a href="/controlpanel/timeline">Календарь</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/controlpanel/documents">Документы</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/controlpanel/news">Новости</a>
+                                                </li>
+
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </nav>
+                                <!-- END Primary Navigation -->
+                            </div>                            
+                        </div>
+                    </div>
+                    <!-- END Sidebar Tabs -->
+                </div>
+                <!-- END Wrapper for scrolling functionality -->
+            </aside>
+            <!-- END Left Sidebar -->
+            
+            @RenderBody()            
+
+            <!-- Footer -->
+            <footer>
+                <div class="pull-right">
+                    Реализовано на <strong><a href="http://track-me.pro/" target="_blank">RSP Portal Engine 4.0</a></strong>
+                </div>
+                <div class="pull-left">
+                    <span id="year-copy"></span> &copy; <strong><a href="http://afspb.org.ru" target="_blank">Автомобильная Федерация Санкт-Петербурга и Ленинградской области</a></strong>
+                </div>
+            </footer>
+            <!-- END Footer -->
+        </div>
+        <!-- END Page Container -->
+
+        <!-- Scroll to top link, check main.js - scrollToTop() -->
+        <a href="#" id="to-top"><i class="icon-chevron-up"></i></a>        
+
+        <!-- Excanvas for Flot (Charts plugin) support on IE8 -->
+        <!--[if lte IE 8]><script src="js/helpers/excanvas.min.js"></script><![endif]-->
+
+        <!-- Get Jquery library from Google ... -->
+        <!-- Add the https version if you are using SSL <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <!-- ... but if something goes wrong get Jquery from local file -->
+        <script>!window.jQuery && document.write(unescape('%3Cscript src="/areas/controlpanel/js/vendor/jquery-1.9.1.min.js"%3E%3C/script%3E'));</script>
+
+        <!-- Bootstrap.js -->
+        <script src="/areas/controlpanel/js/vendor/bootstrap.min.js"></script>
+
+        <!-- Jquery plugins and custom javascript code -->
+        <script src="/areas/controlpanel/js/plugins.js"></script>
+        <script src="/areas/controlpanel/js/main.js"></script>
+        @RenderSection("Scripts",false)
+    </body>
+</html>

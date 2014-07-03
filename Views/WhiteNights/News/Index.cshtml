@@ -1,0 +1,114 @@
+﻿@model IEnumerable<Portal.ViewModels.NewsListViewModel>
+
+@{
+    ViewBag.Title = "Index";    
+}
+
+
+
+			<div class="row">
+				<div class="large-12 columns">
+
+            		<div class="content">
+
+                    	<div class="singletop">
+                            <div class="search">
+                                <form method="get" action="#">
+									<input id="s" type="text" value="Search" name="s">
+                                </form>	
+                            </div>
+                            <nav class="breadcrumbs">
+                              <a href="/">Главная</a>
+                              <a class="current" href="/news">Новости</a>
+                            </nav>
+                        </div>
+                           
+                        @foreach (var item in Model)
+                            {
+                                <article class="blog-wrapper clearing-container">                            
+                                        <div class="homeposttitle">
+                                            <h3 class="widget-title">
+                                                <span>
+                                                    <i class="fa @item.LogoClass homeposticon"></i>
+                                                    <a href="/news/@Html.Raw(item.Slug)">@item.Title</a>
+                                                </span>
+                                            </h3>  
+                                            <ul class="post-date clearfix">
+                                                <li><i class="fa fa-calendar"></i> @item.Date.ToString("dd MMM yyyy")</li>                                                
+                                            </ul>
+                                        </div>
+                            
+                                        @if (item.Type == Portal.Models.NewsType.Standard)
+                                        {                                                              
+                                            <div class="entry post-thumb large-4 columns">
+                                                <a href="#">
+                                                    <img src="@item.LogoUrl" alt="">
+                                                    <span class="magnifier"></span>
+                                                </a>
+                                            </div>
+                            
+                                            <div class="large-8 columns post-content">
+                                                <p>@Html.Raw(item.Brief)</p>
+                                                <a href="/news/@Html.Raw(item.Slug)">далее →</a>
+                                            </div>
+                                        }
+                                        else if (item.Type == Portal.Models.NewsType.Video)
+                                        {
+                                            <div class="flex-video widescreen vimeo">
+                                                <iframe src="@Html.Raw(item.LogoUrl)" width="400" height="225" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                                            </div>
+                                            
+                                            <div class="large-8 columns post-content">
+                                                <p>@Html.Raw(item.Brief)</p>
+                                                <a href="/news/@Html.Raw(item.Slug)">далее →</a>
+                                            </div>
+                                        }
+                                        else if (item.Type == Portal.Models.NewsType.Quote)
+                                        {
+                                            //TODO
+                                            @*<article class="blog-wrapper quotepost clearing-container">
+                                                <div class="homeposttitle">
+                                                <h3>
+                                                 <span>
+                                                    <i class="fa fa-quote-left homeposticon"></i>
+                                                    <a href="single.html">What is a highway to one is a disaster to the other.</a>
+                                                 </span>
+                                                </h3>
+                                                </div>
+                            
+							                    <p class="quotepost-title">Mevlana Rumi (1207 - 1273)</p>
+
+						                    </article>*@
+                                        }
+                                        else if (item.Type == Portal.Models.NewsType.Gallery)
+                                        {
+                                            @*<div class="entry post-thumb large-4 columns">
+                                                <div class="slider">
+                                                    <div class="post-slider">
+                                                        <ul class="slides">
+                                                        <li>
+                                                            <a href="#"><img src="img/01_portfolio.jpg" alt="" /></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><img src="img/02_portfolio.jpg" alt="" /></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><img src="img/03_portfolio.jpg" alt="" /></a>
+                                                        </li>
+                                                        </ul>
+                                                    </div>
+                                                </div><!-- End Slider Widget -->
+							                </div>*@
+                                            
+                                             <div class="large-8 columns post-content">
+                                                <p>@item.Brief</p>
+                                                <a href="/news/@Html.Raw(item.Slug)">далее →</a>
+                                            </div>
+                                        }
+						            </article>
+                                }                                                                            
+                    </div><!-- content -->
+               
+				</div><!-- large 12 -->
+			</div><!-- end row -->
+            		

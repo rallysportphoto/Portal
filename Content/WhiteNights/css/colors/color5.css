@@ -1,0 +1,15 @@
+/* #Color5 Styles
+================================================== */
+
+#footer { border-top:5px solid #e64883; }
+#headline2 { background-color:#e64883; }
+#top-head { border-bottom:4px solid #fbfbfb; background:#f8f8f8; }
+#nav a { border-top-color:#fbfbfb; }
+#hero { border-top:4px solid #fbe8ef; border-bottom:4px solid #f9d9e5; }
+.dark.bluebox, .l1-s1, h4.tit4blg span { background:#e64883; }
+ul#main-port li { background-color:#f1e9e9;}
+ul#main-port li:nth-child(even) { background-color:#f5f1f1;}
+ul#main-port li.active9 { background:#fbfbfb; border-bottom-color:#ffcc00; }
+.jcarousel-next, .jcarousel-prev { background-color:#e7c8cc;  }
+.jcarousel-next-disabled, .jcarousel-next-disabled:hover,
+.jcarousel-prev-disabled, .jcarousel-prev-disabled:hover {	background-color: #e5eae5;	cursor: auto; }
