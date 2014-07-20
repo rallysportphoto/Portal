@@ -1,0 +1,67 @@
+﻿@model Portal.Models.OfficialEvent
+
+@{
+    ViewBag.Title = "Register";    
+}
+
+ <div id="breadcrumbs_bg">
+    <div id="breadcrumbs_m">
+        <div id="breadcrumbs">
+              <ul>
+                <li><a href="/">Главная</a></li>
+                
+                
+                <li>Участвовать</li>
+                
+              </ul>
+              
+                <h1><span class="fl">У</span>частвовать в фестивале</h1>
+                    
+        </div>
+    </div>
+</div>        
+
+
+
+
+
+            <div id="content_t"></div>
+                <div id="content_spot_t">
+                <div id="content_spot_b">
+                <div id="content" class="section">
+
+                    <h1><span class="fl">З</span>аявка на участие в фестивале</h1>
+                    <div class="cols">
+                        <p>Пожалуйста, заполните форму предварительной регистрации. Это позволит нам эффективнее спланировать размещение участников в экспозициях на фестивале, подготовить описание вашего транспортного средства для анонсов и каталога, и оповестить вас на мероприятии о запланированных для вас событиях.</p>
+                                               
+                                    
+                        @using (var frmSearch = Html.BeginForm("Register", "Event", FormMethod.Post, new { @class = "uniform contact_us", enctype = "multipart/form-data" }))
+                        { 
+                            <div class="i_h"><div class="l"><input type="text" name="Mark" id="Mark" placeholder="Марка" class="validate[required]"/></div></div>
+                            <div class="i_h"><div class="r"><input type="text" name="Model" id="Model" placeholder="Модель" class="validate[required]"/></div></div>
+                            <div class="i_h"><div class="l"><input type="text" name="Year" id="Year" placeholder="Год выпуска" class="validate[required]"/></div></div>
+                            <div class="i_h"><div class="r"><input type="text" name="Driver1LastName" id="Driver1LastName" placeholder="Владелец" class="validate[required]" /></div></div>
+                            <div class="i_h"><div class="l"><input type="text" name="Driver1Phone" id="Driver1Phone" placeholder="Контактный телефон" class="validate[required]" /></div></div>
+                            <div class="i_h"><div class="r"><input type="text" name="Driver1Email" id="Driver1Email" placeholder="Контактный e-mail"  /></div></div>
+                            <div class="i_h"><div class="l"><label>&nbsp;</label><input type="text" name="Entrant" id="Entrant" placeholder="Название клуба (если состоите)" /></div></div>
+                            <div class="i_h"><div class="r"><label for="Attachments">Фотографии и доп. материалы</label><input type="file" name="Attachments" id="Attachments" multiple/></div></div>
+                            <div class="t_h"><textarea id="Comments" name="Comments" placeholder="Несколько фактов о данном автомобиле" ></textarea></div>                            
+                            <div class="t_h">                                
+                                 <label for="car">Я хочу принять участие в:</label><br /> 
+                                 @{ var iCnt = 0; } 
+                                 @foreach (var tag in Model.SubEvents)                                                
+                                 {   
+                                     foreach(var group in tag.Groups) {
+                                        <input type="checkbox" name="groups" id="groups-@iCnt" value="@(tag.Id + "_" + @group.Id)"/> <label for="groups-@(iCnt++)">@tag.Series.Title</label>                                     
+                                    }
+                                 }                                
+                            </div>
+                            <a href="#" class="go_submit" title="Отправить"></a>
+                            <a href="#" class="do_clear" style="width:75px">Очистить</a>
+                        }
+                    </div>
+
+        </div>
+    </div>
+</div>
+

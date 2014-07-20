@@ -31,6 +31,7 @@ namespace Portal.ViewModels
             Driver1Passport = order.Driver.Passport;
             Driver1Address = order.Driver.Address;
             Driver1Id = order.Driver.Id;
+            Driver1Email = order.Driver.Email;
 
             Driver2FirstName = order.CoDriver.FirstName;
             Driver2LastName = order.CoDriver.LastName;
@@ -57,6 +58,8 @@ namespace Portal.ViewModels
             Engine = order.Car.Engine;
             Number = order.Car.RegistrationNumber;
             CarId = order.Car.Id;
+
+            Comments = order.Comments;
         }
         public string[] Groups { get; set; }
 
@@ -76,6 +79,7 @@ namespace Portal.ViewModels
         public string Driver1BirthDate { get; set; }
         public string Driver1Phone { get; set; }
         public string Driver1Address { get; set; }
+        public string Driver1Email { get; set; }
         public string Driver1Passport { get; set; }
         public string Driver1Id { get; set; }
 
@@ -94,6 +98,7 @@ namespace Portal.ViewModels
         public string Number { get; set; }
         public string Year { get; set; }
         public string Engine { get; set; }
+        public string Comments { get; set; }
 
         internal Models.Team CreateTeam()
         {
@@ -127,6 +132,7 @@ namespace Portal.ViewModels
                 Location = OrDefault(Driver1City),
                 Passport = OrDefault(Driver1Passport),
                 Phone = OrDefault(Driver1Phone),
+                Email = OrDefault(Driver1Email),
                 Licenses = new List<Models.License>()
             };
             if (string.IsNullOrWhiteSpace(user.UserName)) user.UserName = user.Id;

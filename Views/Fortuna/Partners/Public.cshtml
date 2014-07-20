@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Portal.ViewModels.PartnerListViewModel>
+@{
+    ViewBag.Title = "CommingSoon";
+    Layout = "~/Views/Fortuna/Shared/_Default.cshtml";
+}
+
+ <div id="breadcrumbs_bg">
+    <div id="breadcrumbs_m">
+        <div id="breadcrumbs">
+              <ul>
+                <li><a href="/">Главная</a></li>
+                
+                    <li>Партнеры</li>
+                
+              </ul>
+              
+                <h1><span class="fl">П</span>артнеры</h1>
+                    
+        </div>
+    </div>
+</div>        
+
+<div id="content_t"></div>
+<div id="content_spot_t">
+<div id="content_spot_b">
+<div id="content" class="section">
+        
+<div class="cols">
+      <div class="col_2-3">
+
+@foreach(var item in Model.Where(p=>p.Global).OrderBy(p=>p.Position)) {      
+      <div class="article blog">
+
+      <h1><span class="fl">@Html.Raw(item.Name.Substring(0,1))</span>@Html.Raw(item.Name.Substring(1))</h1>
+        <a class="blog_ico">
+          <img src="@Html.Raw(item.File)" alt="" />          
+        </a>
+        <div class="blog_desk">
+            @Html.Raw(item.Title)
+        </div>
+        <div class="blog_meta">          
+          <a href="@Html.Raw(item.Url)">@item.Url</a>          
+        </div>
+
+      </div>
+      
+}      
+        </div>
+        <div id="aside" class="col_1-3">
+            <h1><span class="fl">И</span>нформационные партнеры</h1>
+            <div class="flickr">
+                
+                @foreach(var item in Model.Where(p=>!p.Global).OrderBy(p=>p.Position)) {
+                    <a href="@Html.Raw(item.Url)" class="news_ico" title="@item.Name"><img src="@Html.Raw(item.LogoLow)" alt="@item.Name" /><i></i></a>                 
+                }
+                       
+            </div>
+        </div>
+    </div>
+</div>
+
+

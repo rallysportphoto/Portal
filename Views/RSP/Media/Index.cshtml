@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Portal.ViewModels.GalleryViewModel>
+
+@{
+    ViewBag.Title = "Index";    
+}
+
+<div class="row">
+				<div class="large-12 columns">
+                    <div class="content portfolio one-portfolio clearing-container">
+
+                    	<div class="singletop">
+                            <div class="search">
+                                <form method="get" action="#">
+									<input id="s" type="text" value="Search" name="s">
+                                </form>	
+                            </div>
+                            <nav class="breadcrumbs">
+                              <a href="/">Главная</a>
+                              <a class="current" href="#">Медиа</a>
+                            </nav>
+                        </div>
+
+
+                        <div class="homeposttitle">
+                            <h3 class="widget-title">
+                                <span>Медиа-материалы</span>
+                            </h3>   
+                        </div>     
+               
+                        @foreach(var gallery in Model) {
+                            if(gallery.Code==null) {
+                                <div class="homeportfolio large-12 columns">                        
+                                <div class="entry">
+                                <a data-gal="prettyPhoto" href="@gallery.LogoUrl">
+                                    <img src="@gallery.LogoThumbnail" alt="">
+                                    <span class="magnifier"></span>
+                                </a>
+                                </div>
+                                <h3><a href="/media/@gallery.Slug">@gallery.Name</a></h3>
+                                <p>@gallery.Description <a href="/media/@gallery.Slug">Смотреть →</a></p>
+                                </div>  
+                            } else {
+                                <div class="homeportfolio large-12 columns">
+                                <div class="entry">
+                                    <div class="js-video [vimeo, widescreen]">
+                                        @Html.Raw(gallery.Code)                                        
+                                    </div>
+                                </div>
+                                <h3><a href="/media/@gallery.Slug">@gallery.Name</a></h3>
+                                <p>@gallery.Description <a href="/media/@gallery.Slug">Смотреть →</a></p>
+                                </div>
+                            }
+                        }                        
+      
+                    </div><!-- End Content -->
+				</div><!-- large 12 -->
+			</div><!-- end row -->

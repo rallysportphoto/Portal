@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "AccreditationFinish";    
+}
+<div class="row">
+				<div class="large-12 columns">
+
+            		<div class="content">
+
+                    	<div class="singletop">
+                            <div class="search">
+                                <form method="get" action="#">
+									<input id="s" type="text" value="Search" name="s">
+                                </form>	
+                            </div>
+                            <nav class="breadcrumbs">
+                              <a href="/">Главная</a>   
+                              <a href="/timeline">Календарь</a>                                
+                              <a href="/timeline/@ViewBag.Slug">@ViewBag.EventName</a>   
+                              <a class="current" href="#">Форма аккредитации</a>
+                            </nav>
+                        </div>
+                        
+                        <div class="homeposttitle">
+                            <h3 class="widget-title">
+                                <span>
+                            			Заявка на аккредитацию на @ViewBag.EventName принята в рассмотрение
+                                </span>
+                            </h3>  
+                        </div>
+
+                        <div class="large-12 columns"> 
+                            Ваша заявка на аккредитацию на @ViewBag.EventName принята в рассмотрение. В ближайшее время наш сотрудник подтвердит аккредитацию, используя контактные данные, указанные Вами при регистрации.<br /><br />
+                            С уважением, коллектив Автомобильной Федерации.
+                        </div>
+                    </div>
+	            </div><!-- large 12 -->
+</div><!-- end row -->

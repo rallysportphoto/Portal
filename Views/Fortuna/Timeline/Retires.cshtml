@@ -1,0 +1,151 @@
+﻿@model IEnumerable<Portal.ViewModels.Translation.RetireViewModel>
+@using Portal.Helpers;
+@{        
+    ViewBag.HideSidebar = true;
+
+    Portal.Models.OfficialEvent ev = (Portal.Models.OfficialEvent)ViewBag.Event;
+    List<Portal.ViewModels.Translation.StageHeaderViewModel> headers = (List<Portal.ViewModels.Translation.StageHeaderViewModel>)ViewBag.Headers;
+    Portal.Models.SubEvent sEv = (Portal.Models.SubEvent)ViewBag.SubEvent;
+    string group = (string)ViewBag.Group;
+    List<string> groups = (List<string>)ViewBag.Groups;
+}
+<div class="large-12 columns">
+
+			<div class="row">
+				<div class="large-12 columns">
+
+            		<div class="content">
+
+                    	<div class="singletop">
+                            <div class="search">
+                                <form method="get" action="#">
+									<input id="s" type="text" value="Search" name="s">
+                                </form>	
+                            </div>
+                            <nav class="breadcrumbs">
+                              <a href="/">Главная</a>
+                              @if (@ev.Season == 2014)
+                              {
+                                  <a href="/timeline">Календарь</a>
+                                  <a href="/timeline/@ev.Slug" class="current">@ev.Title</a>
+                              } else {
+                                <a href="/timeline">Календарь</a>
+                                <a href="/timeline/@ev.Season">@ev.Season</a>
+                                <a href="/timeline/@ev.Season/@ev.Slug" >@ev.Title</a>
+                              }
+                              <a>@ViewBag.Series</a>
+                              <a class="current">Сходы</a>
+                            </nav>
+                        </div>
+                        
+                        <div class="homeposttitle">
+                            <h3 class="widget-title">
+                                <span>
+                            			Сходы @(!string.IsNullOrWhiteSpace(group)?" Зачет "+ group:"")
+                                </span>
+                            </h3>  
+                        </div>
+                                
+                        <p>
+                            @if (ev.Season == 2014)
+                             {
+                                 if(string.IsNullOrWhiteSpace(group)) {
+                                    <a href="~/timeline/@ev.Slug/Orders/@sEv.Series.Slug" class="button">Заявленные экипажи</a>                                                                      
+                                 } else {
+                                    <a href="~/timeline/@ev.Slug/Orders/@sEv.Series.Slug?group=@group" class="button">Заявленные экипажи</a>                                                                      
+                                 }
+                             } else {
+                                 if(string.IsNullOrWhiteSpace(group)) {
+                                    <a href="~/timeline/@ev.Season/@ev.Slug/Orders/@sEv.Series.Slug" class="button">Заявленные экипажи</a>                                                                  
+                                 } else {
+                                    <a href="~/timeline/@ev.Season/@ev.Slug/Orders/@sEv.Series.Slug?group=@group" class="button">Заявленные экипажи</a>                                                                                                      
+                                 }
+                             }
+
+                            @foreach(var stage in headers) {
+                             if (ev.Season == 2014)
+                                  {
+                                      if(string.IsNullOrWhiteSpace(group)) {
+                                          <a href="~/timeline/@ev.Slug/@(stage.IsTarget?"Target":"Stage")/@sEv.Series.Slug/@stage.Name" class="button">@stage.Name</a>                                  
+                                      } else {
+                                          <a href="~/timeline/@ev.Slug/@(stage.IsTarget?"Target":"Stage")/@sEv.Series.Slug/@stage.Name?group=@group" class="button">@stage.Name</a>                                  
+                                      }
+                                  } else {
+                                      if(string.IsNullOrWhiteSpace(group)) {
+                                        <a href="~/timeline/@ev.Season/@ev.Slug/@(stage.IsTarget?"Target":"Stage")/@sEv.Series.Slug/@stage.Name" class="button">@stage.Name</a>                                                                  
+                                      }
+                                      else {
+                                        <a href="~/timeline/@ev.Season/@ev.Slug/@(stage.IsTarget?"Target":"Stage")/@sEv.Series.Slug/@stage.Name?group=@group" class="button">@stage.Name</a>                                                                  
+                                      }
+                                  }
+                            }
+
+                            @if (ev.Season == 2014)
+                             {
+                                 if(string.IsNullOrWhiteSpace(group)) {
+                                    <a class="button" href="~/timeline/@ev.Slug/Penalities/@sEv.Series.Slug">Пенализации</a>                                  
+                                    <a class="button secondary">Сходы</a>                                                                   
+                                    <a class="button" href="~/timeline/@ev.Slug/Comments/@sEv.Series.Slug">Комментарии</a>                                  
+                                 } else {
+                                    <a class="button" href="~/timeline/@ev.Slug/Penalities/@sEv.Series.Slug?group=@group">Пенализации</a>                                  
+                                    <a class="button secondary">Сходы</a>                                           
+                                    <a class="button" href="~/timeline/@ev.Slug/Comments/@sEv.Series.Slug?group=@group">Комментарии</a>                                  
+                                 }
+                             } else {
+                                 if(string.IsNullOrWhiteSpace(group)) {
+                                    <a class="button" href="~/timeline/@ev.Season/@ev.Slug/Penalities/@sEv.Series.Slug">Пенализации</a>                                  
+                                    <a  class="button secondary">Сходы</a>                                                                  
+                                    <a class="button" href="~/timeline/@ev.Season/@ev.Slug/Comments/@sEv.Series.Slug">Комментарии</a>                                  
+                                 } else {
+                                    <a class="button" href="~/timeline/@ev.Season/@ev.Slug/Penalities/@sEv.Series.Slug?group=@group">Пенализации</a>                                                                  
+                                    <a  class="button secondary">Сходы</a>                                                                                                            
+                                    <a class="button" href="~/timeline/@ev.Season/@ev.Slug/Comments/@sEv.Series.Slug?group=@group">Комментарии</a>                                                        
+                                 }
+                             } 
+                        </p>      
+                        <p>
+                            @if(string.IsNullOrWhiteSpace(group)) {
+                                <a class="button">Абсолют</a>                                                                  
+                            } else {
+                                <a href="~/timeline/@ev.Slug/Retires/@sEv.Series.Slug" class="button secondary">Абсолют</a>
+                            }
+                            @foreach (var g in groups.Where(g=>g!="Абсолют"))
+                            {
+                                if(g==group) {
+                                    <a class="button secondary">@g</a>                                                                  
+                                } else {
+                                    <a href="~/timeline/@ev.Slug/Retires/@sEv.Series.Slug?group=@g" class="button ">@g</a>
+                                }    
+                            }
+                        </p>                         
+                        <table>
+                            <thead>                                                             
+                                <tr>                                    
+                                    <th>Ст. №</th>
+                                    <th>Экипаж</th>
+                                    <th>Зачет</th>   
+                                    <th>Пункт контроля</th>                                         
+                                    <th>Причина схода</th>                                    
+                                </tr>
+                            </thead>
+                            <tbody>                                
+                                @foreach (var penality in Model.OrderBy(p=>p.StartNumber).ThenBy(p=>p.AdditionalSort))
+                                {                                    
+                                    <tr>                                        
+                                        <td>@penality.StartNumber</td>
+                                        <td>@penality.Driver<br />
+                                            @penality.CoDriver
+                                        </td>
+                                        <td>@penality.Groups</td>
+                                        <td>@penality.Control</td>
+                                        <td>@penality.Reason</td>                                        
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>                       
+                    </div>
+               
+				</div><!-- large 12 -->
+			</div><!-- end row -->
+            
+		</div><!-- end large 8 -->

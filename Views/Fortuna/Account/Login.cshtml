@@ -1,0 +1,51 @@
+﻿@model Portal.ViewModels.LoginViewModel
+
+@{
+    ViewBag.Title = "Log in";    
+}
+
+<div id="breadcrumbs_bg">
+<div id="breadcrumbs_m">
+<div id="breadcrumbs">
+  <ul>
+    <li><a href="/">Главная</a></li>
+    <li>Вход в систему</li>
+  </ul>
+  <h1><span class="fl">В</span>ход в систему</h1>
+</div>
+</div>
+</div>
+<div id="content_t"></div>
+<div id="content_spot_t">
+<div id="content_spot_b">
+<div id="content" class="section">
+
+  <div class="cols">      <div class="col_2-3">          @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form", @class="uniform contact_us" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="i_h">
+                                <div class="l">                            
+                                    @Html.TextBoxFor(m => m.UserName, new { placeholder="Имя пользователя" })
+                                    @Html.ValidationMessageFor(m => m.UserName)
+                                </div>       
+                            </div>
+                            <div class="i_h">                     
+                                <div class="l">
+                                    @Html.PasswordFor(m => m.Password)                                                        
+                                    @Html.ValidationMessageFor(m => m.Password)
+                                </div>
+                            </div>
+                            @*<div class="i_h">                     
+                                <div class="l">
+                                    <label for="">Запомнить меня</label>@Html.CheckBoxFor(m => m.RememberMe)
+                                </div>
+                            </div>                                                       
+                            *@<input type="submit" name="submit" id="submit" value="Вход" />
+                        }      </div>            <div id="aside" class="col_1-3">          <p>Пожалуйста, войдите в систему используя логин/пароль под которыми вы регистрировались на сайте или с помощью социальных сетей:</p>         
+
+                            @Html.Partial("_ExternalLoginsListPartial", (object)ViewBag.ReturnUrl)
+
+                            <p>Если у вас еще нет учетной записи, вы можете @Html.ActionLink("зарегистрироваться", "Register", new { returnUrl = ViewBag.ReturnUrl }).</p>      </div>  </div>
+</div>
+</div>
+</div>

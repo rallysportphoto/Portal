@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Portal.ViewModels.ProgramItemViewModel>
+@{
+    ViewBag.Title = "CommingSoon";
+    Layout = "~/Views/Fortuna/Shared/_Default.cshtml";
+}
+
+ <div id="breadcrumbs_bg">
+    <div id="breadcrumbs_m">
+        <div id="breadcrumbs">
+              <ul>
+                <li><a href="/">Главная</a></li>
+                
+                    <li>Программа</li>
+                
+              </ul>
+              
+                <h1><span class="fl">П</span>рограмма</h1>
+                    
+        </div>
+    </div>
+</div>        
+
+
+        
+<div id="content_t"></div>
+<div id="content_spot_t">
+<div id="content_spot_b">
+<div id="content" class="section">
+
+
+
+
+  <div class="cols">
+      
+      @foreach(var item in Model) {
+      <div class="article blog">
+
+      <h1><span class="fl">@Html.Raw(item.Name.Substring(0,1))</span>@Html.Raw(item.Name.Substring(1))</h1>
+        <a href="/program/@Html.Raw(item.Slug)" class="blog_ico">
+          <img src="@Html.Raw(item.LogoProgram)" alt="" />
+          <i></i>
+        </a>
+        <div class="blog_desk">
+            @item.DescriptionShort <br />
+            <a href="/program/@item.Slug">Подробнее</a><a class="desc_details"></a>
+        </div>
+      </div>
+      }
+      
+      
+</div>
+
+
+      
+</div>
+</div>
+</div>
+
+

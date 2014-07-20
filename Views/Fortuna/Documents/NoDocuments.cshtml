@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Portal.ViewModels.DocumentsTagViewModel>
+
+@{
+    ViewBag.Title = "";    
+}
+
+<div class="row">
+	<div class="large-12 columns">
+
+        <div class="content">
+
+            <div class="singletop">
+                <div class="search">
+                    <form method="get" action="#">
+						<input id="s" type="text" value="Search" name="s">
+                    </form>	
+                </div>
+                <nav class="breadcrumbs">
+                    <a href="/">Главная</a>
+                    <a class="current" href="/documents">Документы</a>
+                </nav>
+            </div>
+
+            <h2>Документы</h2>
+            
+            <p>В текущем сезоне не задана категоризация документов или не было опубликовано ни одного документа. Пожалуйста, воспользуйтесь архивами документов прошлых сезонов.</p>
+        </div><!-- content -->               
+	</div><!-- large 12 -->
+</div><!-- end row -->

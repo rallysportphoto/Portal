@@ -1,0 +1,292 @@
+﻿@model Portal.ViewModels.EventViewModel
+
+@{
+    ViewBag.Title = "Get";    
+}
+
+  			<div class="row">
+				<div class="large-12 columns">
+
+            		<div class="content">
+
+                    	<div class="singletop">
+                            <div class="search">
+                                <form method="get" action="#">
+									<input id="s" type="text" value="Search" name="s">
+                                </form>	
+                            </div>
+                            <nav class="breadcrumbs">
+                              <a href="/">Главная</a>
+                              @if (Model.Season == 2014)
+                              {
+                                  <a href="/timeline">Календарь</a>
+                                  <a href="#" class="current">@Model.Title</a>
+                              } else {
+                                <a href="/timeline">Календарь</a>
+                                <a href="/timeline/@Model.Season">@Model.Season</a>
+                                <a href="#" class="current">@Model.Title</a>
+                              }
+                            </nav>
+                        </div>
+
+                                               
+                        <div class="single-shop clearing-container">
+                        	<div class="row">
+                                <div class="large-12 columns">                                
+                                <div class="summary">
+                                <h1>@Model.Title</h1>
+                                    <p class="price">                                        
+                                        <ins><span class="amount">@Model.Dates</span></ins>
+                                    </p>                                    
+                                    <div itemprop="description">
+                                        @Html.Raw(Model.Description)                                        
+                                    </div>                                                                                                                                                
+                                    <p>
+                                        @if(!Model.IsOverdue && Model.RegistrationEnabled) {
+                                            <a href="~/timeline/@Model.Slug/Register" class="button small">Подать заявку</a>
+                                        }
+                                        @if(!Model.IsOverdue && Model.AccreditationsEnabled) {
+                                            <a href="~/timeline/@Model.Slug/Accreditation" class="button small">Аккредитация</a>                                        
+                                        }                                        
+                                        @*<a href="~/timeline/@Model.Slug/Guide" class="button small">Зрительский листок</a>*@
+                                    </p>
+                                </div>
+                            </div><!-- End large 6 -->
+                            </div>
+
+                            <div id="tab-description" class="section-container auto clearing-container" data-section>
+                                @{ var bFirst= true;}
+                                @foreach (var series in Model.Series)
+                                {
+                                    <section @Html.Raw(bFirst ? "class='active'" : "")>
+                                        @{ bFirst = false; }                                
+                                        <p class="title" data-section-title><a href="#panel1">@series.SeriesName</a></p>
+                                        <div class="content" data-section-content>
+                                            <h3>@series.Title</h3>
+                                            <div class="row">
+                                                <div class="box large-10 columns">
+                                                    <div id="tab-lists" class="section-container auto clearing-container" data-section>
+                                                  <section class="active">
+                                                      <p class="title" data-section-title><a href="#panel1">Общая информация</a></p>
+                                                      <div class="content" data-section-content>
+                                                          <h3>Информация о соревновании</h3>
+                                                          <div class="row">
+                                                              <div class="large-6 entry columns">
+                                                                  <a href="@series.MapUrl" data-gal="prettyPhoto" rel="prettyPhoto">
+                                                                        <img width="710" height="710" alt="" src="@series.MapThumbnailUrl710">
+                                                                        <span class="magnifier"></span>
+                                                                    </a>
+                                                              </div>
+                                                              <div class="large-6 columns">
+                                                                  @Html.Raw(series.Description)                                                                  
+                                                                  @*<a href="~/timeline/@Model.Slug/Guide/@series.Slug">Подробнее</a>*@
+                                                              </div>
+                                                          </div>     
+                                                      </div>
+                                                  </section>                                    
+                                                  @if(series.News.Any()) {
+                                                      <section>
+                                                          <p class="title" data-section-title><a href="#panel1">Новости</a></p>
+                                                          <div class="content" data-section-content>
+                                                              <h3>Новости соревнования</h3>
+                                                              @foreach (var item in series.News.OrderByDescending(n=>n.Date))
+                                                                {
+                                                                    <article class="blog-wrapper clearing-container">                            
+                                                                            <div class="homeposttitle">
+                                                                                <h3 class="widget-title">
+                                                                                    <span>
+                                                                                        <i class="fa @item.LogoClass homeposticon"></i>
+                                                                                        <a href="/news/@Html.Raw(item.Slug)">@item.Title</a>
+                                                                                    </span>
+                                                                                </h3>  
+                                                                                <ul class="post-date clearfix">
+                                                                                    <li><i class="fa fa-calendar"></i> @item.Date.ToString("dd MMM yyyy")</li>                                                
+                                                                                </ul>
+                                                                            </div>
+						                                                </article>
+                                                                    }
+                                                          </div>
+                                                      </section>
+                                                  }
+                                                  @if(series.Documents.Any()) {
+                                                      <section>
+                                                          <p class="title" data-section-title><a href="#panel1">Документы</a></p>
+                                                          <div class="content" data-section-content>
+                                                              <h3>Документы соревнования</h3>
+                                                              <ol class="commentlist clearing-container">
+                                                                    @foreach(var file in series.Documents.OrderByDescending(f=>f.PublicationDate)) {
+                                                                        <li class="clearing-container">
+                                                                            <div class="comment_container">
+                                                                                <img class="authorimg clearing-featured-img" width="60" height="60" src="@Html.Raw(file.Logo)" alt="">
+                                                                                <div class="comment-text">                                                                                
+                                                                                    <span class="meta">
+                                                                                        <a href="/file/@file.FileName">
+                                                                                            <strong itemprop="author">@file.Title</strong>
+                                                                                            <time>@file.PublicationDate.ToString("dd MMM yyyy")</time>
+                                                                                        </a>
+                                                                                    </span>                                                
+                                                                                </div>
+                                                                            </div>
+                                                                        </li>
+                                                                    }
+                                                                </ol>
+                                                          </div>
+                                                      </section>
+                                                  }
+                                                  
+                                                  @if(series.Orders.Any()) {
+                                                    <section>
+                                                      <p class="title" data-section-title><a href="#panel1">Участники</a></p>
+                                                      <div class="content" data-section-content>
+                                                          <h3>Список заявленных участников</h3>
+                                                          <table>
+                                                              <thead>
+                                                                  <tr>
+                                                                      <th>Ст. №</th>
+                                                                      <th>Экипаж</th>
+                                                                      <th>Город</th>
+                                                                      <th>Участник</th>
+                                                                      <th>Автомобиль</th>
+                                                                      <th>Зачет</th>
+                                                                  </tr>
+                                                              </thead>
+                                                              <tbody>
+                                                                  @foreach(var order in series.Orders.OrderBy(o=>o.StartNumberInt)) {
+                                                                  <tr>
+                                                                      <td>@order.StartNumber</td>
+                                                                      <td>@order.Driver<br />
+                                                                          @order.CoDriver
+                                                                      </td>
+                                                                      <td>@order.DriverCity<br />
+                                                                          @order.CoDriverCity
+                                                                      </td>                                                              
+                                                                      <td>@order.Team</td>                                                                                                                            
+                                                                      <th>@order.Car</th>
+                                                                      <th>@order.Group</th>
+                                                                  </tr>
+                                                                  }
+                                                              </tbody>
+                                                          </table>
+                                                          @if(!Model.IsOverdue && Model.RegistrationEnabled) {
+                                                            <a href="~/timeline/@Model.Slug/Register" class="button small">Подать заявку</a>
+                                                          }
+                                                          @*<a href="~/timeline/@Model.Slug/Orders/Cup">Подробнее</a>  | <a href="~/timeline/@Model.Slug/Orders/Cup/Print">Печать</a>*@
+                                                      </div>
+                                                  </section>
+                                                  }
+                                                  
+                                                  @if(series.Accreditations.Any()) {
+                                                    <section>
+                                                      <p class="title" data-section-title><a href="#panel1">Аккредитованные СМИ</a></p>
+                                                      <div class="content" data-section-content>
+                                                          <h3>Список аккредитованных СМИ</h3>
+                                                          <table>
+                                                              <thead>
+                                                                  <tr>                                                                      
+                                                                      <th>ФИО</th>                                                                      
+                                                                      <th>СМИ</th>
+                                                                  </tr>
+                                                              </thead>
+                                                              <tbody>
+                                                                  @foreach (var accreditation in series.Accreditations)
+                                                                  {
+                                                                  <tr>
+                                                                      <td>@accreditation.Name</td>
+                                                                      <td>@accreditation.Organisation</td>
+                                                                  </tr>                                                                      
+                                                                  }
+                                                              </tbody>
+                                                          </table>
+                                                          @if(!Model.IsOverdue && Model.AccreditationsEnabled) {
+                                                                <a href="~/timeline/@Model.Slug/Accreditation" class="button small">Аккредитация</a>                                        
+                                                            }
+                                                      </div>
+                                                  </section>
+                                                  }
+                                              @*<section>
+                                                  <p class="title" data-section-title><a href="#panel1">Результаты</a></p>
+                                                  <div class="content" data-section-content>
+                                                      <h3>Текущие результаты соревнования|Итоговые результаты</h3>
+                                                      <table>
+                                                          <thead>
+                                                              <tr>
+                                                                  <th>Поз.</th>
+                                                                  <th>Ст №</th>
+                                                                  <th>Экипаж</th>
+                                                                  <th>Участник</th>
+                                                                  <th>Пройдено СУ</th>
+                                                                  <th>Результат</th>
+                                                                  <th>Отрыв</th>
+                                                              </tr>
+                                                            </thead>
+                                                           <tbody>
+                                                              <tr>
+                                                                  <td>1</td>
+                                                                  <td>1</td>
+                                                                  <td>HSJHSJF Hsdsk<br />
+                                                                      HHJHSKJ Jhdud
+                                                                  </td>
+                                                                  <td>DSKJHDSFKSHDK</td>
+                                                                  <td>5</td>
+                                                                  <td>00:45:00.0</td>
+                                                                  <td></td>
+                                                              </tr>
+                                                              <tr>
+                                                                  <td>2</td>
+                                                                  <td>4</td>
+                                                                  <td>SDDSFDF Hsdsk<br />
+                                                                      SADSADSJ Jhdud
+                                                                  </td>
+                                                                  <td>ASDSA</td>
+                                                                  <td>5</td>
+                                                                  <td>00:46:10.0</td>
+                                                                  <td>00:00:50.0<br />
+                                                                      (00:00:50.0)
+                                                                  </td>
+                                                              </tr>
+                                                              <tr>
+                                                                  <td>2</td>
+                                                                  <td>4</td>
+                                                                  <td>SDDSFDF Hsdsk<br />
+                                                                      SADSADSJ Jhdud
+                                                                  </td>
+                                                                  <td>ASDSA</td>
+                                                                  <td>5</td>
+                                                                  <td>00:46:10.0</td>
+                                                                  <td>00:00:50.0<br />
+                                                                      (00:00:50.0)
+                                                                  </td>
+                                                              </tr>
+                                                          </tbody>
+                                                      </table>
+                                                      <a href="~/timeline/@Model.Slug/Results/Cup">Подробнее</a> | <a href="~/timeline/@Model.Slug/Results/Cup/Print">Печать</a> | <a href="#">Книга результатов</a>
+                                                  </div>
+                                              </section>*@
+                                            </div>
+                                                </div>
+                                                <div class="box large-2 columns">
+                                                    @if (series.Partners.Any())
+                                                    {
+                                                        <ul class="clients">
+                                                            @foreach (var item in series.Partners.OrderBy(p => p.Position))
+                                                            {
+                                                                <li class="entry">
+                                                                    <a href="@Html.Raw(item.Url)" target="_blank" title="@item.Title">
+                                                                        <img alt="@item.Name" src="@item.LogoLow" />
+                                                                    </a>
+                                                                </li>
+                                                            }
+                                                        </ul>
+                                                    }
+                                                </div>
+                                        </div>
+                                    </div>
+                                </section>              
+                                }
+                            </div>                                        					    
+                        </div><!-- Single wrapper -->
+					</div><!-- Content -->
+  
+
+				</div><!-- large 12 -->
+			</div><!-- end row -->

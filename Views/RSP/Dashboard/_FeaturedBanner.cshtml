@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Portal.Models.FeaturableEvent>
+
+<div class="slider">
+	<div class="flexslider">
+		<ul class="slides">
+            @foreach (var item in Model.OrderBy(d => d.FinishDate))
+            {
+                var externalEvent = item as Portal.Models.ExternalEvent;
+                var officialEvent = item as Portal.Models.OfficialEvent;
+                if (externalEvent != null)
+                {
+                     <li>
+                        <a href="@Html.Raw(externalEvent.Url)" target="_blank"><img src="@Html.Raw(Portal.Services.ThumbnailService.GetThumbnailUrl(externalEvent.Intro,642,361))" alt="" /></a>
+                        <h3 class="flex-title">@externalEvent.Title</h3>
+                        <p class="flex-caption">@string.Join(", ",externalEvent.Series.Select(s=>s.Title)) <a href="@Html.Raw(externalEvent.Url)" target="_blank">далее →</a></p>
+                    </li>
+                }
+                if (officialEvent != null)
+                {
+                    <li>
+                        <a href="/timeline/@officialEvent.Slug"><img src="@Html.Raw(Portal.Services.ThumbnailService.GetThumbnailUrl(officialEvent.Intro,642,361))" alt="" /></a>
+                        <h3 class="flex-title">@officialEvent.Title</h3>
+                        <p class="flex-caption">@string.Join(", ",officialEvent.Series.Select(s=>s.Title))  <a href="/timeline/@officialEvent.Slug">далее →</a></p>
+                    </li>
+                }
+            }        
+		</ul>
+	</div>
+</div><!-- End Slider -->

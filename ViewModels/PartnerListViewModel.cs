@@ -20,11 +20,13 @@ namespace Portal.ViewModels
             Title = p.Desctiption;
             Name = p.Name;
             Url = p.Url;
+            Global = p.Global;
+            File = ThumbnailService.GetRawFile(p.Logo);
 
             if (p.Logo != null)
             {
-                Logo = ThumbnailService.GetThumbnailUrl(p.Logo, 200, 200);
-                LogoLow = ThumbnailService.GetThumbnailUrl(p.Logo, 88, 88);
+                Logo = ThumbnailService.GetThumbnailUrl(p.Logo, Properties.Settings.Default.LogoBigThumbnailWidth, Properties.Settings.Default.LogoBigThumbnailHeight);
+                LogoLow = ThumbnailService.GetThumbnailUrl(p.Logo, Properties.Settings.Default.LogoSmallThumbnailWidth, Properties.Settings.Default.LogoSmallThumbnailWidth);                
             }
             else
             {
@@ -33,11 +35,13 @@ namespace Portal.ViewModels
             }
         }
 
+        public bool Global { get; set; }
         public int Position { get; set; }
         public string Title { get; set; }
         public string Url { get; set; }
         public string Logo { get; set; }
         public string LogoLow { get; set; }
+        public string File { get; set; }
         public string Name { get; set; }
     }
 }

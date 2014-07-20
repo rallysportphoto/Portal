@@ -1,0 +1,142 @@
+/*
+   Исправление hover   
+   
+   Было: ul.pxs_thumbnails li:hover div{
+   
+   Так лучше не делать, потому что
+      - когда мышка не на li, а анимация еще идет, то картинка меняет размер
+      - для инициализации скрипта лучше сразу сказать, где должна быть div-ка
+*/
+ul.pxs_thumbnails li div{
+   display: none;
+	left: -53px;
+	top: -131px;
+}
+ul.pxs_thumbnails li div img{
+	width: 110px;
+	height: 110px;
+}
+ul.pxs_thumbnails li div i{
+	display: block;
+	width: 122px;
+	height: 133px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background: url(../images/slider/thumb_mask.png) no-repeat 0 0;
+}
+/*
+   End: Исправление hover
+*/
+
+#form_holder {
+}
+
+#form_holder h1.share_comment {
+   margin: 0;
+}
+
+#form_holder .pad {
+   height: 20px;
+}
+
+
+
+/*
+   .desc должен быть в div-ке с overflow hidden 
+   + у .desc есть padding, поэтому его опять же нужно обернуть чем-то
+*/
+.desc_outer {
+   overflow: hidden;
+   position: absolute;
+   height: 166px;
+   width: 341px;
+   left: 24px;
+   top: 116px;
+   z-index: 1;
+}
+
+ul.pxs_slider li div.holder div.desc {
+   top: 0;
+   left: 0;
+}
+/*
+   End: .desc должен быть в div-ке с overflow hidden 
+*/
+
+
+/*
+   Убираю hover для блоков с картинками и текстом
+*/
+.cols.benefits .col_1-3:hover .desc{
+	display: none;
+}
+.cols.benefits .col_1-3 {
+   text-decoration: none;
+}
+.cols.benefits .col_1-3 .desc h4{
+   position: relative;
+   z-index: 2;
+}
+.col_1-3 .desc {
+   overflow: hidden;
+   z-index: 1;
+}
+/*
+   End: Убираю hover для блоков с картинками и текстом
+*/
+
+
+/*
+   Настройки форм
+*/
+textarea, input{
+	font-style: normal;
+	color: #e4e0dc;
+}
+textarea.placeholder, input.placeholder{
+	font-style: italic;
+	color: #636363;
+}
+/*
+   End: Настройки форм
+*/
+
+#mainmenu li:hover div{
+	display: none;
+}
+
+.sh .item {
+   display: none;
+   width: 260px;
+}
+.sh {
+   width: 260px;
+}
+.sh .item.first {
+   display: block;
+}
+.widget {
+   position: relative;
+}
+.widget_arr {
+   position: absolute;
+   top: 15px;
+   right: 19px;
+}
+
+div#header_bg div#header ul#mainmenu li.parent div ul { z-index: 100; }
+div#header_bg div#header ul#mainmenu li.parent div { z-index: 99; }
+div#header_bg div#header ul#mainmenu li.parent { z-index: 98; }
+div#header_bg div#header ul#mainmenu { z-index: 97; }
+div#header_bg div#header { z-index: 96; }
+div#header_bg { z-index: 95; }
+#pxs_container { z-index: 2; }
+
+
+.uniform input[type="checkbox"] {
+    width: auto;
+    display:inline;
+    margin-right:0.5em;
+    margin-left: 2em;
+}

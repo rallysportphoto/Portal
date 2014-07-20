@@ -1,0 +1,90 @@
+﻿@model Portal.ViewModels.RegisterViewModel
+@{
+    ViewBag.Title = "Register";    
+}
+<div class="row">
+				<div class="large-12 columns">
+
+            		<div class="content">
+
+                    	<div class="singletop">
+                            <div class="search">
+                                <form method="get" action="#">
+									<input id="s" type="text" value="Search" name="s">
+                                </form>	
+                            </div>
+                            <nav class="breadcrumbs">
+                              <a href="/">Главная</a>                              
+                              <a class="current" href="#">Регистрация</a>
+                            </nav>
+                        </div>
+                        
+                        <div class="homeposttitle">
+                            <h3 class="widget-title">
+                                <span>
+                            			Регистрация
+                                </span>
+                            </h3>  
+                        </div>
+                        
+               	  <div class="large-5 columns">                    
+
+@using (Html.BeginForm("Register", "Account", new { returnUrl = (object)ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    
+    @Html.ValidationSummary()
+    
+    <label for="name">Имя пользователя</label>
+    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.UserName)
+        
+    <label for="email">Пароль</label>
+    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Password)
+
+    <label for="email">Подтверждение пароля</label>
+    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.ConfirmPassword)
+
+    <label for="firstName">Имя</label>
+    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.FirstName)
+
+    <label for="lastName">Фамилия</label>
+    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.LastName)
+
+    <label for="birthDate">Дата рождения</label>
+    @Html.TextBoxFor(m => m.BirthDate, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.BirthDate)
+
+    <label for="location">Город, страна</label>
+    @Html.TextBoxFor(m => m.Location, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Location)
+
+    <label for="phone">Телефон</label>
+    @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Phone)
+
+    <label for="email">E-mail</label>
+    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Email)
+
+    <label for="address">Адрес</label>
+    @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Address)
+    
+    <label for="passport">Паспортные данные</label>
+    @Html.TextBoxFor(m => m.Passport, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Passport)
+    
+    <input type="submit" name="submit" id="submit" class="button small" value="Регистрация" />    
+}
+                    </div>
+                    <div class="large-7 columns">
+                        <p>В соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных» даю своё согласие МОО «Автомобильная Федерация Санкт-Петербурга и Ленинградской области» на обработку, в том числе автоматизированную, моих персональных данных, указанных в настоящем Обращении, включая сбор, систематизацию, накопление, хранение, уточнение (обновление, изменение), использование, обезличивание, блокирование, уничтожение моих персональных данных, в целях действий по учету моей спортивной деятельности. Согласие предоставляется с момента регистрации в системе и действительно в течение пяти лет. По истечении указанного срока действие согласия считается продлённым на каждые следующие пять лет при отсутствии сведений о его письменном отзыве.</p>
+                    </div>
+            </div>
+    </div>
+</div>

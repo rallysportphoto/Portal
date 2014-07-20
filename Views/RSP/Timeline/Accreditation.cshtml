@@ -1,0 +1,135 @@
+﻿
+@{
+    ViewBag.Title = "Accreditation";    
+}
+
+<div class="row">
+				<div class="large-12 columns">
+
+            		<div class="content">
+
+                    	<div class="singletop">
+                            <div class="search">
+                                <form method="get" action="#">
+									<input id="s" type="text" value="Search" name="s">
+                                </form>	
+                            </div>
+                            <nav class="breadcrumbs">
+                              <a href="/">Главная</a>   
+                              <a href="/timeline">Календарь</a>                                
+                              <a href="/timeline/@ViewBag.Slug">@ViewBag.EventName</a>   
+                              <a class="current" href="#">Форма аккредитации</a>
+                            </nav>
+                        </div>
+                        
+                        <div class="homeposttitle">
+                            <h3 class="widget-title">
+                                <span>
+                            			Аккредитация на @ViewBag.EventName
+                                </span>
+                            </h3>  
+                        </div>
+                        
+                        <form action="/timeline/@ViewBag.Slug/AccreditationFinish" method="post" role="form">                        
+                            @Html.AntiForgeryToken()
+               	          <div class="large-12 columns">                    
+                        
+
+                                    <label for="car">Автомобиль (марка, модель, гос. номер) </label>
+                                    @Html.TextBox("Car","",new { @class="form-control"})
+
+                            
+                                    @*<label for="name">Имя пользователя</label>
+                                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.UserName)
+
+                                    <label for="email">Пароль</label>
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Password)
+                            
+                                    <label>@Html.CheckBoxFor(m => m.RememberMe) Запомнить меня</label>*@
+                            </div>
+                            
+                            <div class="large-12 columns">
+                            <div class="group">
+                            <hr />                            
+                            <div class="box large-12 columns">
+                                <label for="car">Название структуры, издания (программы канала, радиостанции)</label>
+                                @Html.TextBox("Media[0].Media","",new { @class="form-control"})
+                            </div>                                                       
+                            <div class="box large-4 columns">
+                                <label for="car">Вид издания</label>
+                                @Html.TextBox("Media[0].Type","",new { @class="form-control"})
+                            </div>
+                            <div class="box large-8 columns">
+                                <label for="car">Должность</label>
+                                @Html.TextBox("Media[0].Position","",new { @class="form-control"})
+                            </div>
+                            
+                            <div class="box large-4 columns">
+                                <label for="car">Регион распространения/вещания</label>
+                                @Html.TextBox("Media[0].Region","",new { @class="form-control"})
+                            </div>
+                            <div class="box large-4 columns">
+                                <label for="car">Периодичность выхода (время)</label>
+                                @Html.TextBox("Media[0].Frequency","",new { @class="form-control"})
+                            </div>
+                            <div class="box large-4 columns">
+                                <label for="car">Тираж</label>
+                                @Html.TextBox("Media[0].Edition","",new { @class="form-control"})
+                            </div>
+
+                             
+                            <div class="box large-4 columns">
+                                <label for="car">Телефон</label>
+                                @Html.TextBox("Media[0].Phone","",new { @class="form-control"})
+                            </div>
+                            <div class="box large-4 columns">
+                                <label for="car">Факс</label>
+                                @Html.TextBox("Media[0].Fax","",new { @class="form-control"})
+                            </div>
+                            <div class="box large-4 columns">
+                                <label for="car">E-mail</label>
+                                @Html.TextBox("Media[0].Email","",new { @class="form-control"})
+                            </div>
+                            <div class="box large-12 columns">
+                                <label for="car">WWW</label>
+                                @Html.TextBox("Media[0].Web","",new { @class="form-control"})
+                            </div>
+                            </div>                            
+                            <a href="#" id="addLine" class="button small" title="Добавить издание">Добавить издание</a>
+                            </div>
+                            
+                            <hr />                        
+                            <div class="box large-12 columns">
+                                <input type="submit" name="submit" id="submit" class="button small" value="Подать заявку" />                                                						                       
+                            </div>
+                        </form>
+                    </div>
+				</div><!-- large 12 -->
+			</div><!-- end row -->
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#addLine').click(function (e) {
+                var $this = $(e.currentTarget),
+                group = $this.prev(),
+                newGroup = group.clone().insertAfter(group),
+                selects = newGroup.find('select');
+
+                selects.each(function () {
+                    $(this).prop('name', $(this).prop('name').replace(/\d+/, function (n) { return ++n; }));
+                });
+                newGroup.find('input').val('').each(function () {
+                    $(this).prop('name', $(this).prop('name').replace(/\d+/, function (n) { return ++n; }));
+                });
+                newGroup.find('textarea').text('').each(function () {
+                    $(this).prop('name', $(this).prop('name').replace(/\d+/, function (n) { return ++n; }));
+                });                
+
+                event.preventDefault();
+            });
+        });
+    </script>
+}

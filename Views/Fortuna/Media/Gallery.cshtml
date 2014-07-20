@@ -1,0 +1,57 @@
+﻿@model Portal.ViewModels.GalleryViewModel
+
+@{
+    ViewBag.Title = "Index";    
+}
+
+<div class="row">
+				<div class="large-12 columns">
+
+            		<div class="content portfolio three-portfolio clearing-container">
+
+                    	<div class="singletop">
+                            <div class="search">
+                                <form method="get" action="#">
+									<input id="s" type="text" value="Search" name="s">
+                                </form>	
+                            </div>
+                            <nav class="breadcrumbs">
+                              <a href="/">Главная</a>
+                              <a href="/media">Медиа</a>
+                              <a class="current" href="#">@Model.Name</a>
+                            </nav>
+                        </div>
+
+                        <div class="homeposttitle">
+                            <h3 class="widget-title">
+                                <span>@Model.Name</span>
+                            </h3>   
+                            @Html.Raw(Model.Description)
+                        </div>
+
+                        @if(Model.Code == null) {            
+                            foreach(var file in Model.Images) {                            
+                                <div class="homeportfolio large-4 columns">
+                                <div class="entry">
+                                <a rel="prettyPhoto[gal1]" href="@file.FileName">
+                                    <img src="@file.Logo" alt="@file.Title">
+                                    <span class="magnifier"></span>
+                                </a>
+                                </div>
+                                <h3>@file.Title</h3>
+                                </div>  
+                            }                               
+                        }   
+                        else {
+                                <div class="homeportfolio large-12 columns">
+                                <div class="entry">
+                                    <div class="js-video [vimeo, widescreen]">
+                                        @Html.Raw(Model.Code)                                        
+                                    </div>
+                                </div>
+                                </div>
+
+                        }    
+                    </div><!-- End Content -->						
+				</div><!-- large 12 -->
+			</div><!-- end row -->

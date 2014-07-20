@@ -25,38 +25,11 @@ namespace Portal.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("WhiteNights")]
-        public string Theme {
-            get {
-                return ((string)(this["Theme"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("afspb.org.local")]
-        public string BaseDomain {
-            get {
-                return ((string)(this["BaseDomain"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("http://track-me.pro/EndPoints/PortalConnector/PortalConnector.asmx")]
         public string Portal_TrackMePro_PortalConnector {
             get {
                 return ((string)(this["Portal_TrackMePro_PortalConnector"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool ShowFeaturedOnMainPage {
-            get {
-                return ((bool)(this["ShowFeaturedOnMainPage"]));
             }
         }
         
@@ -84,6 +57,78 @@ namespace Portal.Properties {
         public int ImageThumbnailHeight {
             get {
                 return ((int)(this["ImageThumbnailHeight"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Fortuna")]
+        public string Theme {
+            get {
+                return ((string)(this["Theme"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("avtofortuna.spb.ru")]
+        public string BaseDomain {
+            get {
+                return ((string)(this["BaseDomain"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ShowFeaturedOnMainPage {
+            get {
+                return ((bool)(this["ShowFeaturedOnMainPage"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Event")]
+        public string DisplayMode {
+            get {
+                return ((string)(this["DisplayMode"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("70")]
+        public int LogoSmallThumbnailWidth {
+            get {
+                return ((int)(this["LogoSmallThumbnailWidth"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("70")]
+        public int LogoSmallThumbnailHeight {
+            get {
+                return ((int)(this["LogoSmallThumbnailHeight"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("140")]
+        public int LogoBigThumbnailWidth {
+            get {
+                return ((int)(this["LogoBigThumbnailWidth"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("70")]
+        public int LogoBigThumbnailHeight {
+            get {
+                return ((int)(this["LogoBigThumbnailHeight"]));
             }
         }
     }

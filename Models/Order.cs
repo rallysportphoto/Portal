@@ -27,5 +27,7 @@ namespace Portal.Models
         public User CreatedBy { get; set; }
 
         public int? TimingSystemId { get; set; }
+
+        public string Comments { get; set; }
     }
 }

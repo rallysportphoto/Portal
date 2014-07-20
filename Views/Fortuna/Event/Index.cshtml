@@ -1,0 +1,71 @@
+﻿@model Portal.ViewModels.EventDashboardViewModel
+@{
+    ViewBag.Title = "CommingSoon";
+    Layout = "~/Views/Fortuna/Shared/_Default.cshtml";
+}
+
+
+<div id="pxs_container" class="pxs_container">
+  <div class="pxs_bg">
+    <div class="pxs_bg1"></div>
+    <div class="pxs_bg2"></div>
+    <div class="pxs_bg3"></div>
+  </div>
+  <div class="pxs_loading">Загрузка изображений...</div>
+    <div class="pxs_slider_wrapper">
+      <ul class="pxs_slider">
+
+         @foreach(var item in Model.Program) {
+                <li>
+                  <div class="holder">
+                    <img src="@Html.Raw(item.LogoGallery)"  height="362" alt="@item.Name" />                    
+                    <div class="desc_outer">
+                       <div class="desc">
+                         <h4>@item.Name</h4>
+                         @*<div class="desc_text">
+                           @item.DescriptionShort                           
+                         </div>*@
+                         <a href="/program/@item.Slug">Подробнее</a><a class="desc_details"></a>
+                       </div>
+                    </div>
+                  </div>
+                </li>
+         }       
+      </ul>
+      <div class="pxs_thumbnails_holder">
+        <span class="pxs_prev"></span>
+        <ul class="pxs_thumbnails">
+            @foreach(var item in Model.Program) {
+                <li><div><img src="@Html.Raw(item.LogoGalleryLow)" alt="@item.Name" /><i></i></div></li>
+            }
+        </ul>
+        <span class="pxs_next"></span>
+      </div>
+    </div>  
+</div>
+
+        
+<div id="content_t"></div>
+<div id="content_spot_t">
+    <div id="content_spot_b">
+        <div id="content" class="section">
+            <div class="cols">
+                 <div class="col_2-3">
+                     <h1><span class="fl">А</span>втофестиваль &quot;<span class="fl">ФОРТуна</span>&quot;</h1>
+                     
+                     @Html.Raw(Model.Description)                     
+                 </div>
+                <div id="aside" class="col_1-3">
+                  <h1><span class="fl">П</span>ри поддержке</h1>
+                   <ul class="our_clients">
+                       @foreach(var partner in Model.Partners) {
+                        <li><a href="@Html.Raw(partner.Url)" style="background-image: url(@Html.Raw(partner.Logo))"><span>@partner.Name</span></a></li>
+                       }
+                    </ul>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+
+

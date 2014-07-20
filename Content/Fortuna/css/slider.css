@@ -1,0 +1,216 @@
+
+/* Slider Style */
+.pxs_container{
+	width:100%;
+	height:499px;
+	position:relative;
+	overflow: hidden;
+	background:transparent url(../images/slider/bg.png) repeat top left;
+}
+#best_lable{
+	position: absolute;
+	right: 0;
+	top: -7px;
+	display: block;
+	width: 168px;
+	height: 166px;
+	background: url(../images/slider/lable.png) no-repeat 0 0;
+}
+.pxs_bg{
+	height:499px;
+	/*background:transparent url(../images/slider/bg_shadow.png) repeat-x bottom left;*/
+}
+.pxs_bg div{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:7584px; /*1264px window width times number of images*/
+	height:499px;
+	background-repeat:repeat;
+	background-position:top left;
+	background-color:transparent;
+}
+.pxs_bg .pxs_bg1{
+	background-image:url(../images/slider/bg2.png);
+	/*left negative 1/8 of ww*/
+}
+.pxs_bg .pxs_bg2{
+	background-image:url(../images/slider/bg3.png);
+	/*left negative 1/4 of ww*/
+}
+.pxs_bg .pxs_bg3{
+	background-image: none;
+	/*left negative 1/2 of ww*/
+}
+.pxs_slider_wrapper{
+	display:none;
+}
+.pxs_container ul{
+	margin:0px;
+	padding:0px;
+	list-style:none;
+}
+ul.pxs_slider{
+	position:absolute;
+	left:0px;
+	top:40px;
+	height:459px;
+}
+ul.pxs_slider li{
+	height:459px;
+	float:left;
+}
+ul.pxs_slider li div.holder{
+	display:block;
+	position:relative;
+	width: 550px;
+	height: 391px;
+	margin:32px auto 0px auto;
+	padding: 16px 0 0 23px;
+}
+
+    ul.pxs_slider li div.holder img {
+        -moz-box-shadow: 15px 15px 10px #888;
+        -webkit-box-shadow: 15px 15px 10px #888;
+        box-shadow: 15px 15px 10px #888;
+    }
+
+ul.pxs_slider li div.holder div.mask{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 550px;
+	height: 407px;
+	background: url(../images/slider/slider_frame.png) no-repeat 0 0;
+}
+ul.pxs_slider li div.holder div.desc{
+    position: absolute;
+	left: 24px;
+	top: 116px;
+	width: 341px;
+	height: 166px;
+	padding: 23px 0 0 21px;
+	background: url(../images/slider/desc_bg.png) no-repeat 0 0;
+	text-shadow: 1px 1px 0 #ffffff;
+}
+ul.pxs_slider li div.holder div.desc h4{
+	margin: -9px 0 13px 0;
+	padding: 0;
+	color: #181818;
+	max-width: 250px;
+}
+ul.pxs_slider li div.holder div.desc div.desc_text{
+	color: #262626;
+	max-height: 60px;
+	max-width: 260px;
+	overflow: hidden;
+	margin-bottom: 10px;
+	font-size: 11px;
+}
+ul.pxs_slider li div.holder div.desc a.desc_details{
+	background: url(../images/slider/go_details.gif) no-repeat right 9px;
+   display: inline-block;
+   height: 15px;
+   position: relative;
+   width: 0;
+   z-index: 3;
+}
+
+.pxs_thumbnails_holder{
+	width: 100%;
+	position:absolute;
+	top:472px;
+	text-align: center;
+}
+ul.pxs_thumbnails{
+	list-style: none;
+	display: inline;
+	height:14px;
+	overflow: hidden;
+	margin: 0 0 0 0;
+	padding: 0;
+	vertical-align: top;
+}
+ul.pxs_thumbnails li{
+	vertical-align: top;
+	display: inline-block;
+	position: relative;
+	width: 14px;
+	height: 14px;
+	cursor: pointer;
+	margin: 1px 1px 0 1px;
+	background:  url(../images/slider/thumb_buttons.png) no-repeat 0 0;
+		*zoom: 1;
+		*display:inline;
+		*margin: 0 3px;
+}
+ul.pxs_thumbnails li:hover{
+	background-position: 0 -14px;
+}
+ul.pxs_thumbnails li.selected{
+	background-position: 0 -28px;
+}
+ul.pxs_thumbnails li div{
+	display: none;
+	width: 117px;
+	height: 128px;
+	overflow: hidden;
+	position: absolute;
+	text-align: left;
+	padding: 5px 0 0 5px;
+}
+ul.pxs_thumbnails li:hover div{
+	display: block;
+	left: -53px;
+	top: -131px;
+}
+ul.pxs_thumbnails li:hover div img{
+	width: 110px;
+	height: 110px;
+}
+ul.pxs_thumbnails li:hover div i{
+	display: block;
+	width: 122px;
+	height: 133px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background: url(../images/slider/thumb_mask.png) no-repeat 0 0;
+}
+
+span.pxs_prev, span.pxs_next{
+	display: inline-block;
+	width:18px;
+	height:18px;
+	z-index: 9999;
+	cursor:pointer;
+		*zoom: 1;
+		*display: inline;
+}
+span.pxs_prev{
+	margin-right: 10px;
+	background: url(../images/slider/slide-left.png) no-repeat center -18px;
+}
+span.pxs_next{
+	margin-left: 10px;
+	background: url(../images/slider/slide-right.png) no-repeat center -18px;
+}
+span.pxs_prev:hover, span.pxs_next:hover{
+	background-position: center 0;
+}
+.pxs_loading{
+	color:#fff;
+	font-size:20px;
+	padding:15px 15px 15px 50px;
+	position:absolute;
+	background:#333 url(../images/slider/ajax-loader.gif) no-repeat 10px 50%;
+	-moz-border-radius:15px;
+	-webkit-border-radius:15px;
+	border-radius:15px;
+	opacity:0.7;
+	width:180px;
+	position:absolute;
+	top:150px;
+	left:50%;
+	margin-left:-90px;
+}
